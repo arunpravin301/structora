@@ -30,8 +30,8 @@ export default function EmiCalculator() {
       <div className="p-10 flex-1 space-y-8">
         <div>
           <div className="flex justify-between items-end mb-3">
-            <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Loan Amount (₹)</label>
-            <div className="flex items-center gap-1 text-xl font-fr font-semibold border-b border-transparent hover:border-line focus-within:border-navy transition-colors">
+            <label className="block text-xs font-semibold tracking-wide text-slate uppercase pb-2">Loan Amount (₹)</label>
+            <div className="flex items-center gap-2 text-xl font-fr font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-navy focus-within:bg-slate/10 transition-colors cursor-text group">
               <span className="text-slate">₹</span>
               <input 
                 type="number" 
@@ -40,6 +40,7 @@ export default function EmiCalculator() {
                 className="w-32 bg-transparent text-right focus:outline-none placeholder:text-slate/30"
                 placeholder="0"
               />
+              <svg className="w-3.5 h-3.5 text-slate/30 group-hover:text-slate/60 transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
             </div>
           </div>
           <input type="range" min="500000" max="20000000" step="100000" value={pVal > 20000000 ? 20000000 : pVal} onChange={(e) => setP(parseInt(e.target.value))} />
@@ -47,8 +48,8 @@ export default function EmiCalculator() {
 
         <div>
           <div className="flex justify-between items-end mb-3">
-            <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Interest Rate (%)</label>
-            <div className="flex items-center gap-1 text-xl font-fr font-semibold border-b border-transparent hover:border-line focus-within:border-navy transition-colors">
+            <label className="block text-xs font-semibold tracking-wide text-slate uppercase pb-2">Interest Rate (%)</label>
+            <div className="flex items-center gap-2 text-xl font-fr font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-navy focus-within:bg-slate/10 transition-colors cursor-text group">
               <input 
                 type="number" 
                 step="0.1"
@@ -58,6 +59,7 @@ export default function EmiCalculator() {
                 placeholder="0"
               />
               <span className="text-slate">%</span>
+              <svg className="w-3.5 h-3.5 text-slate/30 group-hover:text-slate/60 transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
             </div>
           </div>
           <input type="range" min="5" max="15" step="0.1" value={rVal > 15 ? 15 : rVal} onChange={(e) => setR(parseFloat(e.target.value))} />
@@ -65,8 +67,8 @@ export default function EmiCalculator() {
 
         <div>
           <div className="flex justify-between items-end mb-3">
-            <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Tenure (Years)</label>
-            <div className="flex items-center gap-1 text-xl font-fr font-semibold border-b border-transparent hover:border-line focus-within:border-navy transition-colors">
+            <label className="block text-xs font-semibold tracking-wide text-slate uppercase pb-2">Tenure (Years)</label>
+            <div className="flex items-center gap-2 text-xl font-fr font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-navy focus-within:bg-slate/10 transition-colors cursor-text group">
               <input 
                 type="number" 
                 value={N} 
@@ -75,6 +77,7 @@ export default function EmiCalculator() {
                 placeholder="0"
               />
               <span className="text-slate">Yrs</span>
+              <svg className="w-3.5 h-3.5 text-slate/30 group-hover:text-slate/60 transition-colors ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
             </div>
           </div>
           <input type="range" min="1" max="30" step="1" value={nVal > 30 ? 30 : nVal} onChange={(e) => setN(parseInt(e.target.value))} />
