@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{ --font-fr:'Fraunces'; --font-gs:'General Sans'; }
+
+@layer base{
+  body{ @apply bg-paper text-ink font-gs; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  h1,h2,h3,h4{ @apply font-fr font-semibold tracking-tight; }
+  ::selection{ background:#1B3E6F; color:#fff; }
+}
+
+/* film grain overlay */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:300;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@layer components{
+  /* art-directed photo placeholder */
+  .plate{ @apply relative overflow-hidden; background:linear-gradient(140deg,#15273F,#0A1626); }
+  .plate .reg{ @apply absolute; inset:20px; border:1px solid rgba(146,160,178,.16); }
+  .plate .tk{ @apply absolute; width:11px;height:11px;border:1px solid rgba(146,160,178,.5); }
+  .plate .k1{ top:14px;left:14px;border-right:0;border-bottom:0 }
+  .plate .k2{ top:14px;right:14px;border-left:0;border-bottom:0 }
+  .plate .k3{ bottom:14px;left:14px;border-right:0;border-top:0 }
+  .plate .k4{ bottom:14px;right:14px;border-left:0;border-top:0 }
+  .plate .cap{ @apply absolute left-1/2 top-1/2 text-center; transform:translate(-50%,-50%); color:#92A0B2;font-size:11px;letter-spacing:.18em;text-transform:uppercase;width:78% }
+  .plate .idx{ @apply absolute font-fr; left:22px;bottom:16px;font-size:12px;color:#92A0B2;letter-spacing:.08em }
+
+  .btn{ @apply inline-flex items-center gap-2 font-gs font-medium text-sm cursor-pointer transition-all duration-300; padding:15px 28px;border:1px solid transparent; transform:scale(1) translateY(0); }
+  .btn:active{ transform:scale(0.97) translateY(0); box-shadow:none !important; }
+  .btn-cta{ @apply text-white; background:#C0392B } .btn-cta:hover{ background:#A5311F; transform:translateY(-2px); box-shadow:0 8px 20px rgba(10,22,38,0.12); }
+  .btn-fill{ @apply text-white; background:#0A1626 } .btn-fill:hover{ background:#1B3E6F; transform:translateY(-2px); box-shadow:0 8px 20px rgba(10,22,38,0.18); }
+  .tlink{ @apply inline-flex items-center gap-2 text-sm font-medium text-white; padding-bottom:3px;border-bottom:1px solid #C0392B;transition:gap .25s }
+  .tlink.dark{ @apply text-ink } .tlink:hover{ gap:14px }
+
+  .field{ @apply w-full bg-white text-ink font-gs text-[15px]; border:1px solid #E4E8EF;border-radius:2px;padding:13px 14px }
+  .field:focus{ outline:none;border-color:#1B3E6F }
+}
+
+.reveal-init{ opacity:0; transform:translateY(38px); }
+@media (prefers-reduced-motion: reduce){ .reveal-init{ opacity:1; transform:none; } }
