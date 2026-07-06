@@ -1,39 +1,57 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export default function EmiCalculator() {
-  const [P, setP] = useState(""); const [R, setR] = useState(""); const [N, setN] = useState("");
-  const [res, setRes] = useState<{ emi: string; total: string } | null>(null);
-  const [err, setErr] = useState("");
+  const [P, setP] = useState(2500000);
+  const [R, setR] = useState(8.5);
+  const [N, setN] = useState(15);
 
-  function calc() {
-    const p = parseFloat(P), ann = parseFloat(R), yr = parseFloat(N);
-    if (!p || !ann || !yr) { setErr("Please fill all three fields"); setRes(null); return; }
-    setErr("");
-    const r = ann / 1200, n = yr * 12;
-    const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    setRes({ emi: Math.round(emi).toLocaleString("en-IN"), total: Math.round(emi * n).toLocaleString("en-IN") });
-  }
+  const res = useMemo(() => {
+    const r = R / 1200;
+    const n = N * 12;
+    if (r === 0) {
+      const emi = P / n;
+      return { emi: Math.round(emi).toLocaleString("en-IN"), total: Math.round(P).toLocaleString("en-IN") };
+    }
+    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    return { emi: Math.round(emi).toLocaleString("en-IN"), total: Math.round(emi * n).toLocaleString("en-IN") };
+  }, [P, R, N]);
 
   return (
-    <div className="border border-line p-10 bg-white">
-      <div className="grid grid-cols-3 max-[980px]:grid-cols-1 gap-5 items-end">
-        <div><label className="block text-xs text-slate mb-2">Loan amount (₹)</label>
-          <input className="field" type="number" value={P} onChange={(e) => setP(e.target.value)} placeholder="e.g. 2500000" /></div>
-        <div><label className="block text-xs text-slate mb-2">Interest rate (% per year)</label>
-          <input className="field" type="number" value={R} onChange={(e) => setR(e.target.value)} placeholder="e.g. 8.5" /></div>
-        <div><label className="block text-xs text-slate mb-2">Tenure (years)</label>
-          <input className="field" type="number" value={N} onChange={(e) => setN(e.target.value)} placeholder="e.g. 15" /></div>
-      </div>
-      <button className="btn btn-cta mt-6" onClick={calc}>Calculate EMI</button>
-      {err && <div className="mt-6 p-7 bg-ink text-white text-[13px] text-slatel">{err}</div>}
-      {res && (
-        <div className="mt-6 p-7 bg-ink text-white">
-          <div className="text-[13px] text-slatel">Estimated monthly EMI</div>
-          <div className="font-fr font-semibold text-[34px] mt-1.5">₹{res.emi} / month</div>
-          <div className="text-[13px] text-slatel mt-2.5 italic">Total payable: ₹{res.total}</div>
+    <div className="border border-line p-0 bg-white flex flex-col md:flex-row items-stretch">
+      <div className="p-10 flex-1 space-y-8">
+        <div>
+          <div className="flex justify-between items-end mb-3">
+            <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Loan Amount (₹)</label>
+            <div className="text-xl font-fr font-semibold">₹{P.toLocaleString("en-IN")}</div>
+          </div>
+          <input type="range" min="500000" max="20000000" step="100000" value={P} onChange={(e) => setP(parseInt(e.target.value))} />
         </div>
-      )}
+
+        <div>
+          <div className="flex justify-between items-end mb-3">
+            <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Interest Rate (%)</label>
+            <div className="text-xl font-fr font-semibold">{R}%</div>
+          </div>
+          <input type="range" min="5" max="15" step="0.1" value={R} onChange={(e) => setR(parseFloat(e.target.value))} />
+        </div>
+
+        <div>
+          <div className="flex justify-between items-end mb-3">
+            <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Tenure (Years)</label>
+            <div className="text-xl font-fr font-semibold">{N} Years</div>
+          </div>
+          <input type="range" min="1" max="30" step="1" value={N} onChange={(e) => setN(parseInt(e.target.value))} />
+        </div>
+      </div>
+
+      <div className="w-full md:w-[320px] bg-ink text-white relative flex flex-col justify-center p-10 border-l border-line/10">
+        <div className="text-[11px] uppercase tracking-wider text-slatel mb-2">Monthly EMI</div>
+        <div className="font-fr font-semibold text-[32px] leading-tight text-white mb-2">₹{res.emi}</div>
+        <div className="text-[12px] text-slatel mt-6 border-t border-white/10 pt-4 leading-relaxed">
+          Total amount payable over {N} years is ₹{res.total}. This includes both principal and interest.
+        </div>
+      </div>
     </div>
   );
 }
