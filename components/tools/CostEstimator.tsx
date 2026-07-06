@@ -4,13 +4,14 @@ import { site } from "@/config/site";
 
 export default function CostEstimator() {
   const [dist, setDist] = useState("Kumbakonam");
-  const [area, setArea] = useState(1200);
+  const [area, setArea] = useState<number | "">(1200);
   const [pkg, setPkg] = useState("Basic");
   const [locked, setLocked] = useState(true);
   const [busy, setBusy] = useState(false);
 
   const priceRange = useMemo(() => {
-    const base = area * (site.estimatorRates[dist] || 0) * (site.packageMultiplier[pkg] || 1);
+    const a = typeof area === "number" ? area : 0;
+    const base = a * (site.estimatorRates[dist] || 0) * (site.packageMultiplier[pkg] || 1);
     const lo = Math.round(base * 0.95).toLocaleString("en-IN");
     const hi = Math.round(base * 1.1).toLocaleString("en-IN");
     return `₹${lo} – ₹${hi}`;
@@ -31,24 +32,51 @@ export default function CostEstimator() {
     }
   }
 
+  const displayArea = typeof area === "number" ? area : 0;
+
   return (
     <div className="border border-line p-0 bg-white flex flex-col md:flex-row items-stretch">
       <div className="p-10 flex-1 space-y-8">
         <div>
           <label className="block text-xs font-semibold tracking-wide text-slate mb-3 uppercase">District</label>
-          <div className="flex gap-2 flex-wrap">
-            {site.offices.map(o => (
-              <button key={o} onClick={() => setDist(o)} className={`px-4 py-2 text-sm border transition-colors ${dist === o ? 'border-navy bg-navy text-white' : 'border-line text-slate hover:border-navy'}`}>{o}</button>
-            ))}
+          <div className="relative">
+            <select 
+              value={dist} 
+              onChange={(e) => setDist(e.target.value)}
+              className="w-full appearance-none bg-slate/5 border-b border-line px-4 py-3 text-[15px] focus:outline-none focus:border-navy transition-colors font-gs cursor-pointer rounded-t-sm"
+            >
+              {site.offices.map(o => (
+                <option key={o} value={o}>{o}</option>
+              ))}
+            </select>
+            <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
           </div>
         </div>
         
         <div>
           <div className="flex justify-between items-end mb-3">
             <label className="block text-xs font-semibold tracking-wide text-slate uppercase">Plot Area (sq ft)</label>
-            <div className="text-xl font-fr font-semibold">{area} sq ft</div>
+            <div className="flex items-center gap-1 text-xl font-fr font-semibold border-b border-transparent hover:border-line focus-within:border-navy transition-colors">
+              <input 
+                type="number" 
+                value={area} 
+                onChange={(e) => setArea(e.target.value === "" ? "" : parseInt(e.target.value))}
+                className="w-24 bg-transparent text-right focus:outline-none placeholder:text-slate/30"
+                placeholder="0"
+              />
+              <span className="text-slate">sq ft</span>
+            </div>
           </div>
-          <input type="range" min="500" max="5000" step="100" value={area} onChange={(e) => setArea(parseInt(e.target.value))} />
+          <input 
+            type="range" 
+            min="500" 
+            max="10000" 
+            step="100" 
+            value={displayArea > 10000 ? 10000 : displayArea} 
+            onChange={(e) => setArea(parseInt(e.target.value))} 
+          />
         </div>
 
         <div>
@@ -80,7 +108,7 @@ export default function CostEstimator() {
           <div className="text-[11px] uppercase tracking-wider text-slatel mb-2">Estimated Cost</div>
           <div className="font-fr font-semibold text-[32px] leading-tight text-white mb-2">{priceRange}</div>
           <div className="text-[12px] text-slatel mt-6 border-t border-white/10 pt-4 leading-relaxed">
-            Based on {dist} rates for {area} sq ft with {pkg} finishing. Final price follows a detailed itemised estimate.
+            Based on {dist} rates for {displayArea} sq ft with {pkg} finishing. Final price follows a detailed itemised estimate.
           </div>
         </div>
       </div>

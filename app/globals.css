@@ -35,9 +35,14 @@ body::after{
   .tlink{ @apply inline-flex items-center gap-2 text-sm font-medium text-white; padding-bottom:3px;border-bottom:1px solid #C0392B;transition:gap .25s }
   .tlink.dark{ @apply text-ink } .tlink:hover{ gap:14px }
 
-  .field{ @apply w-full bg-white text-ink font-gs text-[15px]; border:1px solid #E4E8EF;border-radius:2px;padding:13px 14px }
-  .field:focus{ outline:none;border-color:#1B3E6F }
+  .field{ @apply w-full bg-slate/5 text-ink font-gs text-[15px]; border:0; border-bottom:1px solid #E4E8EF; border-radius:2px 2px 0 0; padding:13px 14px; transition:border-color 0.3s, background-color 0.3s; }
+  .field:focus{ outline:none; border-bottom-color:#1B3E6F; background-color:rgba(27,62,111,0.03); }
 }
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
 
 .reveal-init{ opacity:0; transform:translateY(38px); }
 @media (prefers-reduced-motion: reduce){ .reveal-init{ opacity:1; transform:none; } }
