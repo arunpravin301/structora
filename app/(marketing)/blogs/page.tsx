@@ -28,7 +28,7 @@ export default async function JournalPage() {
             <Link href={p.slug === "#" ? "#" : `/journal/${p.slug}`} className="block border border-line hover:shadow-[0_12px_30px_rgba(10,22,38,.08)] hover:-translate-y-1 transition">
               <Plate cap="Article image" idx={`JNL. ${String(i+1).padStart(3,"0")}`} className="aspect-[16/10]" />
               <div className="p-6">
-                <div className="text-[11px] tracking-[.12em] uppercase text-red">{p.category ?? "Journal"} · 2026</div>
+                <div className="text-[11px] tracking-[.12em] uppercase text-brand">{p.category ?? "Journal"} · 2026</div>
                 <h3 className="text-[21px] font-semibold my-2.5 leading-tight">{p.title}</h3>
                 <p className="text-sm text-slate leading-relaxed">{p.excerpt}</p>
               </div>

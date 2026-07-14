@@ -29,8 +29,8 @@ export default function ServiceDetail({ params }: { params: { slug: string } }) 
                 "Foundation, framing and full civil construction.",
                 "Finishing to your chosen package, from basic to premium.",
                 "A named engineer on site, and progress you can follow."].map((t,i)=>(
-                <li key={i} className="grid grid-cols-[30px_1fr] gap-2 py-3.5 border-t border-line last:border-b text-base text-ink">
-                  <span className="text-red font-fr">{String(i+1).padStart(2,"0")}</span><span>{t}</span>
+                <li key={i} className="grid grid-cols-[30px_1fr] gap-2 py-3.5 border-t border-line last:border-b text-base text-slate-900">
+                  <span className="text-brand font-outfit">{String(i+1).padStart(2,"0")}</span><span>{t}</span>
                 </li>))}
             </ul>
           </Reveal>

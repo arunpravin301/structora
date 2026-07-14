@@ -31,13 +31,13 @@ export default function Stats() {
     return () => ctx.revert();
   }, []);
   return (
-    <section ref={root} className="bg-ink2 text-white">
+    <section ref={root} className="bg-slate-800 text-white">
       <Container>
         <div className="grid grid-cols-4 max-[980px]:grid-cols-2">
           {DATA.map((d, i) => (
             <div key={i} className="pr-7 py-[50px]">
-              <div className="font-fr font-semibold text-[clamp(38px,4.6vw,58px)] leading-none tracking-tight">
-                <span data-n={d.n}>0</span><span className="text-red">{d.s}</span>
+              <div className="font-outfit font-semibold text-[clamp(38px,4.6vw,58px)] leading-none tracking-tight">
+                <span data-n={d.n}>0</span><span className="text-brand">{d.s}</span>
               </div>
               <div className="text-[13px] text-slatel mt-3">{d.l}</div>
             </div>

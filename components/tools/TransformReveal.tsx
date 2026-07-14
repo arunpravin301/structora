@@ -71,9 +71,9 @@ export default function TransformReveal() {
       <span className="absolute top-6 right-6 z-[4] text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">After</span>
       <div className="absolute bottom-6 left-6 z-[4] text-white/85">
         <div className="text-[11px] tracking-[.18em] uppercase text-white/60">Project name · Kumbakonam</div>
-        <div className="font-fr text-[15px] mt-1 tracking-[.04em]">The transformation, as you scroll.</div>
+        <div className="font-outfit text-[15px] mt-1 tracking-[.04em]">The transformation, as you scroll.</div>
       </div>
-      <div className="absolute bottom-6 right-6 z-[4] font-fr text-white/90 text-[15px] tabular-nums">
+      <div className="absolute bottom-6 right-6 z-[4] font-outfit text-white/90 text-[15px] tabular-nums">
         <span ref={pct}>0</span><span className="text-white/50">%</span>
       </div>
     </div>

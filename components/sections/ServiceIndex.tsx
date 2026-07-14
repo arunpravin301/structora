@@ -45,10 +45,10 @@ export default function ServiceIndex() {
             onMouseEnter={() => setHoveredIdx(s.num)}
             className="grid grid-cols-[84px_1.1fr_1.5fr_40px] max-[600px]:grid-cols-[46px_1fr] items-center gap-6 py-[42px] px-3.5 border-t border-line last:border-b transition-all hover:bg-mist hover:pl-8 group"
           >
-            <span className="font-fr text-[17px] text-slatel">{s.num}</span>
-            <span className="font-fr font-semibold text-[clamp(28px,3.5vw,42px)] tracking-tight group-hover:text-navy transition">{s.name}</span>
+            <span className="font-outfit text-[17px] text-slatel">{s.num}</span>
+            <span className="font-outfit font-semibold text-[clamp(28px,3.5vw,42px)] tracking-tight group-hover:text-brand transition">{s.name}</span>
             <span className="text-[16px] text-slate max-w-[44ch] max-[600px]:hidden">{s.desc}</span>
-            <span className="text-xl text-slatel justify-self-end max-[600px]:hidden group-hover:text-red group-hover:translate-x-2 transition">→</span>
+            <span className="text-xl text-slatel justify-self-end max-[600px]:hidden group-hover:text-brand group-hover:translate-x-2 transition">→</span>
           </Link>
         ))}
       </div>

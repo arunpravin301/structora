@@ -20,7 +20,7 @@ export default function ContactPage() {
           <Reveal><EnquiryForm /></Reveal>
           <Reveal>
             <SectionHead>Or reach us directly.</SectionHead>
-            <div className="bg-ink text-white p-8">
+            <div className="bg-slate-900 text-white p-8">
               <ul className="list-none">
                 <li className="flex justify-between gap-5 border-t border-lined text-[15px]" style={{ padding: "18px 0" }}>
                   <span className="text-slatel">WhatsApp</span>
@@ -42,7 +42,7 @@ export default function ContactPage() {
             </div>
             <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-6 mt-6">
               {c.addresses.map((o) => (
-                <div key={o.name} className="border-t-2 border-ink" style={{ paddingTop: 18 }}>
+                <div key={o.name} className="border-t-2 border-slate-900" style={{ paddingTop: 18 }}>
                   <h3 className="text-[19px] font-semibold mb-2">{o.name}</h3>
                   <p className="text-sm text-slate leading-relaxed">{o.lines}</p>
                 </div>

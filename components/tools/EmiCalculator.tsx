@@ -31,7 +31,7 @@ export default function EmiCalculator() {
         <div>
           <div className="flex justify-between items-end mb-3">
             <label className="block text-xs font-semibold tracking-wide text-slate uppercase pb-2">Loan Amount (₹)</label>
-            <div className="flex items-center gap-2 text-xl font-fr font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-navy focus-within:bg-slate/10 transition-colors cursor-text group">
+            <div className="flex items-center gap-2 text-xl font-outfit font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-brand focus-within:bg-slate/10 transition-colors cursor-text group">
               <span className="text-slate">₹</span>
               <input 
                 type="number" 
@@ -49,7 +49,7 @@ export default function EmiCalculator() {
         <div>
           <div className="flex justify-between items-end mb-3">
             <label className="block text-xs font-semibold tracking-wide text-slate uppercase pb-2">Interest Rate (%)</label>
-            <div className="flex items-center gap-2 text-xl font-fr font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-navy focus-within:bg-slate/10 transition-colors cursor-text group">
+            <div className="flex items-center gap-2 text-xl font-outfit font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-brand focus-within:bg-slate/10 transition-colors cursor-text group">
               <input 
                 type="number" 
                 step="0.1"
@@ -68,7 +68,7 @@ export default function EmiCalculator() {
         <div>
           <div className="flex justify-between items-end mb-3">
             <label className="block text-xs font-semibold tracking-wide text-slate uppercase pb-2">Tenure (Years)</label>
-            <div className="flex items-center gap-2 text-xl font-fr font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-navy focus-within:bg-slate/10 transition-colors cursor-text group">
+            <div className="flex items-center gap-2 text-xl font-outfit font-semibold bg-slate/5 border-b border-line px-3 py-1.5 hover:bg-slate/10 focus-within:border-brand focus-within:bg-slate/10 transition-colors cursor-text group">
               <input 
                 type="number" 
                 value={N} 
@@ -84,9 +84,9 @@ export default function EmiCalculator() {
         </div>
       </div>
 
-      <div className="w-full md:w-[320px] bg-ink text-white relative flex flex-col justify-center p-10 border-l border-line/10">
+      <div className="w-full md:w-[320px] bg-slate-900 text-white relative flex flex-col justify-center p-10 border-l border-line/10">
         <div className="text-[11px] uppercase tracking-wider text-slatel mb-2">Monthly EMI</div>
-        <div className="font-fr font-semibold text-[32px] leading-tight text-white mb-2">₹{res.emi}</div>
+        <div className="font-outfit font-semibold text-[32px] leading-tight text-white mb-2">₹{res.emi}</div>
         <div className="text-[12px] text-slatel mt-6 border-t border-white/10 pt-4 leading-relaxed">
           Total amount payable over {nVal} years is ₹{res.total}. This includes both principal and interest.
         </div>

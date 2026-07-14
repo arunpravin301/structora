@@ -26,7 +26,7 @@ export default function BeforeAfter() {
       <span className="absolute top-4 left-4 text-[10px] tracking-[.15em] uppercase text-white bg-black/40 px-2.5 py-1">Before</span>
       <span className="absolute top-4 right-4 text-[10px] tracking-[.15em] uppercase text-white bg-black/40 px-2.5 py-1">After</span>
       <div className="absolute top-0 bottom-0 w-px bg-white" style={{ left: `${pos}%` }}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[46px] h-[46px] rounded-full bg-white flex items-center justify-center text-navy shadow-lg">⟷</div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[46px] h-[46px] rounded-full bg-white flex items-center justify-center text-brand shadow-lg">⟷</div>
       </div>
     </div>
   );

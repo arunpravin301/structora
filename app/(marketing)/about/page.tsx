@@ -32,8 +32,8 @@ export default function AboutPage() {
             ["02","Every material checked","Soil tests, concrete mix checks, brick and material inspection before anything goes into your build."],
             ["03","Brands we stand behind","We build with materials we trust by name, not by price."]].map(([n,t,d])=>(
             <Reveal key={n}>
-              <div className="border-t-2 border-ink" style={{paddingTop:18}}>
-                <div className="font-fr text-sm text-red">{n}</div>
+              <div className="border-t-2 border-slate-900" style={{paddingTop:18}}>
+                <div className="font-outfit text-sm text-brand">{n}</div>
                 <h3 className="text-[20px] font-semibold mt-2 mb-2">{t}</h3>
                 <p className="text-[15px] text-slate leading-relaxed">{d}</p>
               </div>
@@ -44,7 +44,7 @@ export default function AboutPage() {
           <div className="mt-12 border border-line bg-white p-8">
             <div className="text-xs tracking-[.14em] uppercase text-slate mb-4">Materials we build with</div>
             <div className="flex flex-wrap gap-x-8 gap-y-3">
-              {site.materials.map((m) => <span key={m} className="font-fr text-[19px] text-ink">{m}</span>)}
+              {site.materials.map((m) => <span key={m} className="font-outfit text-[19px] text-slate-900">{m}</span>)}
             </div>
           </div>
         </Reveal>

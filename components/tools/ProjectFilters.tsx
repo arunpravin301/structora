@@ -18,7 +18,7 @@ const TYPES = ["all", "Residential", "G+1 / G+2", "Farmhouse"];
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <span onClick={onClick}
-      className={`rounded-full text-[13px] cursor-pointer border transition select-none ${active ? "bg-ink text-white border-ink" : "bg-white text-slate border-line hover:border-navy hover:text-navy"}`}
+      className={`rounded-full text-[13px] cursor-pointer border transition select-none ${active ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate border-line hover:border-brand hover:text-brand"}`}
       style={{ padding: "9px 18px" }}>{children}</span>
   );
 }

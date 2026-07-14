@@ -30,7 +30,7 @@ export default function Home() {
                 ["02","Visit our completed projects.","Judge the quality of the work with your own eyes before you decide."],
                 ["03","One team, start to finish.","The hands that design your project are the hands that hand it over."]].map(([n,t,d])=>(
                 <li key={n} className="grid grid-cols-[46px_1fr] gap-1.5 py-5.5 border-t border-line last:border-b items-start" style={{paddingTop:22,paddingBottom:22}}>
-                  <span className="font-fr text-red text-base">{n}</span>
+                  <span className="font-outfit text-brand text-base">{n}</span>
                   <span><b className="font-medium text-[17px] block mb-1">{t}</b><span className="text-[15px] text-slate">{d}</span></span>
                 </li>
               ))}
@@ -43,13 +43,13 @@ export default function Home() {
         <Reveal><div className="mb-14 max-w-[680px]"><h2 className="text-white">Know where you stand before you commit.</h2></div></Reveal>
         <Reveal><div className="flex flex-col md:flex-row gap-0 relative">
           <div className="flex-[1.5] border border-lined p-12 bg-[#122A4F]">
-            <div className="font-fr text-sm text-slatel">01</div>
+            <div className="font-outfit text-sm text-slatel">01</div>
             <h3 className="text-white text-[32px] font-semibold mt-4 mb-3">What will it cost to build?</h3>
             <p className="text-white/60 text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds.</p>
             <Link href="/services#estimator" className="tlink text-lg">Open the cost estimator →</Link>
           </div>
           <div className="flex-[1] border border-lined p-10 bg-[#0B1E36] md:mt-16 md:-ml-12 relative z-10">
-            <div className="font-fr text-sm text-slatel">02</div>
+            <div className="font-outfit text-sm text-slatel">02</div>
             <h3 className="text-white text-[24px] font-semibold mt-4 mb-3">Planning a home loan?</h3>
             <p className="text-white/60 text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget.</p>
             <Link href="/services#emi" className="tlink">Open the EMI calculator →</Link>
@@ -88,7 +88,7 @@ export default function Home() {
             ["Do you help with home loans?","Yes. We assist with home loan applications and work with all the major banks. Use the EMI calculator on our services page to plan your monthly payments."],
             ["Can I visit your completed projects?","We encourage it. Seeing our finished work in person is the best way to judge quality before you decide."]].map(([q,a],i)=>(
             <details key={i} className="border-t border-line last:border-b" open={i===0}>
-              <summary className="list-none cursor-pointer py-7 font-fr text-[22px] font-semibold flex justify-between items-center gap-5">{q}<span className="text-navy text-2xl font-normal">+</span></summary>
+              <summary className="list-none cursor-pointer py-7 font-outfit text-[22px] font-semibold flex justify-between items-center gap-5">{q}<span className="text-brand text-2xl font-normal">+</span></summary>
               <div className="pb-7 text-base text-slate leading-relaxed max-w-[74ch]">{a}</div>
             </details>
           ))}
