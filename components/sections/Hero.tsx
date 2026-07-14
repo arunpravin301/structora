@@ -23,8 +23,8 @@ export default function Hero() {
   }, []);
   return (
     <section ref={root} className="relative min-h-[94vh] text-white flex items-center pt-[140px] pb-[100px] overflow-hidden"
-      style={{ background: "linear-gradient(164deg,#163A66 0%,#0F2848 50%,#0B1E36 100%)" }}>
-      <div className="absolute inset-0" style={{ background: "radial-gradient(95% 72% at 82% 10%,rgba(63,116,178,.38),transparent 58%)" }} />
+      style={{ background: "linear-gradient(164deg,#1E293B 0%,#0F172A 50%,#020617 100%)" }}>
+      <div className="absolute inset-0" style={{ background: "radial-gradient(95% 72% at 82% 10%,rgba(234,88,12,.15),transparent 58%)" }} />
       <HeroBackground />
       <Container className="relative z-[2] w-full pt-10">
         <div className="relative">
@@ -37,7 +37,7 @@ export default function Hero() {
           </div>
 
           <div className="relative z-10 md:w-[45%] md:mt-[12%]">
-             <div className="h-box bg-[#0A1626] border border-lined p-8 md:p-11 shadow-2xl">
+             <div className="h-box bg-slate-900 border border-lined p-8 md:p-11 shadow-2xl">
                 <p className="h-sub text-[16.5px] text-white/80 leading-relaxed">We design and build residential, commercial and industrial projects across Tamil Nadu. From the first drawing to the final key, the work stays with people you can meet.</p>
                 <div className="h-act flex flex-col sm:flex-row items-center gap-6 mt-9">
                   <Link href="/contact" className="btn btn-cta w-full sm:w-auto text-center">Request a consultation</Link>

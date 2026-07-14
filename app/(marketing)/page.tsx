@@ -39,16 +39,16 @@ export default function Home() {
         </div>
       </Container></section>
 
-      <section className="pt-[140px] pb-[160px] text-white" style={{background:"linear-gradient(164deg,#163A66,#0F2848 60%,#0B1E36)"}}><Container>
+      <section className="pt-[140px] pb-[160px] text-white" style={{background:"linear-gradient(164deg,#1E293B,#0F172A 60%,#020617)"}}><Container>
         <Reveal><div className="mb-14 max-w-[680px]"><h2 className="text-white">Know where you stand before you commit.</h2></div></Reveal>
         <Reveal><div className="flex flex-col md:flex-row gap-0 relative">
-          <div className="flex-[1.5] border border-lined p-12 bg-[#122A4F]">
+          <div className="flex-[1.5] border border-lined p-12 bg-slate-800">
             <div className="font-outfit text-sm text-slatel">01</div>
             <h3 className="text-white text-[32px] font-semibold mt-4 mb-3">What will it cost to build?</h3>
             <p className="text-white/60 text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds.</p>
             <Link href="/services#estimator" className="tlink text-lg">Open the cost estimator →</Link>
           </div>
-          <div className="flex-[1] border border-lined p-10 bg-[#0B1E36] md:mt-16 md:-ml-12 relative z-10">
+          <div className="flex-[1] border border-lined p-10 bg-slate-900 md:mt-16 md:-ml-12 relative z-10">
             <div className="font-outfit text-sm text-slatel">02</div>
             <h3 className="text-white text-[24px] font-semibold mt-4 mb-3">Planning a home loan?</h3>
             <p className="text-white/60 text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget.</p>
