@@ -24,6 +24,7 @@ body::after{
   .plate .k1{ top:14px;left:14px;border-right:0;border-bottom:0 }
   .plate .k2{ top:14px;right:14px;border-left:0;border-bottom:0 }
   .plate .k3{ bottom:14px;right:14px;border-left:0;border-top:0 }
+  .plate .k4{ bottom:14px;left:14px;border-right:0;border-top:0 }
   .plate .cap{ @apply absolute font-inter text-[8px] tracking-[.18em] uppercase text-white/80; bottom:24px; left:28px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
   .plate .idx{ @apply absolute font-inter text-[10px] tracking-[.1em] uppercase text-white/80; bottom:22px; right:28px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
 
