@@ -24,9 +24,8 @@ body::after{
   .plate .k1{ top:14px;left:14px;border-right:0;border-bottom:0 }
   .plate .k2{ top:14px;right:14px;border-left:0;border-bottom:0 }
   .plate .k3{ bottom:14px;right:14px;border-left:0;border-top:0 }
-  .plate .k4{ bottom:14px;left:14px;border-right:0;border-top:0 }
-  .plate .cap{ @apply absolute font-inter text-[8px] tracking-[.18em] uppercase; color:rgba(255,255,255,.5); bottom:24px; left:28px; }
-  .plate .idx{ @apply absolute font-inter text-[10px] tracking-[.1em] uppercase; color:rgba(255,255,255,.5); bottom:22px; right:28px; }
+  .plate .cap{ @apply absolute font-inter text-[8px] tracking-[.18em] uppercase text-white/80; bottom:24px; left:28px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+  .plate .idx{ @apply absolute font-inter text-[10px] tracking-[.1em] uppercase text-white/80; bottom:22px; right:28px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
 
   .btn{ @apply inline-flex items-center gap-2 font-inter font-medium text-sm cursor-pointer transition-all duration-300; padding:15px 28px;border:1px solid transparent; transform:scale(1) translateY(0); }
   .btn:active{ transform:scale(0.97) translateY(0); box-shadow:none !important; }
