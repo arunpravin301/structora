@@ -18,15 +18,15 @@ body::after{
 
 @layer components{
   /* art-directed photo placeholder */
-  .plate{ @apply relative overflow-hidden; background:linear-gradient(140deg,#1E293B,#0F172A); }
-  .plate .reg{ @apply absolute; inset:20px; border:1px solid rgba(146,160,178,.16); }
-  .plate .tk{ @apply absolute; width:11px;height:11px;border:1px solid rgba(146,160,178,.5); }
+  .plate{ @apply relative overflow-hidden; background:linear-gradient(140deg,#FFFFFF,#F1F5F9); }
+  .plate .reg{ @apply absolute; inset:20px; border:1px solid rgba(15,23,42,.08); }
+  .plate .tk{ @apply absolute; width:11px;height:11px;border:1px solid rgba(15,23,42,.2); }
   .plate .k1{ top:14px;left:14px;border-right:0;border-bottom:0 }
   .plate .k2{ top:14px;right:14px;border-left:0;border-bottom:0 }
-  .plate .k3{ bottom:14px;left:14px;border-right:0;border-top:0 }
-  .plate .k4{ bottom:14px;right:14px;border-left:0;border-top:0 }
-  .plate .cap{ @apply absolute left-1/2 top-1/2 text-center; transform:translate(-50%,-50%); color:#92A0B2;font-size:11px;letter-spacing:.18em;text-transform:uppercase;width:78% }
-  .plate .idx{ @apply absolute font-outfit; left:22px;bottom:16px;font-size:12px;color:#92A0B2;letter-spacing:.08em }
+  .plate .k3{ bottom:14px;right:14px;border-left:0;border-top:0 }
+  .plate .k4{ bottom:14px;left:14px;border-right:0;border-top:0 }
+  .plate .cap{ @apply absolute font-inter text-[8px] tracking-[.18em] uppercase; color:rgba(15,23,42,.5); bottom:24px; left:28px; }
+  .plate .idx{ @apply absolute font-inter text-[10px] tracking-[.1em] uppercase; color:rgba(15,23,42,.5); bottom:22px; right:28px; }
 
   .btn{ @apply inline-flex items-center gap-2 font-inter font-medium text-sm cursor-pointer transition-all duration-300; padding:15px 28px;border:1px solid transparent; transform:scale(1) translateY(0); }
   .btn:active{ transform:scale(0.97) translateY(0); box-shadow:none !important; }

@@ -28,15 +28,15 @@ export default function Hero() {
       <HeroBackground />
       <Container className="relative z-[2] w-full pt-10">
         <div className="relative">
-          <div className="relative z-10 md:w-[75%] mb-12 md:mb-0 pointer-events-none">
-            <h1 className="h-title text-slate-900 font-semibold text-[clamp(44px,6.5vw,84px)] leading-[1.05] tracking-tight">Built by engineers you can sit across from.</h1>
+          <div className="relative z-10 md:w-[60%] mb-12 md:mb-0 pointer-events-none">
+            <h1 className="h-title text-slate-900 font-semibold text-[clamp(40px,5.5vw,72px)] leading-[1.05] tracking-tight pr-4">Built by engineers you can sit across from.</h1>
           </div>
           
-          <div className="relative z-0 md:absolute md:-top-10 md:right-0 md:w-[50%]">
-             <Plate cap="Featured project photograph" idx="FIG. 01" className="h-plate aspect-[4/3] w-full" />
+          <div className="relative z-0 md:absolute md:-top-4 md:right-0 md:w-[42%]">
+             <Plate cap="Featured project photograph" idx="FIG. 01" className="h-plate aspect-[4/3] w-full shadow-xl" />
           </div>
 
-          <div className="relative z-10 md:w-[45%] md:mt-[12%]">
+          <div className="relative z-10 md:w-[45%] md:mt-[8%]">
              <div className="h-box bg-white border border-line p-8 md:p-11 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.1)]">
                 <p className="h-sub text-[16.5px] text-slate-500 leading-relaxed">We design and build residential, commercial and industrial projects across Tamil Nadu. From the first drawing to the final key, the work stays with people you can meet.</p>
                 <div className="h-act flex flex-col sm:flex-row items-center gap-6 mt-9">
