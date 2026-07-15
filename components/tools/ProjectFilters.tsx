@@ -36,15 +36,33 @@ export default function ProjectFilters() {
         <span className="text-xs tracking-[.1em] uppercase text-slate mr-1.5 min-w-[74px]">Type</span>
         {TYPES.map((x) => <Chip key={x} active={t === x} onClick={() => setT(x)}>{x === "all" ? "All" : x}</Chip>)}
       </div>
-      <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
-        {list.map((p, i) => (
-          <div key={i}>
-            <Plate cap="Project photograph" idx={p.idx} className="aspect-[3/2] mb-[18px]" />
-            <div className="text-xs tracking-[.13em] uppercase text-slate">{p.district} · {p.type} · {p.sqft}</div>
-            <h3 className="text-[22px] font-semibold mt-1.5">{p.name}</h3>
-            <div className="text-[13px] mt-1" style={{ color: p.status.startsWith("Completed") ? "#1B3E6F" : "#5E6B7E" }}>{p.status}</div>
-          </div>
-        ))}
+
+      <div className="mb-14">
+        <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Completed Projects</h2>
+        <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
+          {list.filter(p => p.status.startsWith("Completed")).map((p, i) => (
+            <div key={i}>
+              <Plate cap="Project photograph" idx={p.idx} className="aspect-[3/2] mb-[18px]" />
+              <div className="text-[11px] font-medium tracking-[.13em] uppercase text-slate-500">{p.district} · {p.type} · {p.sqft}</div>
+              <h3 className="text-[22px] font-semibold mt-1.5 text-slate-900">{p.name}</h3>
+              <div className="text-[13px] mt-1 font-medium text-brand">{p.status}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Ongoing Projects</h2>
+        <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
+          {list.filter(p => !p.status.startsWith("Completed")).map((p, i) => (
+            <div key={i}>
+              <Plate cap="Project photograph" idx={p.idx} className="aspect-[3/2] mb-[18px]" />
+              <div className="text-[11px] font-medium tracking-[.13em] uppercase text-slate-500">{p.district} · {p.type} · {p.sqft}</div>
+              <h3 className="text-[22px] font-semibold mt-1.5 text-slate-900">{p.name}</h3>
+              <div className="text-[13px] mt-1 font-medium text-slate-500">{p.status}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
