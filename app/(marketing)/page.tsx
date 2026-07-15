@@ -39,20 +39,20 @@ export default function Home() {
         </div>
       </Container></section>
 
-      <section className="pt-[140px] pb-[160px] text-white" style={{background:"linear-gradient(164deg,#1E293B,#0F172A 60%,#020617)"}}><Container>
-        <Reveal><div className="mb-14 max-w-[680px]"><h2 className="text-white">Know where you stand before you commit.</h2></div></Reveal>
+      <section className="pt-[140px] pb-[160px] text-slate-900 bg-mist"><Container>
+        <Reveal><div className="mb-14 max-w-[680px]"><h2 className="text-slate-900">Know where you stand before you commit.</h2></div></Reveal>
         <Reveal><div className="flex flex-col md:flex-row gap-0 relative">
-          <div className="flex-[1.5] border border-lined p-12 bg-slate-800">
-            <div className="font-outfit text-sm text-slatel">01</div>
-            <h3 className="text-white text-[32px] font-semibold mt-4 mb-3">What will it cost to build?</h3>
-            <p className="text-white/60 text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds.</p>
-            <Link href="/services#estimator" className="tlink text-lg">Open the cost estimator →</Link>
+          <div className="flex-[1.5] border border-line p-12 bg-white shadow-sm">
+            <div className="font-outfit text-sm text-slate-500">01</div>
+            <h3 className="text-slate-900 text-[32px] font-semibold mt-4 mb-3">What will it cost to build?</h3>
+            <p className="text-slate text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds.</p>
+            <Link href="/services#estimator" className="tlink dark text-lg">Open the cost estimator →</Link>
           </div>
-          <div className="flex-[1] border border-lined p-10 bg-slate-900 md:mt-16 md:-ml-12 relative z-10">
-            <div className="font-outfit text-sm text-slatel">02</div>
-            <h3 className="text-white text-[24px] font-semibold mt-4 mb-3">Planning a home loan?</h3>
-            <p className="text-white/60 text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget.</p>
-            <Link href="/services#emi" className="tlink">Open the EMI calculator →</Link>
+          <div className="flex-[1] border border-line p-10 bg-white md:mt-16 md:-ml-12 relative z-10 shadow-lg">
+            <div className="font-outfit text-sm text-slate-500">02</div>
+            <h3 className="text-slate-900 text-[24px] font-semibold mt-4 mb-3">Planning a home loan?</h3>
+            <p className="text-slate text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget.</p>
+            <Link href="/services#emi" className="tlink dark">Open the EMI calculator →</Link>
           </div>
         </div></Reveal>
       </Container></section>

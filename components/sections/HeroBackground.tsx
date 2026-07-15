@@ -62,8 +62,8 @@ export default function HeroBackground() {
 
       if (mouse.x > -1000) {
         const g = cx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 240);
-        g.addColorStop(0, "rgba(63,116,178,0.12)");
-        g.addColorStop(1, "rgba(63,116,178,0)");
+        g.addColorStop(0, "rgba(234,88,12,0.04)");
+        g.addColorStop(1, "rgba(234,88,12,0)");
         cx.fillStyle = g;
         cx.fillRect(0, 0, w, h);
       }
@@ -79,12 +79,12 @@ export default function HeroBackground() {
           a = 0.12 + k * 0.55;
           rad = 1 + k * 1.9;
           if (d < RL) {
-            cx.strokeStyle = `rgba(127,168,220,${(1 - d / RL) * 0.14})`;
+            cx.strokeStyle = `rgba(234,88,12,${(1 - d / RL) * 0.15})`;
             cx.lineWidth = 1;
             cx.beginPath(); cx.moveTo(mouse.x, mouse.y); cx.lineTo(px, py); cx.stroke();
           }
         }
-        cx.fillStyle = d < R ? `rgba(127,168,220,${a})` : `rgba(146,160,178,${a})`;
+        cx.fillStyle = d < R ? `rgba(234,88,12,${a})` : `rgba(15,23,42,${a * 0.6})`;
         cx.beginPath(); cx.arc(px, py, rad, 0, Math.PI * 2); cx.fill();
       }
       raf = requestAnimationFrame(frame);
@@ -93,7 +93,7 @@ export default function HeroBackground() {
     function drawStatic() {
       cx.clearRect(0, 0, w, h);
       pts.forEach((p) => {
-        cx.fillStyle = "rgba(146,160,178,0.12)";
+        cx.fillStyle = "rgba(15,23,42,0.06)";
         cx.beginPath(); cx.arc(p.x, p.y, 1, 0, Math.PI * 2); cx.fill();
       });
     }
