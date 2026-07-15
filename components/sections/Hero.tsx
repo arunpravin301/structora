@@ -22,8 +22,7 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
   return (
-    <section ref={root} className="relative min-h-[94vh] text-slate-900 flex items-center pt-[140px] pb-[100px] overflow-hidden"
-      style={{ background: "#F4F6F9" }}>
+    <section ref={root} className="relative min-h-[94vh] text-slate-900 flex items-center pt-[140px] pb-[100px] overflow-hidden bg-mist">
       <div className="absolute inset-0" style={{ background: "radial-gradient(95% 72% at 82% 10%,rgba(234,88,12,.08),transparent 58%)" }} />
       <HeroBackground />
       <Container className="relative z-[2] w-full pt-10">

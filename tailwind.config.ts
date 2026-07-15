@@ -6,9 +6,9 @@ const config: Config = {
     extend: {
       colors: {
         brand: "#EA580C",
-        paper: "#FFFFFF",
-        mist: "#F4F6F9",
-        line: "#E4E8EF",
+        paper: "#FAFAF9",
+        mist: "#F5F5F4",
+        line: "#E7E5E4",
         lined: "#21364F",
         slate: {
           DEFAULT: "#5E6B7E",
