@@ -6,12 +6,11 @@ import ProjectGallery from "@/components/ui/ProjectGallery";
 // Real projects from the client's form submission (Jul 2026).
 type P = { name: string; district: string; type: string; sqft: string; status: string; idx: string; dataKey: string };
 const PROJECTS: P[] = [
-  { name: "Balaji Abode", district: "Kumbakonam", type: "Up to G+5", sqft: "4,019 sq ft", status: "Completed 2025", idx: "PRJ. 001", dataKey: "2_balaji_residence_completed" },
-  { name: "Marimuthu Residence", district: "Kumbakonam", type: "Up to G+5", sqft: "2,025 sq ft", status: "Completed 2026", idx: "PRJ. 002", dataKey: "3_mm_residence_completed" },
-  { name: "Farmhouse, 4BHK", district: "Tiruvannamalai", type: "Farmhouse", sqft: "4,000 sq ft", status: "Ongoing", idx: "PRJ. 003", dataKey: "5_damodharan_ongoing" },
-  { name: "Priyanka Residence", district: "Kumbakonam", type: "Residential", sqft: "1,300 sq ft", status: "Ongoing", idx: "PRJ. 004", dataKey: "4_priyanka_vilson_ongoing" },
-  { name: "Rabiya Residence", district: "Tiruvannamalai", type: "Residential", sqft: "2,107 sq ft", status: "Ongoing", idx: "PRJ. 005", dataKey: "1_zaheer_residence_ongoing" },
-  { name: "Panruti Residence", district: "Cuddalore", type: "Residential", sqft: "1,000 sq ft", status: "Ongoing", idx: "PRJ. 006", dataKey: "1_zaheer_residence_ongoing" }
+  { name: "Zaheer Residence", district: "Tiruvannamalai", type: "Residential", sqft: "2,107 sq ft", status: "Ongoing", idx: "PRJ. 001", dataKey: "1_zaheer_residence_ongoing" },
+  { name: "Balaji Residence", district: "Kumbakonam", type: "Up to G+5", sqft: "4,019 sq ft", status: "Completed", idx: "PRJ. 002", dataKey: "2_balaji_residence_completed" },
+  { name: "MM Residence", district: "Kumbakonam", type: "Up to G+5", sqft: "2,025 sq ft", status: "Completed", idx: "PRJ. 003", dataKey: "3_mm_residence_completed" },
+  { name: "Priyanka Vilson", district: "Kumbakonam", type: "Residential", sqft: "1,300 sq ft", status: "Ongoing", idx: "PRJ. 004", dataKey: "4_priyanka_vilson_ongoing" },
+  { name: "Damodharan", district: "Tiruvannamalai", type: "Farmhouse", sqft: "4,000 sq ft", status: "Ongoing", idx: "PRJ. 005", dataKey: "5_damodharan_ongoing" }
 ];
 const DISTRICTS = ["all", "Kumbakonam", "Tiruvannamalai", "Cuddalore"];
 const TYPES = ["all", "Residential", "Up to G+5", "Farmhouse"];

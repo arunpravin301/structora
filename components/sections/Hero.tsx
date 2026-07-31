@@ -38,7 +38,7 @@ export default function Hero() {
           </div>
           
           <div className="relative z-0 md:absolute md:-top-12 md:right-0 md:w-[48%]">
-             <Plate cap="Balaji Abode" idx="FIG. 01" src={GALLERY_DATA['2_balaji_residence_completed']?.coverImage} className="h-plate aspect-[16/11] w-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]" />
+             <Plate cap="Balaji Residence" idx="FIG. 01" src={GALLERY_DATA['2_balaji_residence_completed']?.coverImage} className="h-plate aspect-[16/11] w-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]" />
           </div>
 
           <div className="relative z-10 md:w-[48%] md:mt-[6%]">
