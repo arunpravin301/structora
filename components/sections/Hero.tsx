@@ -33,7 +33,7 @@ export default function Hero() {
       <HeroBackground />
       <Container className="relative z-[2] w-full pt-10">
         <div className="relative">
-          <div className="relative z-10 md:w-[70%] mb-12 md:mb-0 pointer-events-none">
+          <div className="relative z-10 md:w-[55%] lg:w-[50%] mb-12 md:mb-0 pointer-events-none">
             <h1 className="h-title text-slate-900 font-semibold text-[clamp(36px,5vw,68px)] leading-[1.05] tracking-tight pr-4 drop-shadow-sm">Precision engineering for residential and commercial spaces.</h1>
           </div>
           
