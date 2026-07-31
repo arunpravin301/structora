@@ -73,7 +73,7 @@ export default function Home() {
         <Reveal><SectionHead>Projects you can drive out and stand in front of.</SectionHead></Reveal>
         <Reveal><div className="relative mb-6">
           <div className="md:w-[70%]">
-            <Plate cap="Featured project photograph" idx="PRJ. 001" className="aspect-[16/10]" />
+            <Plate cap="Balaji Abode" idx="PRJ. 001" src={require('../../project-data.json')['2_balaji_residence_completed']?.coverImage} className="aspect-[16/10]" />
           </div>
           <div className="md:absolute right-0 bottom-[-60px] md:w-[45%] bg-white border border-line p-10 z-10 shadow-sm">
             <div className="text-xs tracking-[.14em] uppercase text-slate mb-3.5">Kumbakonam · Residential · 2024</div>
