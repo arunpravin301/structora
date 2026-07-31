@@ -6,14 +6,15 @@ import Reveal from "@/components/ui/Reveal";
 import ServiceIndex from "@/components/sections/ServiceIndex";
 import CostEstimator from "@/components/tools/CostEstimator";
 import EmiCalculator from "@/components/tools/EmiCalculator";
+import Testimonials from "@/components/sections/Testimonials";
 
 export const metadata: Metadata = { title: "Services" };
 
 export default function ServicesPage() {
   return (
     <>
-      <PageHero crumb="Services" title="One discipline, from a single home to a factory floor."
-        intro="Whatever you are building, the same engineers see it through from the first drawing to the final handover." />
+      <PageHero crumb="Services" title="Uncompromising engineering, from a single home to a 5-story commercial complex."
+        intro="Whatever you are building, the same corporate engineers see it through from the first drawing to the final handover." />
 
       <section className="py-[118px]"><Container><Reveal><ServiceIndex /></Reveal></Container></section>
 
@@ -44,6 +45,11 @@ export default function ServicesPage() {
       <section id="emi" className="py-[118px] bg-mist"><Container>
         <Reveal><SectionHead>Plan your home loan EMI.</SectionHead></Reveal>
         <Reveal><EmiCalculator /></Reveal>
+      </Container></section>
+
+      <section className="py-[118px] bg-white"><Container>
+        <Reveal><SectionHead center>What our clients say.</SectionHead></Reveal>
+        <Testimonials />
       </Container></section>
     </>
   );

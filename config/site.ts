@@ -25,9 +25,8 @@ export const site = {
   services: [
     { slug: "residential", num: "01", name: "Residential", desc: "Independent houses and villas, designed around how a family actually lives." },
     { slug: "commercial", num: "02", name: "Commercial", desc: "Retail, office and mixed-use buildings, delivered to plan and on schedule." },
-    { slug: "industrial", num: "03", name: "Industrial", desc: "Durable industrial structures, engineered for the loads they carry." },
-    { slug: "renovation", num: "04", name: "Renovation", desc: "Considered restoration and reworking of existing structures." },
-    { slug: "multi-floor", num: "05", name: "Multi-floor, G+1 / G+2", desc: "Vertical builds engineered for strength and future growth." }
+    { slug: "renovation", num: "03", name: "Renovation", desc: "Considered restoration and reworking of existing structures." },
+    { slug: "multi-floor", num: "04", name: "Multi-floor, up to G+5", desc: "Vertical builds engineered for strength and future growth." }
   ],
   // Real rates from client form (Jul 2026). Kumbakonam 2400, Kovilpatti 2200 per sqft.
   estimatorRates: { Kumbakonam: 2400, Kovilpatti: 2200 } as Record<string, number>,

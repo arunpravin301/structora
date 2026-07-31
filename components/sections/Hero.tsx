@@ -29,7 +29,7 @@ export default function Hero() {
       <Container className="relative z-[2] w-full pt-10">
         <div className="relative">
           <div className="relative z-10 md:w-[60%] mb-12 md:mb-0 pointer-events-none">
-            <h1 className="h-title text-slate-900 font-semibold text-[clamp(40px,5.5vw,72px)] leading-[1.05] tracking-tight pr-4">Built by engineers you can sit across from.</h1>
+            <h1 className="h-title text-slate-900 font-semibold text-[clamp(40px,5.5vw,72px)] leading-[1.05] tracking-tight pr-4">Precision engineering for residential and commercial spaces.</h1>
           </div>
           
           <div className="relative z-0 md:absolute md:-top-4 md:right-0 md:w-[42%]">
@@ -38,7 +38,7 @@ export default function Hero() {
 
           <div className="relative z-10 md:w-[45%] md:mt-[8%]">
              <div className="h-box bg-white border border-line p-8 md:p-11 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.1)]">
-                <p className="h-sub text-[16.5px] text-slate-500 leading-relaxed">We design and build residential, commercial and industrial projects across Tamil Nadu. From the first drawing to the final key, the work stays with people you can meet.</p>
+                <p className="h-sub text-[16.5px] text-slate-500 leading-relaxed">We design and construct premium residential and commercial projects up to G+5 across Tamil Nadu. From the first architectural drawing to the final handover, we deliver uncompromised quality.</p>
                 <div className="h-act flex flex-col sm:flex-row items-center gap-6 mt-9">
                   <Link href="/contact" className="btn btn-cta w-full sm:w-auto text-center">Request a consultation</Link>
                   <Link href="/projects" className="tlink dark">View selected work →</Link>

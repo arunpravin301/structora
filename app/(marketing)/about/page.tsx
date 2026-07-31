@@ -4,6 +4,7 @@ import SectionHead from "@/components/ui/SectionHead";
 import PageHero from "@/components/ui/PageHero";
 import Plate from "@/components/ui/Plate";
 import Reveal from "@/components/ui/Reveal";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = { title: "About" };
@@ -11,14 +12,14 @@ export const metadata: Metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <>
-      <PageHero crumb="About" title="A local builder you can meet, visit, and hold to account."
-        intro="Structora designs and builds across Tamil Nadu, with the belief that the people building your home should be people you can sit across from." />
+      <PageHero crumb="About" title="A trusted construction partner you can rely on."
+        intro="Structora designs and builds across Tamil Nadu, with the belief that the people building your project should be engineers you can sit across from." />
 
       <section className="py-[118px]"><Container>
         <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
           <Reveal>
             <SectionHead>Our story.</SectionHead>
-            <p className="text-lg text-slate leading-relaxed">Structora was incorporated in 2021 with one aim: to bring large-scale project standards into residential construction. In a market where trust is hard-won, we build for quality and long durability, and we put our own engineers on site to stand behind both.</p>
+            <p className="text-[17px] text-slate-500 leading-relaxed">Structora was incorporated in 2021 to bring large-scale, corporate engineering standards into residential and commercial construction up to 5 floors. In a market where trust is hard-won, we build for quality and uncompromising durability, and we put our own engineers on site to stand behind both.</p>
             <p className="mt-4 text-slate">From a farmhouse in Tiruvannamalai to multi-floor homes in Kumbakonam, every project runs under the same discipline: engineer-supervised, checked at every stage, handed over finished.</p>
           </Reveal>
           <Reveal><Plate cap="Team or office photograph" idx="FIG. 01" className="aspect-[4/5]" /></Reveal>
@@ -70,6 +71,11 @@ export default function AboutPage() {
           </Reveal>))}
         </div>
         <p className="text-[12.5px] text-slate italic mt-8">Team names and roles pending from Structora.</p>
+      </Container></section>
+
+      <section className="py-[118px] bg-white"><Container>
+        <Reveal><SectionHead>The standards we build by.</SectionHead></Reveal>
+        <WhyChooseUs />
       </Container></section>
     </>
   );

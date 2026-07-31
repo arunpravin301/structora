@@ -19,8 +19,8 @@ const config: Config = {
         wa: "#25D366"
       },
       fontFamily: {
-        outfit: ["var(--font-outfit)", "system-ui", "sans-serif"],
-        inter: ["var(--font-inter)", "system-ui", "sans-serif"]
+        outfit: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+        inter: ["'Manrope'", "system-ui", "sans-serif"]
       },
       maxWidth: { wrap: "1240px" }
     }

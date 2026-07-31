@@ -26,8 +26,11 @@ export default function EnquiryForm() {
         <label className="block text-xs text-slate group-focus-within:text-brand transition-colors mb-2 tracking-wide uppercase font-semibold">What are you building?</label>
         <div className="relative">
           <select name="type" className="field transition-all duration-300 appearance-none cursor-pointer">
-            {["Residential home","Commercial building","Industrial","Renovation","Multi-floor (G+1 / G+2)","Not sure yet"].map(o=><option key={o}>{o}</option>)}
-          </select>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Up to G+5">Multi-floor (Up to G+5)</option>
+              <option value="Renovation">Renovation</option>
+            </select>
           <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate group-focus-within:text-brand transition-colors">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </div>

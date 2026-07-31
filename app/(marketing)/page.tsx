@@ -7,12 +7,19 @@ import Hero from "@/components/sections/Hero";
 import Stats from "@/components/sections/Stats";
 import ServiceIndex from "@/components/sections/ServiceIndex";
 import TransformReveal from "@/components/tools/TransformReveal";
+import Testimonials from "@/components/sections/Testimonials";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <Stats />
+
+      <section className="pt-[160px] pb-[80px] bg-white"><Container>
+        <Reveal><SectionHead>Why corporate clients and homeowners trust us.</SectionHead></Reveal>
+        <WhyChooseUs />
+      </Container></section>
 
       <section className="pt-[160px] pb-[80px]"><Container>
         <Reveal><SectionHead>One discipline, applied from a single home to a factory floor.</SectionHead></Reveal>
@@ -57,7 +64,12 @@ export default function Home() {
         </div></Reveal>
       </Container></section>
 
-      <section className="pt-[160px] pb-[200px]"><Container>
+      <section className="pt-[160px] pb-[100px] bg-white"><Container>
+        <Reveal><SectionHead center>Client Testimonials.</SectionHead></Reveal>
+        <Testimonials />
+      </Container></section>
+
+      <section className="pt-[100px] pb-[200px]"><Container>
         <Reveal><SectionHead>Projects you can drive out and stand in front of.</SectionHead></Reveal>
         <Reveal><div className="relative mb-6">
           <div className="md:w-[70%]">
