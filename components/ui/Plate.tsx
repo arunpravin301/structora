@@ -32,9 +32,7 @@ export default function Plate({ cap, idx = "", className = "", src = "" }: { cap
 
   return (
     <div ref={el} className={`plate ${className} group`}>
-      <img src={imgUrl} alt={cap} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-      <div className="reg pointer-events-none" />
-      <span className="tk k1 pointer-events-none" /><span className="tk k2 pointer-events-none" /><span className="tk k3 pointer-events-none" /><span className="tk k4 pointer-events-none" />
+      <img src={imgUrl} alt={cap} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]" />
       <div className="cap pointer-events-none">{cap}</div>
       {idx && <div className="idx pointer-events-none">{idx}</div>}
     </div>

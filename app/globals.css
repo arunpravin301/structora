@@ -6,7 +6,7 @@
 
 @layer base{
   body{ @apply bg-paper text-slate-900 font-inter; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-  h1,h2,h3,h4{ @apply font-outfit font-semibold tracking-tight; }
+  h1,h2,h3,h4{ @apply font-outfit font-medium tracking-tight text-slate-900; }
   ::selection{ background:#EA580C; color:#fff; }
 }
 
@@ -17,22 +17,32 @@ body::after{
 }
 
 @layer components{
-  /* art-directed photo placeholder */
-  .plate{ @apply relative overflow-hidden; background:linear-gradient(140deg,#1E293B,#0F172A); }
-  .plate .reg{ @apply absolute; inset:20px; border:1px solid rgba(255,255,255,.1); }
-  .plate .tk{ @apply absolute; width:11px;height:11px;border:1px solid rgba(255,255,255,.3); }
-  .plate .k1{ top:14px;left:14px;border-right:0;border-bottom:0 }
-  .plate .k2{ top:14px;right:14px;border-left:0;border-bottom:0 }
-  .plate .k3{ bottom:14px;right:14px;border-left:0;border-top:0 }
-  .plate .k4{ bottom:14px;left:14px;border-right:0;border-top:0 }
-  .plate .cap{ @apply absolute font-inter text-[8px] tracking-[.18em] uppercase text-white/80; bottom:24px; left:28px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
-  .plate .idx{ @apply absolute font-inter text-[10px] tracking-[.1em] uppercase text-white/80; bottom:22px; right:28px; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+  /* elegant photo presentation */
+  .plate{ @apply relative overflow-hidden; background:#151618; }
+  .plate .cap{ @apply absolute font-inter text-[9px] tracking-[.2em] uppercase text-white/90; bottom:26px; left:30px; text-shadow: 0 1px 8px rgba(0,0,0,0.8); }
+  .plate .idx{ @apply absolute font-inter text-[10px] tracking-[.15em] uppercase text-white/90; bottom:24px; right:30px; text-shadow: 0 1px 8px rgba(0,0,0,0.8); }
 
-  .btn{ @apply inline-flex items-center gap-2 font-inter font-medium text-sm cursor-pointer transition-all duration-300; padding:15px 28px;border:1px solid transparent; transform:scale(1) translateY(0); }
-  .btn:active{ transform:scale(0.97) translateY(0); box-shadow:none !important; }
-  .btn-cta{ @apply text-white; background:#EA580C } .btn-cta:hover{ background:#C2410C; transform:translateY(-2px); box-shadow:0 8px 20px rgba(15,23,42,0.12); }
-  .btn-fill{ @apply text-white; background:#0F172A } .btn-fill:hover{ background:#1E293B; transform:translateY(-2px); box-shadow:0 8px 20px rgba(15,23,42,0.18); }
-  .tlink{ @apply inline-flex items-center gap-2 text-sm font-medium text-white; padding-bottom:3px;border-bottom:1px solid #EA580C;transition:gap .25s }
+  .btn { 
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 font-inter font-medium text-[12px] tracking-[.15em] uppercase cursor-pointer transition-colors duration-500 z-10; 
+    padding: 18px 36px; border: 1px solid transparent; 
+  }
+  .btn::after {
+    content: ""; 
+    @apply absolute left-0 bottom-0 w-full h-full -z-10 transition-transform duration-[600ms];
+    transform: scaleY(0); 
+    transform-origin: bottom;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .btn:hover::after { transform: scaleY(1); }
+
+  .btn-cta { background: #A95C37; color: #fff; }
+  .btn-cta::after { background: #151618; }
+  
+  .btn-fill { background: transparent; color: #151618; border-color: rgba(21,22,24,0.3); }
+  .btn-fill:hover { color: #fff; border-color: transparent; }
+  .btn-fill::after { background: #151618; }
+
+  .tlink { @apply inline-flex items-center gap-2 text-sm font-medium text-white; padding-bottom:3px; border-bottom:1px solid rgba(169,92,55,0.4); transition:gap .3s ease-out, border-color .3s ease-out }
   .tlink.dark{ @apply text-slate-900 } .tlink:hover{ gap:14px }
 
   .field{ @apply w-full bg-slate/5 text-slate-900 font-inter text-[15px]; border:0; border-bottom:1px solid #E4E8EF; border-radius:2px 2px 0 0; padding:13px 14px; transition:border-color 0.3s, background-color 0.3s; }

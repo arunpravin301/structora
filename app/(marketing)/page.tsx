@@ -87,9 +87,22 @@ export default function Home() {
 
       <section className="bg-mist pt-[160px]">
         <Container>
-          <Reveal><SectionHead center>Scroll to watch a project transform.</SectionHead></Reveal>
+          <Reveal><SectionHead center>From concept to reality.</SectionHead></Reveal>
         </Container>
-        <TransformReveal />
+        
+        {/* First Slider: Balaji Residence */}
+        <TransformReveal 
+          beforeSrc="/projects/2_balaji_residence_completed_cover.webp"
+          afterSrc="/projects/2_balaji_residence_completed_final.webp"
+          label="Balaji Abode · Kumbakonam"
+        />
+
+        {/* Second Slider: Zaheer Residence */}
+        <TransformReveal 
+          beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
+          afterSrc="/projects/1_zaheer_residence_ongoing_15.webp"
+          label="Zaheer Residence · Tiruvannamalai"
+        />
       </section>
 
       <section className="pt-[160px] pb-[120px]"><Container>

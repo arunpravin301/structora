@@ -38,12 +38,12 @@ export default function Hero() {
           </div>
           
           <div className="relative z-0 md:absolute md:-top-16 md:right-[-4%] md:w-[58%] lg:w-[55%]">
-             <Plate cap="MM Residence" idx="FIG. 01" src={GALLERY_DATA['3_mm_residence_completed']?.coverImage} className="h-plate aspect-[4/3] md:aspect-[16/10] w-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)]" />
+             <Plate cap="MM Residence" idx="FIG. 01" src={GALLERY_DATA['3_mm_residence_completed']?.coverImage} className="h-plate aspect-[4/3] md:aspect-[16/10] w-full shadow-md" />
           </div>
 
           <div className="relative z-10 md:w-[65%] lg:w-[55%] md:mt-[6%]">
-             <div className="h-box bg-white/90 backdrop-blur-xl border border-line p-8 md:p-12 shadow-[0_30px_60px_-15px_rgba(15,23,42,0.1)] pointer-events-auto mt-6 md:mt-0 relative">
-                <p className="h-sub text-[16.5px] text-slate-600 leading-relaxed max-w-[50ch]">We design and construct premium residential and commercial projects up to G+5 across Tamil Nadu. From the first architectural drawing to the final handover, we deliver uncompromised quality.</p>
+             <div className="h-box bg-white p-10 md:p-14 pointer-events-auto mt-6 md:mt-0 relative shadow-sm">
+                <p className="h-sub text-[17px] text-slate-900 leading-relaxed max-w-[48ch]">We design and construct premium residential and commercial projects up to G+5 across Tamil Nadu. From the first architectural drawing to the final handover, we deliver uncompromised quality.</p>
                 <div className="h-act flex flex-col sm:flex-row items-center gap-6 mt-10">
                   <Link href="/contact" className="btn btn-cta w-full sm:w-auto text-center px-8 py-3.5">Request a consultation</Link>
                   <Link href="/projects" className="tlink dark font-medium">View selected work →</Link>

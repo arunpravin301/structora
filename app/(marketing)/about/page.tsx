@@ -61,17 +61,7 @@ export default function AboutPage() {
         </div>
       </Container></section>
 
-      <section className="py-[118px] bg-mist"><Container>
-        <Reveal><SectionHead>The team you will meet.</SectionHead></Reveal>
-        <div className="grid grid-cols-4 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
-          {[0,1,2,3].map((i)=>(<Reveal key={i}>
-            <Plate cap="Team photograph" className="aspect-square mb-4" />
-            <h3 className="text-[19px] font-semibold">Name</h3>
-            <div className="text-[13px] text-slate mt-1">Role</div>
-          </Reveal>))}
-        </div>
-        <p className="text-[12.5px] text-slate italic mt-8">Team names and roles pending from Structora.</p>
-      </Container></section>
+
 
       <section className="py-[118px] bg-white"><Container>
         <Reveal><SectionHead>The standards we build by.</SectionHead></Reveal>

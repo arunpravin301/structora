@@ -29,6 +29,7 @@ async function processImages() {
     let count = 1;
     let coverImagePath = null;
     let otherImages = [];
+    let hasThumbnail = false;
 
     for (const file of files) {
       const isThumbnail = file.toLowerCase().includes('thumbnail');
@@ -36,7 +37,15 @@ async function processImages() {
       
       let outName;
       if (isThumbnail) {
-        outName = `${projectKey}_cover.webp`;
+        if (hasThumbnail) {
+          outName = `${projectKey}_${count}.webp`;
+          count++;
+        } else {
+          outName = `${projectKey}_cover.webp`;
+          hasThumbnail = true;
+        }
+      } else if (file.toLowerCase().includes('final')) {
+        outName = `${projectKey}_final.webp`;
       } else {
         outName = `${projectKey}_${count}.webp`;
         count++;
@@ -45,10 +54,19 @@ async function processImages() {
       const outPath = path.join(DEST_DIR, outName);
       
       try {
-        await sharp(inPath)
-          .resize(1600, 1200, { fit: 'inside', withoutEnlargement: true })
-          .webp({ quality: 80 })
-          .toFile(outPath);
+        if (isThumbnail) {
+          // Higher resolution and quality for homepage cover images
+          await sharp(inPath)
+            .resize(2400, 1600, { fit: 'inside', withoutEnlargement: true })
+            .webp({ quality: 95 })
+            .toFile(outPath);
+        } else {
+          // Standard optimization for gallery images
+          await sharp(inPath)
+            .resize(1600, 1200, { fit: 'inside', withoutEnlargement: true })
+            .webp({ quality: 85 })
+            .toFile(outPath);
+        }
           
         const publicUrl = `/projects/${outName}`;
         
@@ -69,13 +87,24 @@ async function processImages() {
       coverImagePath = otherImages[0];
     }
     
-    projectData[projectKey].coverImage = coverImagePath || "";
-    // Put cover image first in the gallery as well
-    if (coverImagePath) {
-       projectData[projectKey].images = [coverImagePath, ...otherImages];
-    } else {
-       projectData[projectKey].images = otherImages;
+    let finalImagePath = null;
+    const regularImages = [];
+    
+    for (const img of otherImages) {
+      if (img.toLowerCase().includes('final')) {
+        finalImagePath = img;
+      } else {
+        regularImages.push(img);
+      }
     }
+    
+    const finalGallery = [];
+    if (coverImagePath) finalGallery.push(coverImagePath);
+    if (finalImagePath) finalGallery.push(finalImagePath);
+    finalGallery.push(...regularImages);
+    
+    projectData[projectKey].coverImage = coverImagePath || "";
+    projectData[projectKey].images = finalGallery;
   }
 
   fs.writeFileSync(path.join(__dirname, 'project-data.json'), JSON.stringify(projectData, null, 2));

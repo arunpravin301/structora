@@ -9,7 +9,7 @@ export const site = {
     { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
     { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "/contact" }
+    { label: "Contact Us", href: "/contact" }
   ],
   offices: ["Kumbakonam", "Kovilpatti"],
   contact: {

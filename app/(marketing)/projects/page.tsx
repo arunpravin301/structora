@@ -18,7 +18,20 @@ export default function ProjectsPage() {
         <Container>
           <Reveal><SectionHead center>Scroll to watch a project transform.</SectionHead></Reveal>
         </Container>
-        <TransformReveal />
+        
+        {/* First Slider: Balaji Residence */}
+        <TransformReveal 
+          beforeSrc="/projects/2_balaji_residence_completed_cover.webp"
+          afterSrc="/projects/2_balaji_residence_completed_final.webp"
+          label="Balaji Abode · Kumbakonam"
+        />
+
+        {/* Second Slider: Zaheer Residence */}
+        <TransformReveal 
+          beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
+          afterSrc="/projects/1_zaheer_residence_ongoing_15.webp"
+          label="Zaheer Residence · Tiruvannamalai"
+        />
       </section>
     </>
   );

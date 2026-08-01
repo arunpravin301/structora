@@ -32,21 +32,11 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 }
 
 export default function ProjectFilters() {
-  const [d, setD] = useState("all"); 
-  const [t, setT] = useState("all");
   const [openGallery, setOpenGallery] = useState<string | null>(null);
 
-  const list = PROJECTS.filter((p) => (d === "all" || p.district === d) && (t === "all" || p.type === t));
+  const list = PROJECTS;
   return (
     <>
-      <div className="flex gap-2.5 flex-wrap items-center mb-3.5">
-        <span className="text-xs tracking-[.1em] uppercase text-slate mr-1.5 min-w-[74px]">District</span>
-        {DISTRICTS.map((x) => <Chip key={x} active={d === x} onClick={() => setD(x)}>{x === "all" ? "All" : x}</Chip>)}
-      </div>
-      <div className="flex gap-2.5 flex-wrap items-center mb-10">
-        <span className="text-xs tracking-[.1em] uppercase text-slate mr-1.5 min-w-[74px]">Type</span>
-        {TYPES.map((x) => <Chip key={x} active={t === x} onClick={() => setT(x)}>{x === "all" ? "All" : x}</Chip>)}
-      </div>
 
       <div className="mb-14">
         <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Completed Projects</h2>

@@ -12,7 +12,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  * PHOTOS: when real photography arrives, replace the two .plate divs with
  * next/image fills inside .tr-before / .tr-after. Nothing else changes.
  */
-export default function TransformReveal() {
+interface TransformRevealProps {
+  beforeSrc?: string;
+  afterSrc?: string;
+  label?: string;
+  subtitle?: string;
+}
+
+export default function TransformReveal({
+  beforeSrc = "/projects/1_zaheer_residence_ongoing_cover.webp",
+  afterSrc = "/projects/1_zaheer_residence_ongoing_15.webp",
+  label = "Zaheer Residence · Tiruvannamalai",
+  subtitle = "The transformation, as you scroll."
+}: TransformRevealProps) {
   const wrap = useRef<HTMLDivElement>(null);
   const after = useRef<HTMLDivElement>(null);
   const seam = useRef<HTMLDivElement>(null);
@@ -52,24 +64,22 @@ export default function TransformReveal() {
   return (
     <div ref={wrap} className="relative w-full h-screen overflow-hidden">
       {/* BEFORE layer (base). Swap the plate for a real photo later. */}
-      <div className="tr-before absolute inset-0">
-        <img src="/projects/zaheer_before.jpg" alt="Before construction" className="w-full h-full object-cover" />
+      <div className="tr-before absolute inset-0 z-[1]">
+        <img src={beforeSrc} alt="Design Rendering" className="w-full h-full object-cover" />
+        <span className="absolute top-6 right-6 text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">Design</span>
       </div>
 
       {/* AFTER layer (clipped, revealed left to right by scroll) */}
-      <div ref={after} className="tr-after absolute inset-0" style={{ clipPath: "inset(0 100% 0 0)" }}>
-        <img src="/projects/1_zaheer_residence_ongoing_cover.webp" alt="Finished project" className="w-full h-full object-cover" />
+      <div ref={after} className="tr-after absolute inset-0 z-[2]" style={{ clipPath: "inset(0 100% 0 0)" }}>
+        <img src={afterSrc} alt="Execution" className="w-full h-full object-cover" />
+        <span className="absolute top-6 left-6 text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">Execution</span>
       </div>
 
       {/* moving seam at the reveal edge */}
       <div ref={seam} className="absolute top-0 bottom-0 w-px bg-white/90 z-[3]" style={{ left: "0%", boxShadow: "0 0 18px rgba(255,255,255,.45)" }} />
-
-      {/* overlay labels */}
-      <span className="absolute top-6 left-6 z-[4] text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">Before</span>
-      <span className="absolute top-6 right-6 z-[4] text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">After</span>
       <div className="absolute bottom-6 left-6 z-[4] text-white/85">
-        <div className="text-[11px] tracking-[.18em] uppercase text-white/60 drop-shadow-md">Zaheer Residence · Tiruvannamalai</div>
-        <div className="font-outfit text-[15px] mt-1 tracking-[.04em] drop-shadow-md">The transformation, as you scroll.</div>
+        <div className="text-[11px] tracking-[.18em] uppercase text-white/60 drop-shadow-md">{label}</div>
+        <div className="font-outfit text-[15px] mt-1 tracking-[.04em] drop-shadow-md">{subtitle}</div>
       </div>
       <div className="absolute bottom-6 right-6 z-[4] font-outfit text-white/90 text-[15px] tabular-nums">
         <span ref={pct}>0</span><span className="text-white/50">%</span>
