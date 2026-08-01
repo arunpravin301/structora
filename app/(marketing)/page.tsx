@@ -18,7 +18,7 @@ export const revalidate = 60; // revalidate every minute
 
 export default async function Home() {
   const projects = await client.fetch(projectsQuery);
-  const p1 = projects.find((p: any) => p.title?.includes("Mm")) || projects[0];
+  const p1 = projects.find((p: any) => p.title?.includes("Priyanka")) || projects[0];
   const p2 = projects.find((p: any) => p.title?.includes("Balaji")) || projects[1];
 
   return (
