@@ -34,12 +34,14 @@ async function run() {
   for (const [key, pData] of Object.entries(data)) {
     const title = keyToTitle[key];
     const project = projects.find(p => p.title === title);
-    if (!project) {
-      console.log(`Could not find project ${title} in Sanity`);
-      continue;
-    }
+    if (!project) continue;
     
-    const imagePath = join(__dirname, 'public', pData.coverImage);
+    let imgName = pData.coverImage;
+    if (title === 'Zaheer Residence') imgName = '/projects/1_zaheer_residence_ongoing_14.webp';
+    if (title === 'Priyanka Vilson') imgName = '/projects/4_priyanka_vilson_ongoing_12.webp';
+    if (title === 'Damodharan') imgName = '/projects/5_damodharan_ongoing_12.webp';
+    
+    const imagePath = join(__dirname, 'public', imgName);
     console.log(`Uploading ${imagePath} for ${title}...`);
     try {
       const coverAsset = await client.assets.upload('image', createReadStream(imagePath), {
