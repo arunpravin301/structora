@@ -2,26 +2,7 @@
 import { useState } from "react";
 import Plate from "@/components/ui/Plate";
 import ProjectGallery from "@/components/ui/ProjectGallery";
-
-// Real projects from the client's form submission (Jul 2026).
-type P = { name: string; district: string; type: string; sqft: string; status: string; idx: string; dataKey: string };
-const PROJECTS: P[] = [
-  { name: "Zaheer Residence", district: "Tiruvannamalai", type: "Residential", sqft: "2,107 sq ft", status: "Ongoing", idx: "PRJ. 001", dataKey: "1_zaheer_residence_ongoing" },
-  { name: "Balaji Residence", district: "Kumbakonam", type: "Up to G+5", sqft: "4,019 sq ft", status: "Completed", idx: "PRJ. 002", dataKey: "2_balaji_residence_completed" },
-  { name: "MM Residence", district: "Kumbakonam", type: "Up to G+5", sqft: "2,025 sq ft", status: "Completed", idx: "PRJ. 003", dataKey: "3_mm_residence_completed" },
-  { name: "Priyanka Vilson", district: "Kumbakonam", type: "Residential", sqft: "1,300 sq ft", status: "Ongoing", idx: "PRJ. 004", dataKey: "4_priyanka_vilson_ongoing" },
-  { name: "Damodharan", district: "Tiruvannamalai", type: "Farmhouse", sqft: "4,000 sq ft", status: "Ongoing", idx: "PRJ. 005", dataKey: "5_damodharan_ongoing" }
-];
-const DISTRICTS = ["all", "Kumbakonam", "Tiruvannamalai", "Cuddalore"];
-const TYPES = ["all", "Residential", "Up to G+5", "Farmhouse"];
-
-// This will be populated by the generated JSON
-let GALLERY_DATA: Record<string, { coverImage: string, images: string[] }> = {};
-try {
-  GALLERY_DATA = require('../../project-data.json');
-} catch (e) {
-  console.log("Gallery data not available yet.");
-}
+import { urlForImage } from "@/sanity/lib/image";
 
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -31,51 +12,64 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
   );
 }
 
-export default function ProjectFilters() {
-  const [openGallery, setOpenGallery] = useState<string | null>(null);
+export default function ProjectFilters({ projects = [] }: { projects?: any[] }) {
+  const [d, setD] = useState("all"); 
+  const [t, setT] = useState("all");
+  const [openGallery, setOpenGallery] = useState<any[] | null>(null);
 
-  const list = PROJECTS;
+  // Extract unique locations dynamically, ignoring empty/unknown
+  const districtsRaw = Array.from(new Set(projects.map(p => p.location))).filter(l => l && l !== 'Unknown' && l.trim() !== '');
+  const DISTRICTS = ["all", ...districtsRaw];
+  const TYPES = ["all", "Residential", "Up to G+5", "Farmhouse"]; // Keep types hardcoded for now or adapt if added to schema
+
+  const list = projects.filter((p) => (d === "all" || p.location === d) && (t === "all" || true /* adapt if schema has type */));
+
+  const completed = list.filter(p => p.status === 'completed');
+  const ongoing = list.filter(p => p.status === 'ongoing');
+
   return (
     <>
-
-      <div className="mb-14">
-        <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Completed Projects</h2>
-        <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
-          {list.filter(p => p.status.startsWith("Completed")).map((p, i) => {
-            const data = GALLERY_DATA[p.dataKey];
-            return (
-              <div key={i} className="cursor-pointer group" onClick={() => setOpenGallery(p.dataKey)}>
-                <Plate cap="Project photograph" idx={p.idx} src={data?.coverImage} className="aspect-[3/2] mb-[18px] group-hover:opacity-90 transition-opacity" />
-                <div className="text-[11px] font-medium tracking-[.13em] uppercase text-slate-500">{p.district} · {p.type} · {p.sqft}</div>
-                <h3 className="text-[22px] font-semibold mt-1.5 text-slate-900 group-hover:text-brand transition-colors">{p.name}</h3>
-                <div className="text-[13px] mt-1 font-medium text-brand">{p.status}</div>
-              </div>
-            );
-          })}
-        </div>
+      <div className="flex gap-2.5 flex-wrap items-center mb-3.5">
+        <span className="text-xs tracking-[.1em] uppercase text-slate mr-1.5 min-w-[74px]">District</span>
+        {DISTRICTS.map((x: any) => <Chip key={x} active={d === x} onClick={() => setD(x)}>{x === "all" ? "All" : x}</Chip>)}
       </div>
 
-      <div className="mb-8">
-        <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Ongoing Projects</h2>
-        <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
-          {list.filter(p => !p.status.startsWith("Completed")).map((p, i) => {
-            const data = GALLERY_DATA[p.dataKey];
-            return (
-              <div key={i} className="cursor-pointer group" onClick={() => setOpenGallery(p.dataKey)}>
-                <Plate cap="Project photograph" idx={p.idx} src={data?.coverImage} className="aspect-[3/2] mb-[18px] group-hover:opacity-90 transition-opacity" />
-                <div className="text-[11px] font-medium tracking-[.13em] uppercase text-slate-500">{p.district} · {p.type} · {p.sqft}</div>
-                <h3 className="text-[22px] font-semibold mt-1.5 text-slate-900 group-hover:text-brand transition-colors">{p.name}</h3>
-                <div className="text-[13px] mt-1 font-medium text-slate-500">{p.status}</div>
-              </div>
-            );
-          })}
+      {completed.length > 0 && (
+        <div className="mb-14">
+          <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Completed Projects</h2>
+          <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
+            {completed.map((p, i) => (
+                <div key={p._id} className="cursor-pointer group" onClick={() => setOpenGallery(p.gallery || [])}>
+                  <Plate cap="Project photograph" idx={`PRJ. 00${i+1}`} src={p.coverImage ? urlForImage(p.coverImage)?.url() : ""} className="aspect-[3/2] mb-[18px] group-hover:opacity-90 transition-opacity" />
+                  <div className="text-[11px] font-medium tracking-[.13em] uppercase text-slate-500">{p.location}</div>
+                  <h3 className="text-[22px] font-semibold mt-1.5 text-slate-900 group-hover:text-brand transition-colors">{p.title}</h3>
+                  <div className="text-[13px] mt-1 font-medium text-brand">Completed</div>
+                </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      {ongoing.length > 0 && (
+        <div className="mb-8">
+          <h2 className="font-semibold text-2xl mb-8 pb-4 border-b border-line text-slate-900">Ongoing Projects</h2>
+          <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
+            {ongoing.map((p, i) => (
+                <div key={p._id} className="cursor-pointer group" onClick={() => setOpenGallery(p.gallery || [])}>
+                  <Plate cap="Project photograph" idx={`PRJ. 00${completed.length + i + 1}`} src={p.coverImage ? urlForImage(p.coverImage)?.url() : ""} className="aspect-[3/2] mb-[18px] group-hover:opacity-90 transition-opacity" />
+                  <div className="text-[11px] font-medium tracking-[.13em] uppercase text-slate-500">{p.location}</div>
+                  <h3 className="text-[22px] font-semibold mt-1.5 text-slate-900 group-hover:text-brand transition-colors">{p.title}</h3>
+                  <div className="text-[13px] mt-1 font-medium text-slate-500">Ongoing</div>
+                </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <ProjectGallery 
         isOpen={!!openGallery} 
         onClose={() => setOpenGallery(null)} 
-        images={openGallery ? (GALLERY_DATA[openGallery]?.images || []) : []} 
+        images={openGallery ? openGallery.map(img => urlForImage(img)?.url()).filter(Boolean) as string[] : []} 
       />
     </>
   );

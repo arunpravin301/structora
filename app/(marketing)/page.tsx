@@ -10,7 +10,15 @@ import TransformReveal from "@/components/tools/TransformReveal";
 import Testimonials from "@/components/sections/Testimonials";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
-export default function Home() {
+import { client } from "@/sanity/lib/client";
+import { projectsQuery } from "@/sanity/lib/queries";
+import { urlForImage } from "@/sanity/lib/image";
+
+export default async function Home() {
+  const projects = await client.fetch(projectsQuery);
+  const p1 = projects.find((p: any) => p.title?.includes("Priyanka")) || projects[0];
+  const p2 = projects.find((p: any) => p.title?.includes("Balaji")) || projects[1];
+
   return (
     <>
       <Hero />
@@ -28,7 +36,7 @@ export default function Home() {
 
       <section className="py-[120px] bg-mist"><Container>
         <div className="grid grid-cols-[5fr_7fr] max-[980px]:grid-cols-1 gap-[60px] items-start">
-          <Reveal><Plate cap="Priyanka Vilson Residence" idx="FIG. 02" src={require('../../project-data.json')['4_priyanka_vilson_ongoing']?.coverImage} className="aspect-[4/5] mt-12 max-[980px]:mt-0" /></Reveal>
+          <Reveal><Plate cap={p1?.title || "Project"} idx="FIG. 02" src={p1?.coverImage ? urlForImage(p1.coverImage)?.url() : ""} className="aspect-[4/5] mt-12 max-[980px]:mt-0" /></Reveal>
           <Reveal>
             <h2 className="mb-6">The people building your home are people you can meet.</h2>
             <p className="text-lg text-slate leading-relaxed">A house is one of the largest commitments you will ever make. You should be able to look the people building it in the eye, walk their finished sites, and reach your own engineer directly.</p>
@@ -73,11 +81,11 @@ export default function Home() {
         <Reveal><SectionHead>Projects you can drive out and stand in front of.</SectionHead></Reveal>
         <Reveal><div className="relative mb-6">
           <div className="md:w-[70%]">
-            <Plate cap="Balaji Abode" idx="PRJ. 001" src={require('../../project-data.json')['2_balaji_residence_completed']?.coverImage} className="aspect-[16/10]" />
+            <Plate cap={p2?.title || "Project"} idx="PRJ. 001" src={p2?.coverImage ? urlForImage(p2.coverImage)?.url() : ""} className="aspect-[16/10]" />
           </div>
           <div className="md:absolute right-0 bottom-[-60px] md:w-[45%] bg-white border border-line p-10 z-10 shadow-sm">
-            <div className="text-xs tracking-[.14em] uppercase text-slate mb-3.5">Kumbakonam · Residential · 2024</div>
-            <h3 className="text-[34px] font-semibold mb-3.5">Project name</h3>
+            <div className="text-xs tracking-[.14em] uppercase text-slate mb-3.5">{p2?.location || 'Tamil Nadu'} · {p2?.status || 'Completed'}</div>
+            <h3 className="text-[34px] font-semibold mb-3.5">{p2?.title || 'Project name'}</h3>
             <p className="text-slate text-[15px] mb-6 max-w-[36ch]">A short, specific line about this project, its scale, and what made it particular.</p>
             <Link href="/projects" className="tlink dark">View project →</Link>
           </div>
