@@ -53,14 +53,12 @@ export default function TransformReveal() {
     <div ref={wrap} className="relative w-full h-screen overflow-hidden">
       {/* BEFORE layer (base). Swap the plate for a real photo later. */}
       <div className="tr-before absolute inset-0">
-        <div className="absolute inset-0" style={{ background: "linear-gradient(140deg,#10202F,#070F18)" }} />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[11px] tracking-[.2em] uppercase text-slatel">Before photograph</span>
+        <img src="/projects/zaheer_before.jpg" alt="Before construction" className="w-full h-full object-cover" />
       </div>
 
       {/* AFTER layer (clipped, revealed left to right by scroll) */}
       <div ref={after} className="tr-after absolute inset-0" style={{ clipPath: "inset(0 100% 0 0)" }}>
-        <div className="absolute inset-0" style={{ background: "linear-gradient(140deg,#1B3E6F,#0F2848)" }} />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[11px] tracking-[.2em] uppercase text-white/70">After photograph</span>
+        <img src="/projects/1_zaheer_residence_ongoing_cover.webp" alt="Finished project" className="w-full h-full object-cover" />
       </div>
 
       {/* moving seam at the reveal edge */}
@@ -70,8 +68,8 @@ export default function TransformReveal() {
       <span className="absolute top-6 left-6 z-[4] text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">Before</span>
       <span className="absolute top-6 right-6 z-[4] text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">After</span>
       <div className="absolute bottom-6 left-6 z-[4] text-white/85">
-        <div className="text-[11px] tracking-[.18em] uppercase text-white/60">Project name · Kumbakonam</div>
-        <div className="font-outfit text-[15px] mt-1 tracking-[.04em]">The transformation, as you scroll.</div>
+        <div className="text-[11px] tracking-[.18em] uppercase text-white/60 drop-shadow-md">Zaheer Residence · Tiruvannamalai</div>
+        <div className="font-outfit text-[15px] mt-1 tracking-[.04em] drop-shadow-md">The transformation, as you scroll.</div>
       </div>
       <div className="absolute bottom-6 right-6 z-[4] font-outfit text-white/90 text-[15px] tabular-nums">
         <span ref={pct}>0</span><span className="text-white/50">%</span>
