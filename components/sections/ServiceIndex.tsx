@@ -34,7 +34,7 @@ export default function ServiceIndex() {
         ref={plateRef}
         className={`fixed top-0 left-0 w-[280px] aspect-[4/5] pointer-events-none z-50 hidden md:block transition-opacity duration-300 ${hoveredIdx ? 'opacity-100' : 'opacity-0'}`}
       >
-        <Plate cap="Service Preview" idx={hoveredIdx || ""} className="w-full h-full bg-[#0A1626]" />
+        <Plate cap="Service Preview" idx={hoveredIdx || ""} src={site.services.find(s => s.num === hoveredIdx)?.image} className="w-full h-full bg-[#0A1626]" />
       </div>
 
       <div className="relative z-10" onMouseLeave={() => setHoveredIdx(null)}>

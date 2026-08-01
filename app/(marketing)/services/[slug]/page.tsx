@@ -21,7 +21,7 @@ export default function ServiceDetail({ params }: { params: { slug: string } }) 
       <PageHero crumb={`Services · ${s.name}`} title={`${s.name}.`} intro={s.desc} />
       <section className="py-[118px]"><Container>
         <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
-          <Reveal><Plate cap="Service photograph" idx="SRV. 01" className="aspect-[4/5]" /></Reveal>
+          <Reveal><Plate cap="Service photograph" idx="SRV. 01" src={s.image} className="aspect-[4/5]" /></Reveal>
           <Reveal>
             <SectionHead>What is included.</SectionHead>
             <ul className="list-none">
