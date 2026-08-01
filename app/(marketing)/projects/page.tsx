@@ -9,6 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { projectsQuery } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = { title: "Selected Work" };
+export const revalidate = 60; // revalidate every minute
 
 export default async function ProjectsPage() {
   const projects = await client.fetch(projectsQuery);

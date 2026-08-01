@@ -14,6 +14,8 @@ import { client } from "@/sanity/lib/client";
 import { projectsQuery } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
 
+export const revalidate = 60; // revalidate every minute
+
 export default async function Home() {
   const projects = await client.fetch(projectsQuery);
   const p1 = projects.find((p: any) => p.title?.includes("Priyanka")) || projects[0];
