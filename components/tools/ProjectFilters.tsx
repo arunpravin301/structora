@@ -13,26 +13,13 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 }
 
 export default function ProjectFilters({ projects = [] }: { projects?: any[] }) {
-  const [d, setD] = useState("all"); 
-  const [t, setT] = useState("all");
   const [openGallery, setOpenGallery] = useState<any[] | null>(null);
 
-  // Extract unique locations dynamically, ignoring empty/unknown
-  const districtsRaw = Array.from(new Set(projects.map(p => p.location))).filter(l => l && l !== 'Unknown' && l.trim() !== '');
-  const DISTRICTS = ["all", ...districtsRaw];
-  const TYPES = ["all", "Residential", "Up to G+5", "Farmhouse"]; // Keep types hardcoded for now or adapt if added to schema
-
-  const list = projects.filter((p) => (d === "all" || p.location === d) && (t === "all" || true /* adapt if schema has type */));
-
-  const completed = list.filter(p => p.status === 'completed');
-  const ongoing = list.filter(p => p.status === 'ongoing');
+  const completed = projects.filter(p => p.status === 'completed');
+  const ongoing = projects.filter(p => p.status === 'ongoing');
 
   return (
     <>
-      <div className="flex gap-2.5 flex-wrap items-center mb-3.5">
-        <span className="text-xs tracking-[.1em] uppercase text-slate mr-1.5 min-w-[74px]">District</span>
-        {DISTRICTS.map((x: any) => <Chip key={x} active={d === x} onClick={() => setD(x)}>{x === "all" ? "All" : x}</Chip>)}
-      </div>
 
       {completed.length > 0 && (
         <div className="mb-14">

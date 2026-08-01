@@ -8,7 +8,8 @@ export const projectsQuery = groq`*[_type == "project"] | order(_createdAt asc) 
   status,
   location,
   client,
-  coverImage
+  coverImage,
+  gallery
 }`
 
 // Get a single project by its slug
