@@ -33,22 +33,22 @@ export default function Hero() {
       <HeroBackground />
       <Container className="relative z-[2] w-full pt-10">
         <div className="relative flex flex-col md:block">
-          <div className="relative z-10 md:w-[45%] lg:w-[42%] mb-8 md:mb-0 pointer-events-none">
-            <h1 className="h-title text-slate-900 font-semibold text-[clamp(32px,4vw,60px)] leading-[1.1] tracking-tight drop-shadow-sm">Precision engineering for residential and commercial spaces.</h1>
+          <div className="relative z-20 md:w-[55%] lg:w-[50%] mb-8 md:mb-0 pointer-events-none">
+            <h1 className="h-title text-slate-900 font-semibold text-[clamp(36px,4.2vw,68px)] leading-[1.05] tracking-tight drop-shadow-sm pr-4">Precision engineering for residential and commercial spaces.</h1>
           </div>
           
-          <div className="relative z-0 md:absolute md:-top-16 md:right-0 md:w-[58%] lg:w-[55%]">
-             <Plate cap="MM Residence" idx="FIG. 01" src={GALLERY_DATA['3_mm_residence_completed']?.coverImage} className="h-plate aspect-[4/3] md:aspect-[16/10] w-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)]" />
+          <div className="relative z-0 md:absolute md:-top-16 md:right-[-4%] md:w-[58%] lg:w-[55%]">
+             <Plate cap="MM Residence" idx="FIG. 01" src={GALLERY_DATA['3_mm_residence_completed']?.coverImage} className="h-plate aspect-[4/3] md:aspect-[16/10] w-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)]" />
           </div>
 
-          <div className="relative z-10 md:w-[45%] lg:w-[40%] md:mt-[4%]">
-             <div className="h-box bg-white border border-line p-8 md:p-11 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.1)] pointer-events-auto mt-6 md:mt-0">
-                <p className="h-sub text-[16.5px] text-slate-500 leading-relaxed">We design and construct premium residential and commercial projects up to G+5 across Tamil Nadu. From the first architectural drawing to the final handover, we deliver uncompromised quality.</p>
-                <div className="h-act flex flex-col sm:flex-row items-center gap-6 mt-9">
-                  <Link href="/contact" className="btn btn-cta w-full sm:w-auto text-center">Request a consultation</Link>
-                  <Link href="/projects" className="tlink dark">View selected work →</Link>
+          <div className="relative z-10 md:w-[65%] lg:w-[55%] md:mt-[6%]">
+             <div className="h-box bg-white/90 backdrop-blur-xl border border-line p-8 md:p-12 shadow-[0_30px_60px_-15px_rgba(15,23,42,0.1)] pointer-events-auto mt-6 md:mt-0 relative">
+                <p className="h-sub text-[16.5px] text-slate-600 leading-relaxed max-w-[50ch]">We design and construct premium residential and commercial projects up to G+5 across Tamil Nadu. From the first architectural drawing to the final handover, we deliver uncompromised quality.</p>
+                <div className="h-act flex flex-col sm:flex-row items-center gap-6 mt-10">
+                  <Link href="/contact" className="btn btn-cta w-full sm:w-auto text-center px-8 py-3.5">Request a consultation</Link>
+                  <Link href="/projects" className="tlink dark font-medium">View selected work →</Link>
                 </div>
-                <div className="h-meta mt-10 pt-5 border-t border-line text-[12.5px] tracking-[.06em] text-slate-500 uppercase">Kumbakonam &nbsp;·&nbsp; Kovilpatti &nbsp;·&nbsp; Tamil Nadu</div>
+                <div className="h-meta mt-10 pt-6 border-t border-line/60 text-[12.5px] tracking-[.08em] text-slate-500 uppercase font-medium">Kumbakonam &nbsp;·&nbsp; Kovilpatti &nbsp;·&nbsp; Tamil Nadu</div>
              </div>
           </div>
         </div>
