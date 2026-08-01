@@ -28,7 +28,7 @@ export default function Home() {
 
       <section className="py-[120px] bg-mist"><Container>
         <div className="grid grid-cols-[5fr_7fr] max-[980px]:grid-cols-1 gap-[60px] items-start">
-          <Reveal><Plate cap="Engineer on site, or completed project" idx="FIG. 02" className="aspect-[4/5] mt-12 max-[980px]:mt-0" /></Reveal>
+          <Reveal><Plate cap="Priyanka Vilson Residence" idx="FIG. 02" src={require('../../project-data.json')['4_priyanka_vilson_ongoing']?.coverImage} className="aspect-[4/5] mt-12 max-[980px]:mt-0" /></Reveal>
           <Reveal>
             <h2 className="mb-6">The people building your home are people you can meet.</h2>
             <p className="text-lg text-slate leading-relaxed">A house is one of the largest commitments you will ever make. You should be able to look the people building it in the eye, walk their finished sites, and reach your own engineer directly.</p>
@@ -95,10 +95,16 @@ export default function Home() {
       <section className="pt-[160px] pb-[120px]"><Container>
         <Reveal><SectionHead center>Questions we hear before a project starts.</SectionHead></Reveal>
         <Reveal><div className="max-w-[900px] mx-auto">
-          {[["How do you price a construction project?","Pricing is based on your built-up area and the package you choose, starting from ₹2,400 per sq ft. You get an itemised estimate up front, so there are no surprises later."],
-            ["Which areas do you build in?","We take projects across Tamil Nadu, with offices in Kumbakonam and Kovilpatti. Recent work spans Kumbakonam, Tiruvannamalai and Cuddalore."],
-            ["Do you help with home loans?","Yes. We assist with home loan applications and work with all the major banks. Use the EMI calculator on our services page to plan your monthly payments."],
-            ["Can I visit your completed projects?","We encourage it. Seeing our finished work in person is the best way to judge quality before you decide."]].map(([q,a],i)=>(
+          {[
+            ["How do you price a construction project?", "Pricing is based on your built-up area and the package you choose, starting from ₹2,200 per sq ft. We provide a detailed Bill of Quantities (BOQ) up front, ensuring complete financial transparency with no hidden charges or surprise 'change orders'."],
+            ["What brands of materials do you use?", "We strictly use premium, ISI-certified brands for all our structural and finishing work. This includes primary steel from Tata or JSW, Grade 53 cement from UltraTech or Dalmia, and top-tier electrical and plumbing fixtures."],
+            ["How long does it take to complete a project?", "A standard G+1 residential project typically takes 8 to 10 months from foundation to handover. We provide a strict project timeline before work begins and enforce rigorous site management to ensure we deliver on schedule."],
+            ["Do you handle government approvals and building permits?", "Yes. We offer an end-to-end turnkey service. Our team manages all necessary local municipal approvals, building plan sanctions, and compliance with zoning laws, so you don't have to navigate the bureaucracy."],
+            ["Which areas do you build in?", "We take projects across Tamil Nadu, with dedicated offices in Kumbakonam and Kovilpatti. Our recent work spans Kumbakonam, Tiruvannamalai, Kovilpatti, and surrounding districts."],
+            ["Do you help with home loans?", "Yes. We assist with home loan applications and provide all necessary legal and technical documents required by major banks. You can use the EMI calculator on our services page to plan your monthly payments."],
+            ["Do you offer a structural warranty?", "Absolutely. We stand behind our engineering. Every project we hand over comes with a comprehensive structural guarantee, ensuring your investment is secure for generations."],
+            ["Can I visit your completed projects?", "We encourage it. Seeing our finished work in person, walking the sites, and speaking with our engineers is the best way to judge our quality before you make a commitment."]
+          ].map(([q,a],i)=>(
             <details key={i} className="border-t border-line last:border-b" open={i===0}>
               <summary className="list-none cursor-pointer py-7 font-outfit text-[22px] font-semibold flex justify-between items-center gap-5">{q}<span className="text-brand text-2xl font-normal">+</span></summary>
               <div className="pb-7 text-base text-slate leading-relaxed max-w-[74ch]">{a}</div>

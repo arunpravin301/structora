@@ -9,13 +9,15 @@ import { site } from "@/config/site";
 export function generateStaticParams() {
   return site.services.map((s) => ({ slug: s.slug }));
 }
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const s = site.services.find((x) => x.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const s = site.services.find((x) => x.slug === resolvedParams.slug);
   return { title: s ? s.name : "Service" };
 }
 
-export default function ServiceDetail({ params }: { params: { slug: string } }) {
-  const s = site.services.find((x) => x.slug === params.slug) ?? site.services[0];
+export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const s = site.services.find((x) => x.slug === resolvedParams.slug) ?? site.services[0];
   return (
     <>
       <PageHero crumb={`Services · ${s.name}`} title={`${s.name}.`} intro={s.desc} />
