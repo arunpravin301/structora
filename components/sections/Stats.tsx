@@ -10,8 +10,8 @@ import Container from "@/components/ui/Container";
 const DATA = [
   { n: 22, s: "k+", l: "Sq ft built and building" },
   { n: 6, s: "", l: "Projects across Tamil Nadu" },
-  { n: 2, s: "", l: "Offices, Kumbakonam and Kovilpatti" },
-  { n: 5, s: "+", l: "Years building as Structora" }
+  { n: 300, s: "+", l: "Quality checklist per project" },
+  { n: 15, s: "+", l: "Years of Experience" }
 ];
 
 export default function Stats() {

@@ -59,17 +59,27 @@ export default async function Home() {
       <section className="pt-[140px] pb-[160px] text-slate-900 bg-mist"><Container>
         <Reveal><div className="mb-14 max-w-[680px]"><h2 className="text-slate-900">Know where you stand before you commit.</h2></div></Reveal>
         <Reveal><div className="flex flex-col md:flex-row gap-0 relative">
-          <div className="flex-[1.5] border border-line p-12 bg-white shadow-sm">
-            <div className="font-outfit text-sm text-slate-500">01</div>
-            <h3 className="text-slate-900 text-[32px] font-semibold mt-4 mb-3">What will it cost to build?</h3>
-            <p className="text-slate text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds.</p>
-            <Link href="/services#estimator" className="tlink dark text-lg">Open the cost estimator →</Link>
+          <div className="flex-[1.5] border border-line p-12 bg-white shadow-sm transition-shadow hover:shadow-md">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              </div>
+              <div className="font-outfit text-sm text-slate-500 font-medium">Interactive Tool</div>
+            </div>
+            <h3 className="text-slate-900 text-[32px] font-semibold mt-2 mb-3">Construction Cost Calculator</h3>
+            <p className="text-slate text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds without waiting for a quote.</p>
+            <Link href="/services#estimator" className="inline-block btn bg-slate-900 text-white hover:bg-slate-800 px-8 py-3.5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-xl">Calculate Build Cost →</Link>
           </div>
-          <div className="flex-[1] border border-line p-10 bg-white md:mt-16 md:-ml-12 relative z-10 shadow-lg">
-            <div className="font-outfit text-sm text-slate-500">02</div>
-            <h3 className="text-slate-900 text-[24px] font-semibold mt-4 mb-3">Planning a home loan?</h3>
-            <p className="text-slate text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget.</p>
-            <Link href="/services#emi" className="tlink dark">Open the EMI calculator →</Link>
+          <div className="flex-[1] border border-line p-10 bg-white md:mt-16 md:-ml-12 relative z-10 shadow-xl transition-shadow hover:shadow-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div className="font-outfit text-sm text-slate-500 font-medium">Financial Tool</div>
+            </div>
+            <h3 className="text-slate-900 text-[24px] font-semibold mt-2 mb-3">Home Loan EMI Calculator</h3>
+            <p className="text-slate text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget instantly.</p>
+            <Link href="/services#emi" className="inline-block btn bg-brand text-white hover:bg-brand/90 px-7 py-3 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-brand/20">Calculate EMI →</Link>
           </div>
         </div></Reveal>
       </Container></section>
@@ -110,7 +120,7 @@ export default async function Home() {
         {/* Second Slider: Zaheer Residence */}
         <TransformReveal 
           beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
-          afterSrc="/projects/1_zaheer_residence_ongoing_15.webp"
+          afterSrc="/projects/zaheer_execution.png"
           label="Zaheer Residence · Tiruvannamalai"
         />
       </section>
@@ -119,13 +129,13 @@ export default async function Home() {
         <Reveal><SectionHead center>Questions we hear before a project starts.</SectionHead></Reveal>
         <Reveal><div className="max-w-[900px] mx-auto">
           {[
-            ["How do you price a construction project?", "Pricing is based on your built-up area and the package you choose, starting from ₹2,200 per sq ft. We provide a detailed Bill of Quantities (BOQ) up front, ensuring complete financial transparency with no hidden charges or surprise 'change orders'."],
+            ["How do you price a construction project?", "Pricing is based on your built-up area and the package you choose, starting from ₹2,200 per sq ft. We provide a detailed estimate up front, ensuring complete financial transparency with no hidden charges or surprise 'change orders'."],
             ["What brands of materials do you use?", "We strictly use premium, ISI-certified brands for all our structural and finishing work. This includes primary steel from Tata or JSW, Grade 53 cement from UltraTech or Dalmia, and top-tier electrical and plumbing fixtures."],
-            ["How long does it take to complete a project?", "A standard G+1 residential project typically takes 8 to 10 months from foundation to handover. We provide a strict project timeline before work begins and enforce rigorous site management to ensure we deliver on schedule."],
+            ["How long does it take to complete a project?", "A standard residential project typically takes 8 to 10 months from foundation to handover. We provide a strict project timeline before work begins and enforce rigorous site management to ensure we deliver on schedule."],
             ["Do you handle government approvals and building permits?", "Yes. We offer an end-to-end turnkey service. Our team manages all necessary local municipal approvals, building plan sanctions, and compliance with zoning laws, so you don't have to navigate the bureaucracy."],
-            ["Which areas do you build in?", "We take projects across Tamil Nadu, with dedicated offices in Kumbakonam and Kovilpatti. Our recent work spans Kumbakonam, Tiruvannamalai, Kovilpatti, and surrounding districts."],
+            ["Which areas do you build in?", "We take projects across Tamil Nadu, with dedicated offices in Kumbakonam and Kovilpatti. Our recent work spans Kumbakonam, Tiruvannamalai, Kovilpatti, Thanjavur, Mayiladuthurai, and surrounding districts."],
             ["Do you help with home loans?", "Yes. We assist with home loan applications and provide all necessary legal and technical documents required by major banks. You can use the EMI calculator on our services page to plan your monthly payments."],
-            ["Do you offer a structural warranty?", "Absolutely. We stand behind our engineering. Every project we hand over comes with a comprehensive structural guarantee, ensuring your investment is secure for generations."],
+            ["Do you offer a structural warranty?", "Yes. We provide a comprehensive structural guarantee for projects built under our premium packages. A long-term warranty requires adherence to strict engineering criteria and the use of specific, ultra-high-grade materials. Therefore, this guarantee is exclusively available for our premium offerings, where these rigorous standards are fully met."],
             ["Can I visit your completed projects?", "We encourage it. Seeing our finished work in person, walking the sites, and speaking with our engineers is the best way to judge our quality before you make a commitment."]
           ].map(([q,a],i)=>(
             <details key={i} className="border-t border-line last:border-b" open={i===0}>

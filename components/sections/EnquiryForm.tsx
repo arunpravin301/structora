@@ -28,7 +28,7 @@ export default function EnquiryForm() {
           <select name="type" className="field transition-all duration-300 appearance-none cursor-pointer">
               <option value="Residential">Residential</option>
               <option value="Commercial">Commercial</option>
-              <option value="Up to G+5">Multi-floor (Up to G+5)</option>
+              <option value="Multi-storey Building">Multi-storey Building</option>
               <option value="Renovation">Renovation</option>
             </select>
           <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate group-focus-within:text-brand transition-colors">

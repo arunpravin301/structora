@@ -23,10 +23,10 @@ export const site = {
     ]
   },
   services: [
-    { slug: "residential", num: "01", name: "Residential", desc: "Independent houses and villas, designed around how a family actually lives.", image: "/projects/1_zaheer_residence_ongoing_cover.webp" },
+    { slug: "residential", num: "01", name: "Residential", desc: "Independent houses and villas, designed around how a family actually lives.", image: "/projects/zaheer_execution.png" },
     { slug: "commercial", num: "02", name: "Commercial", desc: "Retail, office and mixed-use buildings, delivered to plan and on schedule.", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" },
-    { slug: "renovation", num: "03", name: "Renovation", desc: "Considered restoration and reworking of existing structures.", image: "/projects/4_priyanka_vilson_ongoing_cover.webp" },
-    { slug: "multi-floor", num: "04", name: "Multi-floor, up to G+5", desc: "Vertical builds engineered for strength and future growth.", image: "/projects/2_balaji_residence_completed_cover.webp" }
+    { slug: "renovation", num: "03", name: "Renovation", desc: "Considered restoration and reworking of existing structures.", image: "/projects/priyanka_thumbnail2.png" },
+    { slug: "multi-floor", num: "04", name: "Multi-storey Building", desc: "Vertical builds engineered for strength and future growth.", image: "/projects/2_balaji_residence_completed_cover.webp" }
   ],
   // Real rates from client form (Jul 2026). Kumbakonam 2400, Kovilpatti 2200 per sqft.
   estimatorRates: { Kumbakonam: 2400, Kovilpatti: 2200 } as Record<string, number>,

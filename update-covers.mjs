@@ -36,12 +36,10 @@ async function run() {
     const project = projects.find(p => p.title === title);
     if (!project) continue;
     
-    let imgName = pData.coverImage;
-    if (title === 'Zaheer Residence') imgName = '/projects/1_zaheer_residence_ongoing_14.webp';
-    if (title === 'Priyanka Vilson') imgName = '/projects/4_priyanka_vilson_ongoing_12.webp';
-    if (title === 'Damodharan') imgName = '/projects/5_damodharan_ongoing_12.webp';
+    // Only update Priyanka Vilson this time
+    if (title !== 'Priyanka Vilson') continue;
     
-    const imagePath = join(__dirname, 'public', imgName);
+    const imagePath = 'D:\\Structora India\\Photos\\4. Priyanka Vilson - Ongoing\\thumbnail.png';
     console.log(`Uploading ${imagePath} for ${title}...`);
     try {
       const coverAsset = await client.assets.upload('image', createReadStream(imagePath), {

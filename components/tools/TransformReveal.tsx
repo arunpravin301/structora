@@ -62,7 +62,7 @@ export default function TransformReveal({
   }, []);
 
   return (
-    <div ref={wrap} className="relative w-full h-screen overflow-hidden">
+    <div ref={wrap} className="relative w-full h-[60vh] md:h-screen overflow-hidden">
       {/* BEFORE layer (base). Swap the plate for a real photo later. */}
       <div className="tr-before absolute inset-0 z-[1]">
         <img src={beforeSrc} alt="Design Rendering" className="w-full h-full object-cover" />

@@ -20,7 +20,7 @@ export default function AboutPage() {
           <Reveal>
             <SectionHead>Our story.</SectionHead>
             <p className="text-[17px] text-slate-500 leading-relaxed">Structora was incorporated in 2021 to bring large-scale, corporate engineering standards into residential and commercial construction up to 5 floors. In a market where trust is hard-won, we build for quality and uncompromising durability, and we put our own engineers on site to stand behind both.</p>
-            <p className="mt-4 text-slate">From a farmhouse in Tiruvannamalai to multi-floor homes in Kumbakonam, every project runs under the same discipline: engineer-supervised, checked at every stage, handed over finished.</p>
+            <p className="mt-4 text-slate">From multi-floor homes in Chennai to a farmhouse in Kanyakumari, every project runs under the same discipline: engineer-supervised, checked at every stage, handed over finished.</p>
           </Reveal>
           <Reveal><Plate cap="Team or office photograph" idx="FIG. 01" className="aspect-[4/5]" /></Reveal>
         </div>
