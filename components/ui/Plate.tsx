@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -32,9 +33,9 @@ export default function Plate({ cap, idx = "", className = "", src = "" }: { cap
 
   return (
     <div ref={el} className={`plate ${className} group`}>
-      <img src={imgUrl} alt={cap} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]" />
-      <div className="cap pointer-events-none">{cap}</div>
-      {idx && <div className="idx pointer-events-none">{idx}</div>}
+      <Image src={imgUrl} alt={cap} fill className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]" />
+      <div className="cap pointer-events-none z-10 relative">{cap}</div>
+      {idx && <div className="idx pointer-events-none z-10 relative">{idx}</div>}
     </div>
   );
 }
