@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -65,14 +66,14 @@ export default function TransformReveal({
     <div ref={wrap} className="relative w-full h-[60vh] md:h-screen overflow-hidden">
       {/* BEFORE layer (base). Swap the plate for a real photo later. */}
       <div className="tr-before absolute inset-0 z-[1]">
-        <img src={beforeSrc} alt="Design Rendering" className="w-full h-full object-cover" />
-        <span className="absolute top-6 right-6 text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">Design</span>
+        <Image src={beforeSrc} alt="Design Rendering" fill className="object-cover" />
+        <span className="absolute top-6 right-6 text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5 z-10">Design</span>
       </div>
 
       {/* AFTER layer (clipped, revealed left to right by scroll) */}
       <div ref={after} className="tr-after absolute inset-0 z-[2]" style={{ clipPath: "inset(0 100% 0 0)" }}>
-        <img src={afterSrc} alt="Execution" className="w-full h-full object-cover" />
-        <span className="absolute top-6 left-6 text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5">Execution</span>
+        <Image src={afterSrc} alt="Execution" fill className="object-cover" />
+        <span className="absolute top-6 left-6 text-[10px] tracking-[.16em] uppercase text-white bg-black/40 px-3 py-1.5 z-10">Execution</span>
       </div>
 
       {/* moving seam at the reveal edge */}
