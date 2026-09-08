@@ -22,6 +22,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..600&display=swap"
           rel="stylesheet"
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "GeneralContractor",
+              name: "Structora India Constructions Pvt Ltd.",
+              url: "https://structoraindia.com",
+              description:
+                "Real estate builders & construction company in Nalattinputtur, Tamil Nadu. Structora India Constructions designs and builds residential and commercial projects.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "354 M4D/4, Nalattinputtur",
+                addressLocality: "Kovilpatti",
+                addressRegion: "Tamil Nadu",
+                postalCode: "628716",
+                addressCountry: "IN",
+              },
+            }),
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <div className="grain" />
