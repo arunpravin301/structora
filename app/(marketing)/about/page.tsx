@@ -26,6 +26,26 @@ export default function AboutPage() {
         </div>
       </Container></section>
 
+      {/* Founder Section */}
+      <section className="py-[118px] bg-white"><Container>
+        <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
+          <Reveal>
+            <Plate src="" cap="Vetri, Founder & Managing Director" idx="FIG. 02" className="aspect-[4/5]" />
+          </Reveal>
+          <Reveal>
+            <SectionHead>Meet the Founder.</SectionHead>
+            <h3 className="text-3xl font-semibold mb-2">Vetri</h3>
+            <p className="text-brand font-outfit text-sm uppercase tracking-[0.15em] mb-8">Founder & Managing Director</p>
+            <div className="space-y-5 text-slate-500 leading-relaxed text-[17px]">
+              <p>With a Bachelor's degree in Civil Engineering and a lifelong fascination with large-scale infrastructure, Vetri built his foundation working for corporate construction giants like L&T ECC. There, he mastered advanced construction technologies, rigorous project management, and strict quality standards.</p>
+              <p>He founded Structora India Constructions with a clear vision: to bring that same level of large-scale corporate engineering excellence, transparency, and reliability into the residential and commercial market. His philosophy is that a home shouldn't just be built—it should be engineered to last, balancing cost with uncompromised durability.</p>
+              <p>For Vetri, the most rewarding part of the job isn't just solving complex engineering challenges—it's the moment of handover. It's hearing a client say they are proud of the home built together, delivered with exact precision and strictly within the planned budget.</p>
+              <p>Outside of the construction site, Vetri is an avid cricket fan and dedicates his time to giving back to the community by supporting children who have lost parental support.</p>
+            </div>
+          </Reveal>
+        </div>
+      </Container></section>
+
       <section className="py-[118px] bg-mist"><Container>
         <Reveal><SectionHead>How we hold quality.</SectionHead></Reveal>
         <div className="grid grid-cols-3 max-[980px]:grid-cols-1 gap-6">
@@ -57,7 +77,7 @@ export default function AboutPage() {
             <SectionHead>Home loans, handled with you.</SectionHead>
             <p className="text-lg text-slate leading-relaxed">We assist our clients with home loan applications and work with all the major banks. Plan your EMI on our services page, then let us help you take it to the bank.</p>
           </Reveal>
-          <Reveal><Plate cap="Handover or site photograph" idx="FIG. 02" className="aspect-[16/10]" /></Reveal>
+          <Reveal><Plate cap="Handover or site photograph" idx="FIG. 03" className="aspect-[16/10]" /></Reveal>
         </div>
       </Container></section>
 
