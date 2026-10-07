@@ -1,0 +1,1346 @@
+{
+  "Kumbakonam": {
+    "basePrices": {
+      "basic": "2349",
+      "standard": "2510",
+      "premium": "2929",
+      "luxury": "3199"
+    },
+    "categories": [
+      {
+        "name": "Structure",
+        "items": [
+          {
+            "name": "Steel",
+            "basic": "ISI Brand",
+            "standard": "Pulkit/Suryadev Or equivalent",
+            "premium": "Agni/Aishwaryam Or equivalent",
+            "luxury": "JSW/TATA"
+          },
+          {
+            "name": "Cement",
+            "basic": "Ramco/Ultratech/Dalmia",
+            "standard": "Ramco/Ultratech/Dalmia",
+            "premium": "Ramco/Ultratech/Dalmia",
+            "luxury": "Ramco/Ultratech/Dalmia"
+          },
+          {
+            "name": "Bricks",
+            "basic": "Country Red Brick",
+            "standard": "Country Red Brick",
+            "premium": "1st class Wirecut Red Bricks",
+            "luxury": "1st class Wirecut Red Bricks"
+          },
+          {
+            "name": "Basement Height",
+            "basic": "Up to 2'0\" From Natural Ground level",
+            "standard": "Up to 3'0\" From Natural Ground level",
+            "premium": "Up to 3'6\" From Natural Ground level",
+            "luxury": "Up to 4'0\" From Natural Ground level"
+          },
+          {
+            "name": "Foundation depth",
+            "basic": "Up to 5'0\" From Natural Ground level",
+            "standard": "Up to 5'0\" From Natural Ground level",
+            "premium": "Up to 5'0\" From Natural Ground level",
+            "luxury": "Up to 5'0\" From Natural Ground level"
+          },
+          {
+            "name": "Floor Height",
+            "basic": "10'0\" From Floor PCC to Top Of Concrete",
+            "standard": "10'0\" From Floor PCC to Top Of Concrete",
+            "premium": "10'-6\" From Floor PCC to Top Of Concrete",
+            "luxury": "11'-0\" From Floor PCC to Top Of Concrete"
+          },
+          {
+            "name": "RCC Mix Ratio",
+            "basic": "M 20 Or As per structural specifications",
+            "standard": "M 20 Or As per structural specifications",
+            "premium": "M 20/M 25 Or As per structural specifications",
+            "luxury": "M 20/M 25 Or As per structural specifications"
+          },
+          {
+            "name": "Water proofing",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Dr.Fixit/Fosroc",
+            "luxury": "Dr.Fixit/Fosroc"
+          },
+          {
+            "name": "Joinerys",
+            "basic": "UPVC",
+            "standard": "Mahogany Or Equivalent",
+            "premium": "Teak woods",
+            "luxury": "Teak woods"
+          }
+        ]
+      },
+      {
+        "name": "Kitchen",
+        "items": [
+          {
+            "name": "Wall Tiles",
+            "basic": "RS - 40/- Per sft \r\n2'0\" ft Height",
+            "standard": "RS - 45/- Per sft \r\n4'0\" ft Height",
+            "premium": "RS - 55/- Per sft \r\n4'0\" Ft Height",
+            "luxury": "RS - 65/- Per sft \r\n4'0\" Ft Height"
+          },
+          {
+            "name": "Granite - Counter top",
+            "basic": "Rs - 100/Sft",
+            "standard": "Rs - 130/Sft",
+            "premium": "Rs - 160/Sft",
+            "luxury": "Rs - 190/Sft"
+          },
+          {
+            "name": "Kitchen Sink",
+            "basic": "Stainless Steels - 2000/-",
+            "standard": "Stainless Steels - 3000/-",
+            "premium": "Stainless Steel - 9000/-",
+            "luxury": "Stainless Steel - 11500/-"
+          },
+          {
+            "name": "Main sink Faucet",
+            "basic": "1500/-",
+            "standard": "2000/-",
+            "premium": "2500/-",
+            "luxury": "3000/-"
+          }
+        ]
+      },
+      {
+        "name": "Doors & Windows",
+        "items": [
+          {
+            "name": "Main doors",
+            "basic": "Teak Wood \r\nFrame Thick - 5X3, Size 3'6\"X7'0\"",
+            "standard": "Teak Wood \r\nFrame Thick - 5X4, Size 3'6\"X7'0\"",
+            "premium": "Teak Wood \r\nFrame Thick - 6X4, Size 3'6\"X7'0\"",
+            "luxury": "Teak Wood \r\nFrame Thick - 6X4, Size 3'6\"X8'0\""
+          },
+          {
+            "name": "Internal doors",
+            "basic": "Flush door \r\nMahogany Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "standard": "Flush door \r\nMahogany Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "premium": "Flush door \r\nTeak Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "luxury": "Flush door \r\nTeak Frame Thick - 3X4, \r\nSize 3'0\"X7'0\""
+          },
+          {
+            "name": "Windows",
+            "basic": "UPVC 2 Track sliding",
+            "standard": "Mahogany Or Equivalent",
+            "premium": "Teak wood frame with shutters \r\n2Nos Frame Thick 3X4",
+            "luxury": "Teak wood frame with shutters 2 Nos Frame Thick 3X4"
+          }
+        ]
+      },
+      {
+        "name": "Painting",
+        "items": [
+          {
+            "name": "Interior Putty",
+            "basic": "Internal wall only \r\n2 Coats",
+            "standard": "Internal wall only \r\n2 Coats",
+            "premium": "Internal wall & Ceiling  \r\n2 Coats",
+            "luxury": "Internal walls & Ceiling  \r\n2 Coats"
+          },
+          {
+            "name": "Interior Paint",
+            "basic": "2 Coats of Emulsion",
+            "standard": "2 coats of Economy Emulsion paints",
+            "premium": "2 coats of Premium Emulsion paints",
+            "luxury": "2 Coats of Luxury Emulsion paints"
+          },
+          {
+            "name": "Exterior Paint",
+            "basic": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ace Or equivalent)",
+            "standard": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ace Or equivalent)",
+            "premium": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Appex Or equivalent)",
+            "luxury": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ultima Or equivalent)"
+          }
+        ]
+      },
+      {
+        "name": "Bathroom",
+        "items": [
+          {
+            "name": "Wall tiles",
+            "basic": "Rs-40/Sft",
+            "standard": "Rs-45/Sft",
+            "premium": "Rs-55/Sft",
+            "luxury": "Rs-70/Sft"
+          },
+          {
+            "name": "Saniteryware & CP Fittings",
+            "basic": "14000/-",
+            "standard": "18000/-",
+            "premium": "30000/-",
+            "luxury": "40000/-"
+          },
+          {
+            "name": "CPVC Pipes",
+            "basic": "ISI Brand",
+            "standard": "Star",
+            "premium": "Supreme",
+            "luxury": "Finolex"
+          },
+          {
+            "name": "PVC Pipes",
+            "basic": "ISI Brand",
+            "standard": "Star",
+            "premium": "Supreme",
+            "luxury": "Finolex"
+          },
+          {
+            "name": "Doors",
+            "basic": "PVC",
+            "standard": "PVC",
+            "premium": "WPC",
+            "luxury": "Laminated WPC"
+          }
+        ]
+      },
+      {
+        "name": "Flooring",
+        "items": [
+          {
+            "name": "Living, Dining & all internal walls",
+            "basic": "2'-00\"X2'-00\" Tiles \r\nRs - 45/SFT",
+            "standard": "4'-00'X2'-00\" Tiles \r\nRs - 55/SFT",
+            "premium": "5'-3\"x2'-9\" Tiles \r\nRs - 80/SFT",
+            "luxury": "6'-00\"X4'-00\" Tiles \r\nRs - 110/SFT"
+          },
+          {
+            "name": "Balcony & Open area",
+            "basic": "1'-00\"X1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"X1'-00\" Tiles \r\nRs - 50/SFT",
+            "premium": "2'-00\"X2'-00\" Tiles \r\nRs - 60/SFT",
+            "luxury": "4'-00\"X2'-00\" Tiles \r\nRs - 75/SFT"
+          },
+          {
+            "name": "Staircase area",
+            "basic": "1X1 Anti skid tiles \r\nRs - 40/SFT",
+            "standard": "1X1 Anti skid tiles \r\nRs - 50/SFT",
+            "premium": "Granite finish \r\nRs - 130/SFT",
+            "luxury": "Granite finish \r\nRs - 170/SFT"
+          },
+          {
+            "name": "Parking - Anti-skid tiles",
+            "basic": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"x1'-00\" Tiles \r\nRs - 50/SFT",
+            "premium": "1'-3\"x1'-3\" Tile\r\nRs - 60/SFT",
+            "luxury": "1'-3\"x1'-3\" Tile\r\nRs - 75/SFT"
+          },
+          {
+            "name": "Roof -Tile",
+            "basic": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "premium": "1'-00\"x1'-00\" Tiles \r\nRs - 45/SFT",
+            "luxury": "1'-00\"x1'-00\" Tiles \r\nRs - 45/SFT"
+          }
+        ]
+      },
+      {
+        "name": "Electrical",
+        "items": [
+          {
+            "name": "Wires",
+            "basic": "Norwood cables Or equivalent",
+            "standard": "Orbit Cables Or equivalent",
+            "premium": "Kundan Cab Or equivalent",
+            "luxury": "Finolex Cab Or equivalent"
+          },
+          {
+            "name": "Switches & Sockets",
+            "basic": "Hi-FI /Roma Or Equivalent",
+            "standard": "Hi-FI /Roma Or Equivalent",
+            "premium": "Legrand /Havells Or Equivalent \r\nUPS Wiring provision wil be provide",
+            "luxury": "Legrand /Havells Or Equivalent\r\nUPS Wiring provision will be provide"
+          }
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "items": [
+          {
+            "name": "Overhead tank",
+            "basic": "500 Ltr",
+            "standard": "750 Ltr",
+            "premium": "1000 Ltr",
+            "luxury": "2000 Ltr"
+          },
+          {
+            "name": "Parapet wall",
+            "basic": "4.5 Thick & 2'6\" Height",
+            "standard": "4.5 Thick & 3'0\" Height",
+            "premium": "4.5 Thick & 3'0\" Height",
+            "luxury": "4.5 Thick & 3'0\" Height"
+          },
+          {
+            "name": "Roof wethering coarse",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Rain water harvesting",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Staircase railing & Balcony railing",
+            "basic": "MS Railing",
+            "standard": "MS Railing",
+            "premium": "SS Railing",
+            "luxury": "SS Railing"
+          }
+        ]
+      },
+      {
+        "name": "Design & drawings",
+        "items": [
+          {
+            "name": "Soil test",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Scheme drawing",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Working drawing",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Structural drawing",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Electrical & Plumbing layout",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Furniture layout",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "3D Elevation",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Interior design & Walk through",
+            "basic": "-",
+            "standard": "-",
+            "premium": "-",
+            "luxury": "-"
+          }
+        ]
+      },
+      {
+        "name": "Additional Civil Works (Not included in Square feet)",
+        "items": [
+          {
+            "name": "Compound wall",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Septic tank & Soak pit",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "RCC Sump",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Elevation developmets",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Set back area developments",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Main gate & Service gate",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      },
+      {
+        "name": "Interior works (Not included in Square feet)",
+        "items": [
+          {
+            "name": "Interior works - False ceiling, TV Console, Modular kitchen, Panelling work etc.,",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      },
+      {
+        "name": "Government & Water charges",
+        "items": [
+          {
+            "name": "EB Connection for construction",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Plan approval for construction",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Construction water supply \r\n(Bore well +Motor)",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      }
+    ]
+  },
+  "Thiruvannamalai": {
+    "basePrices": {
+      "basic": "2099",
+      "standard": "2199",
+      "premium": "2549",
+      "luxury": "2799"
+    },
+    "categories": [
+      {
+        "name": "Structure",
+        "items": [
+          {
+            "name": "Steel",
+            "basic": "ISI Brand",
+            "standard": "Pulkit/Suryadev Or equivalent",
+            "premium": "Agni/Aishwaryam Or equivalent",
+            "luxury": "JSW/TATA"
+          },
+          {
+            "name": "Cement",
+            "basic": "Ramco/Ultratech/Dalmia",
+            "standard": "Ramco/Ultratech/Dalmia",
+            "premium": "Ramco/Ultratech/Dalmia",
+            "luxury": "Ramco/Ultratech/Dalmia"
+          },
+          {
+            "name": "Bricks",
+            "basic": "Country Red Brick",
+            "standard": "Country Red Brick",
+            "premium": "1st class Wirecut Red Bricks",
+            "luxury": "1st class Wirecut Red Bricks"
+          },
+          {
+            "name": "Basement Height",
+            "basic": "Up to 2'0\" From Natural Ground level",
+            "standard": "Up to 3'0\" From Natural Ground level",
+            "premium": "Up to 3'6\" From Natural Ground level",
+            "luxury": "Up to 4'0\" From Natural Ground level"
+          },
+          {
+            "name": "Foundation depth",
+            "basic": "Up to 5'0\" From Natural Ground level",
+            "standard": "Up to 5'0\" From Natural Ground level",
+            "premium": "Up to 5'0\" From Natural Ground level",
+            "luxury": "Up to 5'0\" From Natural Ground level"
+          },
+          {
+            "name": "Floor Height",
+            "basic": "10'0\" From Floor PCC to Top Of Concrete",
+            "standard": "10'0\" From Floor PCC to Top Of Concrete",
+            "premium": "10'-6\" From Floor PCC to Top Of Concrete",
+            "luxury": "11'-0\" From Floor PCC to Top Of Concrete"
+          },
+          {
+            "name": "RCC Mix Ratio",
+            "basic": "M 20 Or As per structural specifications",
+            "standard": "M 20 Or As per structural specifications",
+            "premium": "M 20/M 25 Or As per structural specifications",
+            "luxury": "M 20/M 25 Or As per structural specifications"
+          },
+          {
+            "name": "Water proofing",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Dr.Fixit/Fosroc",
+            "luxury": "Dr.Fixit/Fosroc"
+          },
+          {
+            "name": "Joinerys",
+            "basic": "UPVC",
+            "standard": "Mahogany Or Equivalent",
+            "premium": "Teak woods",
+            "luxury": "Teak woods"
+          }
+        ]
+      },
+      {
+        "name": "Kitchen",
+        "items": [
+          {
+            "name": "Wall Tiles",
+            "basic": "RS - 40/- Per sft \r\n2'0\" ft Height",
+            "standard": "RS - 45/- Per sft \r\n4'0\" ft Height",
+            "premium": "RS - 55/- Per sft \r\n4'0\" Ft Height",
+            "luxury": "RS - 65/- Per sft \r\n4'0\" Ft Height"
+          },
+          {
+            "name": "Granite - Counter top",
+            "basic": "Rs - 100/Sft",
+            "standard": "Rs - 130/Sft",
+            "premium": "Rs - 160/Sft",
+            "luxury": "Rs - 190/Sft"
+          },
+          {
+            "name": "Kitchen Sink",
+            "basic": "Stainless Steels - 2000/-",
+            "standard": "Stainless Steels - 3000/-",
+            "premium": "Stainless Steel - 9000/-",
+            "luxury": "Stainless Steel - 11500/-"
+          },
+          {
+            "name": "Main sink Faucet",
+            "basic": "1500/-",
+            "standard": "2000/-",
+            "premium": "2500/-",
+            "luxury": "3000/-"
+          }
+        ]
+      },
+      {
+        "name": "Doors & Windows",
+        "items": [
+          {
+            "name": "Main doors",
+            "basic": "Teak Wood \r\nFrame Thick - 5X3, Size 3'6\"X7'0\"",
+            "standard": "Teak Wood \r\nFrame Thick - 5X4, Size 3'6\"X7'0\"",
+            "premium": "Teak Wood \r\nFrame Thick - 6X4, Size 3'6\"X7'0\"",
+            "luxury": "Teak Wood \r\nFrame Thick - 6X4, Size 3'6\"X8'0\""
+          },
+          {
+            "name": "Internal doors",
+            "basic": "Flush door \r\nMahogany Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "standard": "Flush door \r\nMahogany Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "premium": "Flush door \r\nTeak Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "luxury": "Flush door \r\nTeak Frame Thick - 3X4, \r\nSize 3'0\"X7'0\""
+          },
+          {
+            "name": "Windows",
+            "basic": "UPVC 2 Track sliding",
+            "standard": "Mahogany Or Equivalent",
+            "premium": "Teak wood frame with shutters \r\n2Nos Frame Thick 3X4",
+            "luxury": "Teak wood frame with shutters 2 Nos Frame Thick 3X4"
+          }
+        ]
+      },
+      {
+        "name": "Painting",
+        "items": [
+          {
+            "name": "Interior Putty",
+            "basic": "Internal wall only \r\n2 Coats",
+            "standard": "Internal wall only \r\n2 Coats",
+            "premium": "Internal wall & Ceiling  \r\n2 Coats",
+            "luxury": "Internal walls & Ceiling  \r\n2 Coats"
+          },
+          {
+            "name": "Interior Paint",
+            "basic": "2 Coats of Emulsion",
+            "standard": "2 coats of Economy Emulsion paints",
+            "premium": "2 coats of Premium Emulsion paints",
+            "luxury": "2 Coats of Luxury Emulsion paints"
+          },
+          {
+            "name": "Exterior Paint",
+            "basic": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ace Or equivalent)",
+            "standard": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ace Or equivalent)",
+            "premium": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Appex Or equivalent)",
+            "luxury": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ultima Or equivalent)"
+          }
+        ]
+      },
+      {
+        "name": "Bathroom",
+        "items": [
+          {
+            "name": "Wall tiles",
+            "basic": "Rs-40/Sft",
+            "standard": "Rs-45/Sft",
+            "premium": "Rs-55/Sft",
+            "luxury": "Rs-70/Sft"
+          },
+          {
+            "name": "Saniteryware & CP Fittings",
+            "basic": "14000/-",
+            "standard": "18000/-",
+            "premium": "30000/-",
+            "luxury": "40000/-"
+          },
+          {
+            "name": "CPVC Pipes",
+            "basic": "ISI Brand",
+            "standard": "Star",
+            "premium": "Supreme",
+            "luxury": "Finolex"
+          },
+          {
+            "name": "PVC Pipes",
+            "basic": "ISI Brand",
+            "standard": "Star",
+            "premium": "Supreme",
+            "luxury": "Finolex"
+          },
+          {
+            "name": "Doors",
+            "basic": "PVC",
+            "standard": "PVC",
+            "premium": "WPC",
+            "luxury": "Laminated WPC"
+          }
+        ]
+      },
+      {
+        "name": "Flooring",
+        "items": [
+          {
+            "name": "Living, Dining & all internal walls",
+            "basic": "2'-00\"X2'-00\" Tiles \r\nRs - 45/SFT",
+            "standard": "4'-00'X2'-00\" Tiles \r\nRs - 55/SFT",
+            "premium": "5'-3\"x2'-9\" Tiles \r\nRs - 80/SFT",
+            "luxury": "6'-00\"X4'-00\" Tiles \r\nRs - 110/SFT"
+          },
+          {
+            "name": "Balcony & Open area",
+            "basic": "1'-00\"X1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"X1'-00\" Tiles \r\nRs - 50/SFT",
+            "premium": "2'-00\"X2'-00\" Tiles \r\nRs - 60/SFT",
+            "luxury": "4'-00\"X2'-00\" Tiles \r\nRs - 75/SFT"
+          },
+          {
+            "name": "Staircase area",
+            "basic": "1X1 Anti skid tiles \r\nRs - 40/SFT",
+            "standard": "1X1 Anti skid tiles \r\nRs - 50/SFT",
+            "premium": "Granite finish \r\nRs - 130/SFT",
+            "luxury": "Granite finish \r\nRs - 170/SFT"
+          },
+          {
+            "name": "Parking - Anti-skid tiles",
+            "basic": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"x1'-00\" Tiles \r\nRs - 50/SFT",
+            "premium": "1'-3\"x1'-3\" Tile\r\nRs - 60/SFT",
+            "luxury": "1'-3\"x1'-3\" Tile\r\nRs - 75/SFT"
+          },
+          {
+            "name": "Roof -Tile",
+            "basic": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "premium": "1'-00\"x1'-00\" Tiles \r\nRs - 45/SFT",
+            "luxury": "1'-00\"x1'-00\" Tiles \r\nRs - 45/SFT"
+          }
+        ]
+      },
+      {
+        "name": "Electrical",
+        "items": [
+          {
+            "name": "Wires",
+            "basic": "Norwood cables Or equivalent",
+            "standard": "Orbit Cables Or equivalent",
+            "premium": "Kundan Cab Or equivalent",
+            "luxury": "Finolex Cab Or equivalent"
+          },
+          {
+            "name": "Switches & Sockets",
+            "basic": "Hi-FI /Roma Or Equivalent",
+            "standard": "Hi-FI /Roma Or Equivalent",
+            "premium": "Legrand /Havells Or Equivalent \r\nUPS Wiring provision wil be provide",
+            "luxury": "Legrand /Havells Or Equivalent\r\nUPS Wiring provision will be provide"
+          }
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "items": [
+          {
+            "name": "Overhead tank",
+            "basic": "500 Ltr",
+            "standard": "750 Ltr",
+            "premium": "1000 Ltr",
+            "luxury": "2000 Ltr"
+          },
+          {
+            "name": "Parapet wall",
+            "basic": "4.5 Thick & 2'6\" Height",
+            "standard": "4.5 Thick & 3'0\" Height",
+            "premium": "4.5 Thick & 3'0\" Height",
+            "luxury": "4.5 Thick & 3'0\" Height"
+          },
+          {
+            "name": "Roof wethering coarse",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Rain water harvesting",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Staircase railing & Balcony railing",
+            "basic": "MS Railing",
+            "standard": "MS Railing",
+            "premium": "SS Railing",
+            "luxury": "SS Railing"
+          }
+        ]
+      },
+      {
+        "name": "Design & drawings",
+        "items": [
+          {
+            "name": "Soil test",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Scheme drawing",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Working drawing",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Structural drawing",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Electrical & Plumbing layout",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Furniture layout",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "3D Elevation",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Interior design & Walk through",
+            "basic": "-",
+            "standard": "-",
+            "premium": "-",
+            "luxury": "-"
+          }
+        ]
+      },
+      {
+        "name": "Additional Civil Works (Not included in Square feet)",
+        "items": [
+          {
+            "name": "Compound wall",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Septic tank & Soak pit",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "RCC Sump",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Elevation developmets",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Set back area developments",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Main gate & Service gate",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      },
+      {
+        "name": "Interior works (Not included in Square feet)",
+        "items": [
+          {
+            "name": "Interior works - False ceiling, TV Console, Modular kitchen, Panelling work etc.,",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      },
+      {
+        "name": "Government & Water charges",
+        "items": [
+          {
+            "name": "EB Connection for construction",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Plan approval for construction",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Construction water supply \r\n(Bore well +Motor)",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      }
+    ]
+  },
+  "KovilPatti": {
+    "basePrices": {
+      "basic": "2199",
+      "standard": "2349",
+      "premium": "2649",
+      "luxury": "2949"
+    },
+    "categories": [
+      {
+        "name": "Structure",
+        "items": [
+          {
+            "name": "Steel",
+            "basic": "ISI Brand",
+            "standard": "Pulkit/Suryadev Or equivalent",
+            "premium": "Agni/Aishwaryam Or equivalent",
+            "luxury": "JSW/TATA"
+          },
+          {
+            "name": "Cement",
+            "basic": "Ramco/Ultratech/Dalmia",
+            "standard": "Ramco/Ultratech/Dalmia",
+            "premium": "Ramco/Ultratech/Dalmia",
+            "luxury": "Ramco/Ultratech/Dalmia"
+          },
+          {
+            "name": "Bricks",
+            "basic": "Fly ash bricks",
+            "standard": "Fly ash bricks",
+            "premium": "1st class Red bricks \r\nOr Fly ash bricks",
+            "luxury": "1st class Red bricks \r\nOr Fly ash bricks"
+          },
+          {
+            "name": "Basement Height",
+            "basic": "Up to 2'0\" From Natural Ground level",
+            "standard": "Up to 3'0\" From Natural Ground level",
+            "premium": "Up to 3'6\" From Natural Ground level",
+            "luxury": "Up to 4'0\" From Natural Ground level"
+          },
+          {
+            "name": "Foundation depth",
+            "basic": "Up to 5'0\" From Natural Ground level",
+            "standard": "Up to 5'0\" From Natural Ground level",
+            "premium": "Up to 5'0\" From Natural Ground level",
+            "luxury": "Up to 5'0\" From Natural Ground level"
+          },
+          {
+            "name": "Floor Height",
+            "basic": "10'0\" From Floor PCC to Top Of Concrete",
+            "standard": "10'0\" From Floor PCC to Top Of Concrete",
+            "premium": "10'-6\" From Floor PCC to Top Of Concrete",
+            "luxury": "11'-0\" From Floor PCC to Top Of Concrete"
+          },
+          {
+            "name": "RCC Mix Ratio",
+            "basic": "M 20 Or As per structural specifications",
+            "standard": "M 20 Or As per structural specifications",
+            "premium": "M 20/M 25 Or As per structural specifications",
+            "luxury": "M 20/M 25 Or As per structural specifications"
+          },
+          {
+            "name": "Water proofing",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Dr.Fixit/Fosroc",
+            "luxury": "Dr.Fixit/Fosroc"
+          },
+          {
+            "name": "Joinerys",
+            "basic": "UPVC",
+            "standard": "Mahogany Or Equivalent",
+            "premium": "Teak woods",
+            "luxury": "Teak woods"
+          }
+        ]
+      },
+      {
+        "name": "Kitchen",
+        "items": [
+          {
+            "name": "Wall Tiles",
+            "basic": "RS - 40/- Per sft \r\n2'0\" ft Height",
+            "standard": "RS - 45/- Per sft \r\n4'0\" ft Height",
+            "premium": "RS - 55/- Per sft \r\n4'0\" Ft Height",
+            "luxury": "RS - 65/- Per sft \r\n4'0\" Ft Height"
+          },
+          {
+            "name": "Granite - Counter top",
+            "basic": "Rs - 100/Sft",
+            "standard": "Rs - 130/Sft",
+            "premium": "Rs - 160/Sft",
+            "luxury": "Rs - 190/Sft"
+          },
+          {
+            "name": "Kitchen Sink",
+            "basic": "Stainless Steels - 2000/-",
+            "standard": "Stainless Steels - 3000/-",
+            "premium": "Stainless Steel - 9000/-",
+            "luxury": "Stainless Steel - 11500/-"
+          },
+          {
+            "name": "Main sink Faucet",
+            "basic": "1500/-",
+            "standard": "2000/-",
+            "premium": "2500/-",
+            "luxury": "3000/-"
+          }
+        ]
+      },
+      {
+        "name": "Doors & Windows",
+        "items": [
+          {
+            "name": "Main doors",
+            "basic": "Teak Wood \r\nFrame Thick - 5X3, Size 3'6\"X7'0\"",
+            "standard": "Teak Wood \r\nFrame Thick - 5X4, Size 3'6\"X7'0\"",
+            "premium": "Teak Wood \r\nFrame Thick - 6X4, Size 3'6\"X7'0\"",
+            "luxury": "Teak Wood \r\nFrame Thick - 6X4, Size 3'6\"X8'0\""
+          },
+          {
+            "name": "Internal doors",
+            "basic": "Flush door \r\nMahogany Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "standard": "Flush door \r\nMahogany Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "premium": "Flush door \r\nTeak Frame Thick - 3X4, \r\nSize 3'0\"X7'0\"",
+            "luxury": "Flush door \r\nTeak Frame Thick - 3X4, \r\nSize 3'0\"X7'0\""
+          },
+          {
+            "name": "Windows",
+            "basic": "UPVC 2 Track sliding",
+            "standard": "Mahogany Or Equivalent",
+            "premium": "Teak wood frame with shutters \r\n2Nos Frame Thick 3X4",
+            "luxury": "Teak wood frame with shutters 2 Nos Frame Thick 3X4"
+          }
+        ]
+      },
+      {
+        "name": "Painting",
+        "items": [
+          {
+            "name": "Interior Putty",
+            "basic": "Internal wall only \r\n2 Coats",
+            "standard": "Internal wall only \r\n2 Coats",
+            "premium": "Internal wall & Ceiling  \r\n2 Coats",
+            "luxury": "Internal walls & Ceiling  \r\n2 Coats"
+          },
+          {
+            "name": "Interior Paint",
+            "basic": "2 Coats of Emulsion",
+            "standard": "2 coats of Economy Emulsion paints",
+            "premium": "2 coats of Premium Emulsion paints",
+            "luxury": "2 Coats of Luxury Emulsion paints"
+          },
+          {
+            "name": "Exterior Paint",
+            "basic": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ace Or equivalent)",
+            "standard": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ace Or equivalent)",
+            "premium": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Appex Or equivalent)",
+            "luxury": "2 Coats of exterior emulsioon paints\r\n(Asian paints - Ultima Or equivalent)"
+          }
+        ]
+      },
+      {
+        "name": "Bathroom",
+        "items": [
+          {
+            "name": "Wall tiles",
+            "basic": "Rs-40/Sft",
+            "standard": "Rs-45/Sft",
+            "premium": "Rs-55/Sft",
+            "luxury": "Rs-70/Sft"
+          },
+          {
+            "name": "Saniteryware & CP Fittings",
+            "basic": "14000/-",
+            "standard": "18000/-",
+            "premium": "30000/-",
+            "luxury": "40000/-"
+          },
+          {
+            "name": "CPVC Pipes",
+            "basic": "ISI Brand",
+            "standard": "Star",
+            "premium": "Supreme",
+            "luxury": "Finolex"
+          },
+          {
+            "name": "PVC Pipes",
+            "basic": "ISI Brand",
+            "standard": "Star",
+            "premium": "Supreme",
+            "luxury": "Finolex"
+          },
+          {
+            "name": "Doors",
+            "basic": "PVC",
+            "standard": "PVC",
+            "premium": "WPC",
+            "luxury": "Laminated WPC"
+          }
+        ]
+      },
+      {
+        "name": "Flooring",
+        "items": [
+          {
+            "name": "Living, Dining & all internal walls",
+            "basic": "2'-00\"X2'-00\" Tiles \r\nRs - 45/SFT",
+            "standard": "4'-00'X2'-00\" Tiles \r\nRs - 55/SFT",
+            "premium": "5'-3\"x2'-9\" Tiles \r\nRs - 80/SFT",
+            "luxury": "6'-00\"X4'-00\" Tiles \r\nRs - 110/SFT"
+          },
+          {
+            "name": "Balcony & Open area",
+            "basic": "1'-00\"X1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"X1'-00\" Tiles \r\nRs - 50/SFT",
+            "premium": "2'-00\"X2'-00\" Tiles \r\nRs - 60/SFT",
+            "luxury": "4'-00\"X2'-00\" Tiles \r\nRs - 75/SFT"
+          },
+          {
+            "name": "Staircase area",
+            "basic": "1X1 Anti skid tiles \r\nRs - 40/SFT",
+            "standard": "1X1 Anti skid tiles \r\nRs - 50/SFT",
+            "premium": "Granite finish \r\nRs - 130/SFT",
+            "luxury": "Granite finish \r\nRs - 170/SFT"
+          },
+          {
+            "name": "Parking - Anti-skid tiles",
+            "basic": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"x1'-00\" Tiles \r\nRs - 50/SFT",
+            "premium": "1'-3\"x1'-3\" Tile\r\nRs - 60/SFT",
+            "luxury": "1'-3\"x1'-3\" Tile\r\nRs - 75/SFT"
+          },
+          {
+            "name": "Roof -Tile",
+            "basic": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "standard": "1'-00\"x1'-00\" Tiles \r\nRs - 40/SFT",
+            "premium": "1'-00\"x1'-00\" Tiles \r\nRs - 45/SFT",
+            "luxury": "1'-00\"x1'-00\" Tiles \r\nRs - 45/SFT"
+          }
+        ]
+      },
+      {
+        "name": "Electrical",
+        "items": [
+          {
+            "name": "Wires",
+            "basic": "Norwood cables Or equivalent",
+            "standard": "Orbit Cables Or equivalent",
+            "premium": "Kundan Cab Or equivalent",
+            "luxury": "Finolex Cab Or equivalent"
+          },
+          {
+            "name": "Switches & Sockets",
+            "basic": "Hi-FI /Roma Or Equivalent",
+            "standard": "Hi-FI /Roma Or Equivalent",
+            "premium": "Legrand /Havells Or Equivalent \r\nUPS Wiring provision wil be provide",
+            "luxury": "Legrand /Havells Or Equivalent\r\nUPS Wiring provision will be provide"
+          }
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "items": [
+          {
+            "name": "Overhead tank",
+            "basic": "500 Ltr",
+            "standard": "750 Ltr",
+            "premium": "1000 Ltr",
+            "luxury": "2000 Ltr"
+          },
+          {
+            "name": "Parapet wall",
+            "basic": "4.5 Thick & 2'6\" Height",
+            "standard": "4.5 Thick & 3'0\" Height",
+            "premium": "4.5 Thick & 3'0\" Height",
+            "luxury": "4.5 Thick & 3'0\" Height"
+          },
+          {
+            "name": "Roof wethering coarse",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Rain water harvesting",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Staircase railing & Balcony railing",
+            "basic": "MS Railing",
+            "standard": "MS Railing",
+            "premium": "SS Railing",
+            "luxury": "SS Railing"
+          }
+        ]
+      },
+      {
+        "name": "Design & drawings",
+        "items": [
+          {
+            "name": "Soil test",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Scheme drawing",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Working drawing",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Structural drawing",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Electrical & Plumbing layout",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Furniture layout",
+            "basic": "-",
+            "standard": "-",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "3D Elevation",
+            "basic": "Included",
+            "standard": "Included",
+            "premium": "Included",
+            "luxury": "Included"
+          },
+          {
+            "name": "Interior design & Walk through",
+            "basic": "-",
+            "standard": "-",
+            "premium": "-",
+            "luxury": "-"
+          }
+        ]
+      },
+      {
+        "name": "Additional Civil Works (Not included in Square feet)",
+        "items": [
+          {
+            "name": "Compound wall",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Septic tank & Soak pit",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "RCC Sump",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Elevation developmets",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Set back area developments",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Main gate & Service gate",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      },
+      {
+        "name": "Interior works (Not included in Square feet)",
+        "items": [
+          {
+            "name": "Interior works - False ceiling, TV Console, Modular kitchen, Panelling work etc.,",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      },
+      {
+        "name": "Government & Water charges",
+        "items": [
+          {
+            "name": "EB Connection for construction",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Plan approval for construction",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          },
+          {
+            "name": "Construction water supply \r\n(Bore well +Motor)",
+            "basic": "Not Included",
+            "standard": "Not Included",
+            "premium": "Not Included",
+            "luxury": "Not Included"
+          }
+        ]
+      }
+    ]
+  }
+}
