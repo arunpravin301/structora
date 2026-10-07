@@ -85,30 +85,46 @@ export default function PricingClient() {
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Detailed Top Cards */}
-            <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6 mb-20">
-              {['basic', 'standard', 'premium', 'luxury'].map((tier) => (
-                <div key={tier} className="border border-line flex flex-col bg-white shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-                  <div className={`p-6 text-center text-white ${tier === 'luxury' ? 'bg-[#E5B63E]' : tier === 'premium' ? 'bg-[#F26E21]' : tier === 'standard' ? 'bg-[#8940FF]' : 'bg-slate-400'}`}>
-                    <div className="font-outfit uppercase tracking-[0.2em] text-xs mb-2 opacity-90">{tier === 'luxury' ? 'Top Tier' : tier === 'premium' ? '★ Most Popular' : tier === 'standard' ? 'Best Value' : 'Entry Level'}</div>
-                    <h3 className="text-3xl font-bold capitalize mb-1">{tier}</h3>
+            <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-8 mb-24 relative z-10">
+              {['basic', 'standard', 'premium', 'luxury'].map((tier) => {
+                const isPopular = tier === 'premium';
+                return (
+                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-4 ring-[#F26E21] shadow-2xl scale-105' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
+                    <div className={`p-8 text-center text-white relative ${tier === 'luxury' ? 'bg-gradient-to-br from-[#E5B63E] to-[#C99A22]' : tier === 'premium' ? 'bg-gradient-to-br from-[#F26E21] to-[#D95508]' : tier === 'standard' ? 'bg-gradient-to-br from-[#8940FF] to-[#6B22E1]' : 'bg-gradient-to-br from-slate-400 to-slate-500'}`}>
+                      {isPopular && (
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-outfit font-bold uppercase tracking-widest py-1 px-4 rounded-full shadow-md mt-4">
+                          ★ Most Popular
+                        </div>
+                      )}
+                      <div className="font-outfit uppercase tracking-[0.2em] text-xs mb-3 opacity-90 pt-2">{tier === 'luxury' ? 'Top Tier' : tier === 'premium' ? 'Best Value' : tier === 'standard' ? 'Upgraded' : 'Entry Level'}</div>
+                      <h3 className="text-4xl font-bold capitalize mb-1">{tier}</h3>
+                    </div>
+                    <div className="p-8 text-center bg-slate-50 border-b border-slate-100">
+                      <div className="flex items-start justify-center text-slate-900 mb-1">
+                        <span className="text-xl font-medium mt-1 mr-1">₹</span>
+                        <span className="text-5xl font-bold tracking-tight">{pricingData[location].basePrices[tier]}</span>
+                      </div>
+                      <div className="text-sm text-slate-500 font-medium">per sq. ft.</div>
+                    </div>
+                    <div className="p-8 flex-grow flex flex-col bg-white">
+                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-100 pb-4">What's Included</div>
+                      <ul className="space-y-4 text-[14px] text-slate-700 flex-grow mb-8">
+                        {tierHighlights[tier].map((hl, idx) => (
+                          <li key={idx} className="flex gap-3 items-start">
+                            <svg className="w-5 h-5 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="leading-relaxed font-medium">{hl}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <button onClick={() => { document.getElementById('compare')?.scrollIntoView({behavior: 'smooth'}); }} className={`w-full py-4 rounded-xl font-outfit uppercase tracking-widest text-sm font-semibold transition-colors ${isPopular ? 'bg-[#F26E21] text-white hover:bg-[#D95508]' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'}`}>
+                        Compare Specs
+                      </button>
+                    </div>
                   </div>
-                  <div className="p-8 text-center border-b border-line">
-                    <div className="text-4xl font-semibold mb-2">₹{pricingData[location].basePrices[tier]}</div>
-                    <div className="text-sm text-slate-500 font-medium">per sq. ft.</div>
-                  </div>
-                  <div className="p-8 flex-grow">
-                    <div className="font-outfit text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">What's Included</div>
-                    <ul className="space-y-4 text-[15px] text-slate-600">
-                      {tierHighlights[tier].map((hl, idx) => (
-                        <li key={idx} className="flex gap-3">
-                          <span className="text-brand shrink-0">•</span>
-                          <span className="leading-snug">{hl}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Gated Detailed Comparison Table */}
