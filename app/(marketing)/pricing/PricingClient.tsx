@@ -85,7 +85,7 @@ export default function PricingClient() {
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Detailed Top Cards */}
-            <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-8 mb-24 relative z-10">
+            <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-8 mb-24">
               {['basic', 'standard', 'premium', 'luxury'].map((tier) => {
                 const isPopular = tier === 'premium';
                 return (
