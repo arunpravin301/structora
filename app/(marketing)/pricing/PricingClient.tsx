@@ -9,6 +9,14 @@ locations.push("Other");
 
 export default function PricingClient() {
   const [location, setLocation] = useState(locations[0]);
+  // Track expanded state by category name. Default 'Structure ' (or first category) to true.
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    [pricingData[locations[0]].categories[0]?.name || "Structure"]: true
+  });
+
+  const toggleSection = (name: string) => {
+    setExpandedSections(prev => ({ ...prev, [name]: !prev[name] }));
+  };
 
   return (
     <section className="py-20 bg-white">
@@ -56,7 +64,7 @@ export default function PricingClient() {
             </div>
 
             {/* Detailed Comparison Table */}
-            <div id="compare" className="overflow-x-auto border border-line scroll-mt-24">
+            <div id="compare" className="overflow-x-auto border border-line scroll-mt-24 bg-white">
               <table className="w-full text-left border-collapse min-w-[900px]">
                 <thead>
                   <tr>
@@ -68,22 +76,33 @@ export default function PricingClient() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pricingData[location].categories.map((cat: any) => (
-                    <React.Fragment key={cat.name}>
-                      <tr>
-                        <td colSpan={5} className="bg-mist p-4 px-6 font-semibold text-brand tracking-wide uppercase text-sm border-b border-line">{cat.name}</td>
-                      </tr>
-                      {cat.items.map((item: any, i: number) => (
-                        <tr key={i} className="border-b border-line hover:bg-slate-50 transition-colors">
-                          <td className="p-4 px-6 font-medium text-slate-900 whitespace-pre-wrap">{item.name}</td>
-                          <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.basic}</td>
-                          <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.standard}</td>
-                          <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.premium}</td>
-                          <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.luxury}</td>
+                  {pricingData[location].categories.map((cat: any) => {
+                    const isExpanded = !!expandedSections[cat.name];
+                    return (
+                      <React.Fragment key={cat.name}>
+                        <tr>
+                          <td colSpan={5} className="bg-mist p-0 border-b border-line">
+                            <button 
+                              onClick={() => toggleSection(cat.name)} 
+                              className="w-full text-left p-4 px-6 font-semibold text-brand tracking-wide uppercase text-sm flex justify-between items-center focus:outline-none hover:bg-slate-100 transition-colors"
+                            >
+                              {cat.name}
+                              <svg className={`w-5 h-5 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                          </td>
                         </tr>
-                      ))}
-                    </React.Fragment>
-                  ))}
+                        {isExpanded && cat.items.map((item: any, i: number) => (
+                          <tr key={i} className="border-b border-line hover:bg-slate-50 transition-colors">
+                            <td className="p-4 px-6 font-medium text-slate-900 whitespace-pre-wrap">{item.name}</td>
+                            <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.basic}</td>
+                            <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.standard}</td>
+                            <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.premium}</td>
+                            <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.luxury}</td>
+                          </tr>
+                        ))}
+                      </React.Fragment>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
