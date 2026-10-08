@@ -145,8 +145,8 @@ export default function PricingClient() {
               <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
               
               <div className="max-w-2xl relative z-10">
-                <div className="font-outfit uppercase tracking-[0.2em] text-xs text-[#E5B63E] mb-3">Custom Build</div>
-                <h3 className="text-4xl font-bold mb-4">Super Luxury</h3>
+                <div className="font-outfit uppercase tracking-[0.2em] text-xs text-[#E5B63E] mb-3">Bespoke Projects</div>
+                <h3 className="text-4xl font-bold mb-4">Luxury</h3>
                 <p className="text-slate-300 leading-relaxed text-lg">
                   For highly premium projects, oversized villas, and bespoke architectural requirements. Featuring imported materials, custom home automation, and exclusive imported fittings.
                 </p>
