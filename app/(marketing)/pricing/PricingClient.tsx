@@ -85,19 +85,31 @@ export default function PricingClient() {
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Detailed Top Cards */}
-            <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-8 mb-24">
+            <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-8 mb-8">
               {['basic', 'standard', 'premium', 'luxury'].map((tier) => {
                 const isPopular = tier === 'premium';
+                
+                // Map the internal keys to the new client-facing names
+                const displayName = tier === 'basic' ? 'Essential' 
+                                  : tier === 'standard' ? 'Classic' 
+                                  : tier === 'premium' ? 'Premium' 
+                                  : 'Prestige';
+                                  
+                const displayDesc = tier === 'basic' ? 'Functional, durable, and thoughtfully designed with all essential features for comfortable everyday living.'
+                                  : tier === 'standard' ? 'Enhanced quality, refined finishes, and improved specifications for a comfortable and stylish home.'
+                                  : tier === 'premium' ? 'Superior materials, premium fittings, elegant finishes, and enhanced design details for elevated living.'
+                                  : 'Exceptional materials, luxury fittings, bespoke detailing, and sophisticated finishes for an exclusive villa experience.';
+
                 return (
-                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-4 ring-[#F26E21] shadow-2xl scale-105' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
+                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-4 ring-[#F26E21] shadow-2xl scale-105 relative z-10' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
                     <div className={`p-8 text-center text-white relative ${tier === 'luxury' ? 'bg-gradient-to-br from-[#E5B63E] to-[#C99A22]' : tier === 'premium' ? 'bg-gradient-to-br from-[#F26E21] to-[#D95508]' : tier === 'standard' ? 'bg-gradient-to-br from-[#8940FF] to-[#6B22E1]' : 'bg-gradient-to-br from-slate-400 to-slate-500'}`}>
                       {isPopular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-outfit font-bold uppercase tracking-widest py-1 px-4 rounded-full shadow-md mt-4">
                           ★ Most Popular
                         </div>
                       )}
-                      <div className="font-outfit uppercase tracking-[0.2em] text-xs mb-3 opacity-90 pt-2">{tier === 'luxury' ? 'Top Tier' : tier === 'premium' ? 'Best Value' : tier === 'standard' ? 'Upgraded' : 'Entry Level'}</div>
-                      <h3 className="text-4xl font-bold capitalize mb-1">{tier}</h3>
+                      <h3 className="text-3xl font-bold mb-3 mt-2">{displayName}</h3>
+                      <p className="text-xs text-white/90 leading-snug min-h-[48px]">{displayDesc}</p>
                     </div>
                     <div className="p-8 text-center bg-slate-50 border-b border-slate-100">
                       <div className="flex items-start justify-center text-slate-900 mb-1">
@@ -127,6 +139,26 @@ export default function PricingClient() {
               })}
             </div>
 
+            {/* Super Luxury Custom Card */}
+            <div className="bg-slate-900 text-white rounded-3xl p-10 md:p-14 mb-24 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+              {/* Subtle background decoration */}
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+              
+              <div className="max-w-2xl relative z-10">
+                <div className="font-outfit uppercase tracking-[0.2em] text-xs text-[#E5B63E] mb-3">Custom Build</div>
+                <h3 className="text-4xl font-bold mb-4">Super Luxury</h3>
+                <p className="text-slate-300 leading-relaxed text-lg">
+                  For highly premium projects, oversized villas, and bespoke architectural requirements. Featuring imported materials, custom home automation, and exclusive imported fittings.
+                </p>
+              </div>
+              
+              <div className="flex-shrink-0 w-full md:w-auto relative z-10">
+                <a href="/contact" className="block w-full text-center px-10 py-5 bg-[#E5B63E] hover:bg-[#C99A22] text-slate-900 font-outfit font-bold uppercase tracking-widest rounded-xl transition-colors">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
+
             {/* Gated Detailed Comparison Table */}
             <div className="relative">
               <div className="mb-6 text-center">
@@ -154,10 +186,10 @@ export default function PricingClient() {
                   <thead>
                     <tr>
                       <th className="p-6 bg-slate-900 text-white w-1/3 text-lg font-normal">Specification Overview</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Basic</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Standard</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Essential</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Classic</th>
                       <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Premium</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Luxury</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Prestige</th>
                     </tr>
                   </thead>
                   <tbody>
