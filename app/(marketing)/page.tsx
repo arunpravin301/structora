@@ -68,7 +68,7 @@ export default async function Home() {
             </div>
             <h3 className="text-slate-900 text-[32px] font-semibold mt-2 mb-3">Construction Cost Calculator</h3>
             <p className="text-slate text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds without waiting for a quote.</p>
-            <Link href="/services#estimator" className="inline-block btn bg-slate-900 text-white hover:bg-slate-800 px-8 py-3.5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-xl">Calculate Build Cost →</Link>
+            <Link href="/pricing#estimator" className="inline-block btn bg-slate-900 text-white hover:bg-slate-800 px-8 py-3.5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-xl">Calculate Build Cost →</Link>
           </div>
           <div className="flex-[1] border border-line p-10 bg-white md:mt-16 md:-ml-12 relative z-10 shadow-xl transition-shadow hover:shadow-2xl">
             <div className="flex items-center gap-3 mb-4">
@@ -79,7 +79,7 @@ export default async function Home() {
             </div>
             <h3 className="text-slate-900 text-[24px] font-semibold mt-2 mb-3">Home Loan EMI Calculator</h3>
             <p className="text-slate text-[15px] mb-7 max-w-[38ch]">Work out your likely monthly EMI against your construction budget instantly.</p>
-            <Link href="/services#emi" className="inline-block btn bg-brand text-white hover:bg-brand/90 px-7 py-3 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-brand/20">Calculate EMI →</Link>
+            <Link href="/pricing#emi" className="inline-block btn bg-brand text-white hover:bg-brand/90 px-7 py-3 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-brand/20">Calculate EMI →</Link>
           </div>
         </div></Reveal>
       </Container></section>
@@ -134,7 +134,7 @@ export default async function Home() {
             ["How long does it take to complete a project?", "A standard residential project typically takes 8 to 10 months from foundation to handover. We provide a strict project timeline before work begins and enforce rigorous site management to ensure we deliver on schedule."],
             ["Do you handle government approvals and building permits?", "Yes. We offer an end-to-end turnkey service. Our team manages all necessary local municipal approvals, building plan sanctions, and compliance with zoning laws, so you don't have to navigate the bureaucracy."],
             ["Which areas do you build in?", "We take projects across Tamil Nadu, with dedicated offices in Kumbakonam and Kovilpatti. Our recent work spans Kumbakonam, Tiruvannamalai, Kovilpatti, Thanjavur, Mayiladuthurai, and surrounding districts."],
-            ["Do you help with home loans?", "Yes. We assist with home loan applications and provide all necessary legal and technical documents required by major banks. You can use the EMI calculator on our services page to plan your monthly payments."],
+            ["Do you help with home loans?", "Yes. We assist with home loan applications and provide all necessary legal and technical documents required by major banks. You can use the EMI calculator on our pricing page to plan your monthly payments."],
             ["Do you offer a structural warranty?", "Yes. We provide a comprehensive structural guarantee for projects built under our premium packages. A long-term warranty requires adherence to strict engineering criteria and the use of specific, ultra-high-grade materials. Therefore, this guarantee is exclusively available for our premium offerings, where these rigorous standards are fully met."],
             ["Can I visit your completed projects?", "We encourage it. Seeing our finished work in person, walking the sites, and speaking with our engineers is the best way to judge our quality before you make a commitment."]
           ].map(([q,a],i)=>(
