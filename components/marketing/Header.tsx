@@ -23,8 +23,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", on);
   }, [open]);
 
-  const isHome = pathname === "/";
-  const isDarkBg = isHome && !scrolled && !open;
+  const isDarkBg = !scrolled && !open;
 
   return (
     <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-300 border-b ${scrolled ? "bg-white/95 backdrop-blur-md border-line shadow-sm" : "border-transparent bg-transparent"} ${hidden ? "-translate-y-full" : "translate-y-0"}`}>

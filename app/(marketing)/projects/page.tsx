@@ -15,8 +15,18 @@ export default async function ProjectsPage() {
   const projects = await client.fetch(projectsQuery);
   return (
     <>
-      <PageHero crumb="Selected work" title="Projects you can drive out and stand in front of."
-        intro="A selection of completed work across Tamil Nadu. Filter by district or by the type of build." />
+      <PageHero
+        crumb="Selected Work"
+        title={
+          <>
+            Projects you can drive out and{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              stand in front of.
+            </em>
+          </>
+        }
+        intro="A curated showcase of completed residential and commercial builds across Tamil Nadu. Filter by district or project category."
+      />
       <section className="py-[118px]"><Container><ProjectFilters projects={projects} /></Container></section>
       <section className="bg-mist pt-[118px]">
         <Container>

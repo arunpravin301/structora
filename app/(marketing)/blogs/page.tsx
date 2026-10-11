@@ -20,8 +20,18 @@ export default async function JournalPage() {
   const items = posts.length ? posts : FALLBACK;
   return (
     <>
-      <PageHero crumb="Journal" title="Notes on building, cost, and getting it right."
-        intro="Practical writing for anyone planning to build in Tamil Nadu, from the Structora team." />
+      <PageHero
+        crumb="Engineering Journal"
+        title={
+          <>
+            Notes on building, cost, and{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              getting it right.
+            </em>
+          </>
+        }
+        intro="Practical civil engineering insights and cost guides for anyone planning to construct a home or building in Tamil Nadu."
+      />
       <section className="py-[118px]"><Container>
         <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
           {items.map((p:any,i:number)=>(<Reveal key={i}>

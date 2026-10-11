@@ -13,8 +13,18 @@ export default function ContactPage() {
   const c = site.contact;
   return (
     <>
-      <PageHero crumb="Contact" title="Tell us what you want to build."
-        intro="Send a few details and we will come back with an honest estimate and the next steps. No obligation." />
+      <PageHero
+        crumb="Start Your Project"
+        title={
+          <>
+            Let’s build something{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              engineered to last.
+            </em>
+          </>
+        }
+        intro="Tell us about your plot or project plans. Our civil engineers will review your requirements and provide an honest estimate with transparent next steps."
+      />
       <section className="py-[118px]"><Container>
         <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-start">
           <Reveal><EnquiryForm /></Reveal>

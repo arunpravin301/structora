@@ -12,8 +12,18 @@ export const metadata: Metadata = { title: "Services" };
 export default function ServicesPage() {
   return (
     <>
-      <PageHero crumb="Services" title="Uncompromising engineering, from a single home to a 5-story commercial complex."
-        intro="Whatever you are building, the same corporate engineers see it through from the first drawing to the final handover." />
+      <PageHero
+        crumb="Engineering Services"
+        title={
+          <>
+            Uncompromising engineering, from a single home to a{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              multi-storey complex.
+            </em>
+          </>
+        }
+        intro="Whatever you are building, the same corporate-grade civil engineers see it through from the initial soil test to the final handover."
+      />
 
       <section className="py-[118px]"><Container><Reveal><ServiceIndex /></Reveal></Container></section>
 

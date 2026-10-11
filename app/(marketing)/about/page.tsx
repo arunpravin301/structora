@@ -12,8 +12,18 @@ export const metadata: Metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <>
-      <PageHero crumb="About" title="A trusted construction partner you can rely on."
-        intro="Structora designs and builds across Tamil Nadu, with the belief that the people building your project should be engineers you can sit across from." />
+      <PageHero
+        crumb="About Structora"
+        title={
+          <>
+            Engineering integrity you can{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              stand in front of.
+            </em>
+          </>
+        }
+        intro="Structora designs and builds across Tamil Nadu with corporate civil precision, ensuring the people building your project are experienced engineers you sit across from."
+      />
 
       <section className="py-[118px]"><Container>
         <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">

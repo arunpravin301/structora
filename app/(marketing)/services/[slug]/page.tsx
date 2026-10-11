@@ -20,7 +20,18 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   const s = site.services.find((x) => x.slug === resolvedParams.slug) ?? site.services[0];
   return (
     <>
-      <PageHero crumb={`Services · ${s.name}`} title={`${s.name}.`} intro={s.desc} />
+      <PageHero
+        crumb={`Services · ${s.name}`}
+        title={
+          <>
+            {s.name}{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              Engineering.
+            </em>
+          </>
+        }
+        intro={s.desc}
+      />
       <section className="py-[118px]"><Container>
         <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
           <Reveal><Plate cap="Service photograph" idx="SRV. 01" src={s.image} className="aspect-[4/5]" /></Reveal>

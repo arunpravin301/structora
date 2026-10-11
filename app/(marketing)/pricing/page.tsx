@@ -13,9 +13,16 @@ export default function PricingPage() {
   return (
     <>
       <PageHero
-        crumb="Pricing"
-        title="Transparent pricing, uncompromised quality."
-        intro="Select your location below to see our detailed tier packages for residential construction. We build with the finest materials and absolute transparency."
+        crumb="Pricing & Packages"
+        title={
+          <>
+            Transparent pricing,{" "}
+            <em className="font-serif italic font-medium text-amber-400">
+              uncompromised engineering.
+            </em>
+          </>
+        }
+        intro="Select your district below to see our detailed tier packages for residential construction. We build with strict civil standards and absolute transparency."
       />
 
       <PricingClient />
