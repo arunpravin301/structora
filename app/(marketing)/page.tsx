@@ -120,7 +120,7 @@ export default async function Home() {
         {/* Second Slider: Zaheer Residence */}
         <TransformReveal 
           beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
-          afterSrc="/projects/zaheer_execution.png"
+          afterSrc="/projects/zaheer_execution.jpeg"
           label="Zaheer Residence · Tiruvannamalai"
         />
       </section>
