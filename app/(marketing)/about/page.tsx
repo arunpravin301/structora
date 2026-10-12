@@ -40,7 +40,7 @@ export default function AboutPage() {
       <section className="py-[118px] bg-white"><Container>
         <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
           <Reveal>
-            <Plate src="" cap="Vetri, Founder & Managing Director" idx="FIG. 02" className="aspect-[4/5]" />
+            <Plate src="/founder_vetri.png" cap="Vetri, Founder & Managing Director" idx="FIG. 02" className="aspect-[4/5]" />
           </Reveal>
           <Reveal>
             <SectionHead>Meet the Founder.</SectionHead>
