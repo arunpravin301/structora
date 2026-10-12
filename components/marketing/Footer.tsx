@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "../ui/Container";
 import { site } from "@/config/site";
 
@@ -8,7 +9,15 @@ export default function Footer() {
       <Container>
         <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-9 pb-11 border-b border-lined">
           <div>
-            <div className="font-outfit font-semibold text-2xl tracking-[.05em] text-white mb-4">STRUCTORA</div>
+            <div className="mb-5">
+              <Image
+                src="/logo/logo-dark.png"
+                alt="Structora India Constructions"
+                width={175}
+                height={38}
+                className="h-[36px] w-auto object-contain"
+              />
+            </div>
             <p className="leading-relaxed max-w-[34ch]">Designing and building homes, commercial, and industrial projects across Tamil Nadu, with engineers you can meet in person.</p>
           </div>
           <div><h4 className="text-white text-xs font-medium tracking-[.1em] uppercase mb-4 font-inter">Navigate</h4>

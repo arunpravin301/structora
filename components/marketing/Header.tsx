@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { site } from "@/config/site";
 
@@ -28,8 +29,15 @@ export default function Header() {
   return (
     <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-300 border-b ${scrolled ? "bg-white/95 backdrop-blur-md border-line shadow-sm" : "border-transparent bg-transparent"} ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
       <div className="mx-auto max-w-wrap px-10 max-[600px]:px-6 flex items-center justify-between h-[82px]">
-        <Link href="/" className={`font-outfit font-semibold text-[22px] tracking-[.05em] leading-none transition-colors ${isDarkBg ? "text-white" : "text-slate-900"}`}>
-          STRUCTORA<small className={`block font-inter font-normal text-[8.5px] tracking-[.26em] mt-[3px] transition-colors ${isDarkBg ? "text-white/70" : "text-slate-500"}`}>INDIA CONSTRUCTIONS</small>
+        <Link href="/" className="flex items-center py-2 transition-opacity hover:opacity-90">
+          <Image
+            src={isDarkBg ? "/logo/logo-dark.png" : "/logo/logo-light.png"}
+            alt="Structora India Constructions"
+            width={168}
+            height={36}
+            priority
+            className="h-[34px] sm:h-[38px] w-auto object-contain transition-all duration-300"
+          />
         </Link>
         <nav className={`${open ? "flex absolute top-[82px] inset-x-0 flex-col bg-white px-10 pb-6 border-b border-line shadow-md" : "hidden"} md:flex md:static md:flex-row md:gap-9 md:bg-transparent md:p-0 md:border-0`}>
           {site.nav.map((n) => (
