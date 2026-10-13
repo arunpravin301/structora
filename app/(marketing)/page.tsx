@@ -37,8 +37,8 @@ export default async function Home() {
       </Container></section>
 
       <section className="py-[120px] bg-mist"><Container>
-        <div className="grid grid-cols-[5fr_7fr] max-[980px]:grid-cols-1 gap-[60px] items-start">
-          <Reveal><Plate cap={p1?.title || "Project"} idx="FIG. 02" src={p1?.coverImage ? urlForImage(p1.coverImage)?.url() : ""} className="aspect-[4/5] mt-12 max-[980px]:mt-0" /></Reveal>
+        <div className="grid grid-cols-[7fr_5fr] max-[980px]:grid-cols-1 gap-[60px] items-center">
+          <Reveal><Plate cap="Priya Residence · Front facade" idx="FIG. 02" src="/projects/priya_residence_facade.webp" className="aspect-[16/9]" /></Reveal>
           <Reveal>
             <h2 className="mb-6">The people building your home are people you can meet.</h2>
             <p className="text-lg text-slate leading-relaxed">A house is one of the largest commitments you will ever make. You should be able to look the people building it in the eye, walk their finished sites, and reach your own engineer directly.</p>
