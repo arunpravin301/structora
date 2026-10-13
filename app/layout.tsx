@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@type": "GeneralContractor",
               name: "Structora India Constructions Pvt Ltd.",
               url: "https://structoraindia.com",
+              email: "info@structoraindia.com",
               description:
                 "Real estate builders & construction company in Nalattinputtur, Tamil Nadu. Structora India Constructions designs and builds residential and commercial projects.",
               address: {

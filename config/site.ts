@@ -16,7 +16,7 @@ export const site = {
   contact: {
     whatsapp: "919677770797", // confirmed via client form
     phones: ["82483 62020", "99529 13079"],
-    email: "structoraindia@gmail.com",
+    email: "info@structoraindia.com",
     hours: "8.30am to 7.00pm", // days not specified by client, confirm
     addresses: [
       { name: "Kumbakonam", lines: "Plot No: 4, Mangalambikai Homes, Annai Anjugam Nagar, Ullur, Kumbakonam, Thanjavur District - 612 001" },
