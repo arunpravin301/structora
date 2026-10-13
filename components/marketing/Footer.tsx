@@ -9,13 +9,13 @@ export default function Footer() {
       <Container>
         <div className="grid grid-cols-[1.7fr_1fr_1fr_1fr] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-9 pb-11 border-b border-lined">
           <div>
-            <div className="mb-5">
+            <div className="mb-6">
               <Image
                 src="/logo/logo-dark.png"
                 alt="Structora India Constructions"
-                width={175}
-                height={38}
-                className="h-[36px] w-auto object-contain"
+                width={849}
+                height={179}
+                className="h-[68px] max-[600px]:h-[56px] w-auto object-contain"
               />
             </div>
             <p className="leading-relaxed max-w-[34ch]">Designing and building homes, commercial, and industrial projects across Tamil Nadu, with engineers you can meet in person.</p>
