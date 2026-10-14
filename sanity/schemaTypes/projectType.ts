@@ -46,20 +46,12 @@ export const projectType = defineType({
     }),
     defineField({
       name: 'coverImage',
-      title: 'Cover Image / 3D Render',
+      title: 'Cover Image',
       type: 'image',
       options: {
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'sitePhoto',
-      title: 'Actual Site Photo (Execution / Completed)',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
     }),
     defineField({
       name: 'builtUp',

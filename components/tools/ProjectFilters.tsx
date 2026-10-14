@@ -53,15 +53,9 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
   const getFullProjectGallery = (p: any) => {
     const list: any[] = [];
     if (p.coverImage) list.push(p.coverImage);
-    if (p.sitePhoto && p.sitePhoto.asset?._ref !== p.coverImage?.asset?._ref) {
-      list.push(p.sitePhoto);
-    }
     if (p.gallery && Array.isArray(p.gallery)) {
       p.gallery.forEach((g: any) => {
-        if (
-          g.asset?._ref !== p.coverImage?.asset?._ref &&
-          g.asset?._ref !== p.sitePhoto?.asset?._ref
-        ) {
+        if (g.asset?._ref !== p.coverImage?.asset?._ref) {
           list.push(g);
         }
       });

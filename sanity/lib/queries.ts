@@ -9,7 +9,6 @@ export const projectsQuery = groq`*[_type == "project"] | order(_createdAt asc) 
   location,
   client,
   coverImage,
-  sitePhoto,
   builtUp,
   plotSize,
   projectValue,
