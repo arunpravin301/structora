@@ -19,8 +19,20 @@ export const site = {
     email: "info@structoraindia.com",
     hours: "8.30am to 7.00pm", // days not specified by client, confirm
     addresses: [
-      { name: "Kumbakonam", lines: "Plot No: 4, Mangalambikai Homes, Annai Anjugam Nagar, Ullur, Kumbakonam, Thanjavur District - 612 001" },
-      { name: "Kovilpatti", lines: "354 M4D/4, Nalattinputtur, Kovilpatti, Thoothukudi - 628 716" }
+      {
+        name: "Kumbakonam",
+        lines: "Plot No: 4, Mangalambikai Homes, Annai Anjugam Nagar, Ullur, Kumbakonam, Thanjavur District - 612 001",
+        lat: 10.973403,
+        lng: 79.3960339,
+        mapUrl: "https://www.google.com/maps/place/Structora+India+constructions+Pvt+Ltd+-+Kumbakonam/@10.973403,79.3960339,17z/data=!3m1!4b1!4m6!3m5!1s0x3bac99af1190d071:0xdd2d39fc3db73a7b!8m2!3d10.973403!4d79.3960339!16s%2Fg%2F11svvv9xs2"
+      },
+      {
+        name: "Kovilpatti",
+        lines: "354 M4D/4, Nalattinputtur, Kovilpatti, Thoothukudi - 628 716",
+        lat: 9.1350358,
+        lng: 77.8250557,
+        mapUrl: "https://www.google.com/maps/place/Structora+India+Constructions+Pvt+Ltd.,+-+Kovilpatti/@9.1350358,77.8250557,17z/data=!3m1!4b1!4m6!3m5!1s0x3b06afc97dfb28cf:0x8b42cadb2511a84f!8m2!3d9.1350358!4d77.8250557!16s%2Fg%2F11zfg_plcx"
+      }
     ]
   },
   services: [

@@ -55,6 +55,7 @@ export default function ContactPage() {
                 <div key={o.name} className="border-t-2 border-slate-900" style={{ paddingTop: 18 }}>
                   <h3 className="text-[19px] font-semibold mb-2">{o.name}</h3>
                   <p className="text-sm text-slate leading-relaxed">{o.lines}</p>
+                  <a href={o.mapUrl} target="_blank" rel="noopener" className="inline-block mt-3 text-sm text-brand underline underline-offset-4 hover:text-slate-900 transition-colors">Get directions →</a>
                 </div>
               ))}
             </div>
@@ -63,7 +64,29 @@ export default function ContactPage() {
       </Container></section>
       <section className="py-[118px] bg-mist"><Container>
         <Reveal><SectionHead>Find our offices.</SectionHead></Reveal>
-        <Reveal><Plate cap="Map showing both office locations" idx="MAP" className="aspect-[16/8]" /></Reveal>
+        <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-8">
+          {c.addresses.map((o) => (
+            <Reveal key={o.name}>
+              <div className="bg-white border border-line">
+                <iframe
+                  title={`Structora ${o.name} office map`}
+                  src={`https://maps.google.com/maps?q=${o.lat},${o.lng}&z=16&output=embed`}
+                  className="w-full aspect-[4/3] border-0 block"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+                <div className="flex items-center justify-between gap-4 p-5">
+                  <div>
+                    <h3 className="text-[19px] font-semibold">{o.name} office</h3>
+                    <p className="text-sm text-slate mt-1">{o.lines}</p>
+                  </div>
+                  <a href={o.mapUrl} target="_blank" rel="noopener" className="btn btn-fill shrink-0 text-[13px]">Open in Maps</a>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </Container></section>
     </>
   );
