@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 
 export const blogType = defineType({
   name: 'blog',
@@ -46,8 +46,18 @@ export const blogType = defineType({
       type: 'array',
       group: 'content',
       of: [
-        { type: 'block' },
-        { type: 'image' }
+        defineArrayMember({ type: 'block' }),
+        defineArrayMember({
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            }),
+          ],
+        }),
       ],
     }),
     // SEO Fields

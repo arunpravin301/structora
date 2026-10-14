@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 
 export const projectType = defineType({
   name: 'project',
@@ -57,7 +57,24 @@ export const projectType = defineType({
       name: 'gallery',
       title: 'Project Photos',
       type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
+      options: {
+        layout: 'grid',
+      },
+      of: [
+        defineArrayMember({
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              title: 'Caption / Alternative Text',
+            }),
+          ],
+        }),
+      ],
     }),
   ],
 })
