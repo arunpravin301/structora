@@ -147,24 +147,16 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
               {/* Card Body */}
               <div className="p-5 flex flex-col flex-1 justify-between bg-white">
                 <div>
-                  {/* Status & Project Code / CRN */}
-                  <div className="flex items-center justify-between gap-2">
+                  {/* Status */}
+                  <div className="flex items-center">
                     <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+                      className={`text-[10.5px] font-semibold tracking-[0.14em] uppercase px-2 py-0.5 rounded-sm border ${
                         isCompleted
-                          ? "bg-emerald-50 text-emerald-700 border border-emerald-200/60"
-                          : "bg-amber-50 text-amber-800 border border-amber-200/60"
+                          ? "bg-slate-50 text-slate-700 border-slate-200"
+                          : "bg-amber-50 text-amber-800 border-amber-200/80"
                       }`}
                     >
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full ${
-                          isCompleted ? "bg-emerald-500" : "bg-amber-500"
-                        }`}
-                      />
                       {isCompleted ? "Completed" : "Ongoing"}
-                    </span>
-                    <span className="text-[12px] font-medium text-slate-400 tracking-wide font-mono">
-                      {p.crn || `CRN${102450 + i}`}
                     </span>
                   </div>
 

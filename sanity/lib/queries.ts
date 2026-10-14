@@ -12,7 +12,6 @@ export const projectsQuery = groq`*[_type == "project"] | order(_createdAt asc) 
   builtUp,
   plotSize,
   projectValue,
-  crn,
   gallery
 }`
 

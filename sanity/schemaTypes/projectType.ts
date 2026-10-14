@@ -69,11 +69,6 @@ export const projectType = defineType({
       type: 'number',
     }),
     defineField({
-      name: 'crn',
-      title: 'Project Code / CRN (e.g. CRN145310)',
-      type: 'string',
-    }),
-    defineField({
       name: 'gallery',
       title: 'Project Photos',
       type: 'array',
