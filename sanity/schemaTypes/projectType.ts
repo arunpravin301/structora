@@ -46,12 +46,40 @@ export const projectType = defineType({
     }),
     defineField({
       name: 'coverImage',
-      title: 'Cover Image',
+      title: 'Cover Image / 3D Render',
       type: 'image',
       options: {
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'sitePhoto',
+      title: 'Actual Site Photo (Execution / Completed)',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'builtUp',
+      title: 'Built-up Area (Sq.Ft)',
+      type: 'number',
+    }),
+    defineField({
+      name: 'plotSize',
+      title: 'Plot Size (e.g. 40X60 or 2400 sq.ft)',
+      type: 'string',
+    }),
+    defineField({
+      name: 'projectValue',
+      title: 'Project Value (INR)',
+      type: 'number',
+    }),
+    defineField({
+      name: 'crn',
+      title: 'Project Code / CRN (e.g. CRN145310)',
+      type: 'string',
     }),
     defineField({
       name: 'gallery',
