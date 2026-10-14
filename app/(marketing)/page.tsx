@@ -93,7 +93,7 @@ export default async function Home() {
         <Reveal><SectionHead>Projects you can drive out and stand in front of.</SectionHead></Reveal>
         <Reveal><div className="relative mb-6">
           <div className="md:w-[70%]">
-            <Plate cap={p2?.title || "Project"} idx="PRJ. 001" src={p2?.coverImage ? urlForImage(p2.coverImage)?.url() : ""} className="aspect-[16/10]" />
+            <Plate cap={p2?.title || "Project"} idx="PRJ. 001" src={p2?.coverImage ? urlForImage(p2.coverImage)?.width(1200).quality(85).auto('format').url() : ""} className="aspect-[16/10]" />
           </div>
           <div className="md:absolute right-0 bottom-[-60px] md:w-[45%] bg-white border border-line p-10 z-10 shadow-sm">
             <div className="text-xs tracking-[.14em] uppercase text-slate mb-3.5">{p2?.location || 'Tamil Nadu'} · {p2?.status || 'Completed'}</div>
