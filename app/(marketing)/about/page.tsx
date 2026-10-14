@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHead from "@/components/ui/SectionHead";
 import PageHero from "@/components/ui/PageHero";
@@ -26,13 +27,14 @@ export default function AboutPage() {
       />
 
       <section className="py-[118px]"><Container>
-        <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
+        <div className="grid grid-cols-[5fr_7fr] max-[980px]:grid-cols-1 gap-14 max-[980px]:gap-6 items-start">
           <Reveal>
             <SectionHead>Our story.</SectionHead>
-            <p className="text-[17px] text-slate-500 leading-relaxed">Structora was incorporated in 2021 to bring large-scale, corporate engineering standards into residential and commercial construction up to 5 floors. In a market where trust is hard-won, we build for quality and uncompromising durability, and we put our own engineers on site to stand behind both.</p>
-            <p className="mt-4 text-slate">From multi-floor homes in Chennai to a farmhouse in Kanyakumari, every project runs under the same discipline: engineer-supervised, checked at every stage, handed over finished.</p>
           </Reveal>
-          <Reveal><Plate cap="Team or office photograph" idx="FIG. 01" className="aspect-[4/5]" /></Reveal>
+          <Reveal>
+            <p className="text-[19px] text-slate-500 leading-relaxed">Structora was incorporated in 2021 to bring large-scale, corporate engineering standards into residential and commercial construction up to 5 floors. In a market where trust is hard-won, we build for quality and uncompromising durability, and we put our own engineers on site to stand behind both.</p>
+            <p className="mt-5 text-[17px] text-slate leading-relaxed">From multi-floor homes in Chennai to a farmhouse in Kanyakumari, every project runs under the same discipline: engineer-supervised, checked at every stage, handed over finished.</p>
+          </Reveal>
         </div>
       </Container></section>
 
@@ -82,12 +84,13 @@ export default function AboutPage() {
       </Container></section>
 
       <section className="py-[118px]"><Container>
-        <div className="grid grid-cols-2 max-[980px]:grid-cols-1 gap-14 items-center">
+        <div className="grid grid-cols-[5fr_7fr] max-[980px]:grid-cols-1 gap-14 max-[980px]:gap-6 items-start">
           <Reveal>
             <SectionHead>Home loans, handled with you.</SectionHead>
-            <p className="text-lg text-slate leading-relaxed">We assist our clients with home loan applications and work with all the major banks. Plan your EMI on our services page, then let us help you take it to the bank.</p>
           </Reveal>
-          <Reveal><Plate cap="Handover or site photograph" idx="FIG. 03" className="aspect-[16/10]" /></Reveal>
+          <Reveal>
+            <p className="text-[19px] text-slate leading-relaxed">We assist our clients with home loan applications and work with all the major banks. Plan your EMI on our <Link href="/pricing#emi" className="text-brand underline underline-offset-4 hover:text-slate-900 transition-colors">pricing page</Link>, then let us help you take it to the bank.</p>
+          </Reveal>
         </div>
       </Container></section>
 
