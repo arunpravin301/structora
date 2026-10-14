@@ -123,11 +123,6 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
           const coverUrl = p.coverImage
             ? urlForImage(p.coverImage)?.width(800).quality(85).auto("format").url()
             : "";
-          const sitePhotoUrl = p.sitePhoto
-            ? urlForImage(p.sitePhoto)?.width(800).quality(85).auto("format").url()
-            : p.gallery?.[0]
-            ? urlForImage(p.gallery[0])?.width(800).quality(85).auto("format").url()
-            : coverUrl;
 
           const isCompleted = p.status === "completed";
 
@@ -139,45 +134,20 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
               onClick={() => setOpenGallery(getFullProjectGallery(p))}
               className="group cursor-pointer bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col"
             >
-              {/* Dual Image Header: 3D Render vs Site Photo */}
-              <div className="grid grid-cols-2 gap-[2px] bg-slate-200 aspect-[16/10] overflow-hidden">
-                {/* 3D Render Side */}
-                <div className="relative h-full overflow-hidden bg-slate-100">
-                  {coverUrl ? (
-                    <img
-                      src={coverUrl}
-                      alt={`${p.title} 3D Render`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-300 bg-slate-100 text-xs">
-                      Render
-                    </div>
-                  )}
-                  <span className="absolute top-2.5 left-2.5 bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-sm tracking-wider uppercase">
-                    3D Render
-                  </span>
-                </div>
-
-                {/* Site Photo Side */}
-                <div className="relative h-full overflow-hidden bg-slate-100">
-                  {sitePhotoUrl ? (
-                    <img
-                      src={sitePhotoUrl}
-                      alt={`${p.title} Site Photo`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-300 bg-slate-100 text-xs">
-                      Site Photo
-                    </div>
-                  )}
-                  <span className="absolute top-2.5 right-2.5 bg-[#FF5A1F] text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-sm tracking-wider uppercase">
-                    Site Photo
-                  </span>
-                </div>
+              {/* Normal Full-Width Thumbnail */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                {coverUrl ? (
+                  <img
+                    src={coverUrl}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-slate-300 text-sm">
+                    No image
+                  </div>
+                )}
               </div>
 
               {/* Card Body */}
