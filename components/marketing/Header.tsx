@@ -1,20 +1,55 @@
 "use client";
-import {useEffect,useRef,useState} from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {usePathname} from "next/navigation";
-import {site} from "@/config/site";
-export default function Header(){
- const [open,setOpen]=useState(false),[scrolled,setScrolled]=useState(false);const button=useRef<HTMLButtonElement>(null),nav=useRef<HTMLElement>(null);const path=usePathname();
- useEffect(()=>{const on=()=>setScrolled(window.scrollY>30);on();window.addEventListener("scroll",on,{passive:true});return()=>window.removeEventListener("scroll",on);},[]);
- useEffect(()=>{if(!open)return;const old=document.body.style.overflow;document.body.style.overflow="hidden";nav.current?.querySelector("a")?.focus();
- const key=(e:KeyboardEvent)=>{if(e.key==="Escape"){setOpen(false);button.current?.focus();}if(e.key==="Tab"){const links=nav.current?.querySelectorAll<HTMLAnchorElement>("a");if(!links?.length)return;const first=links[0],last=links[links.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();button.current?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();button.current?.focus();}else if(document.activeElement===button.current){e.preventDefault();(e.shiftKey?last:first).focus();}}};
- const resize=()=>{if(window.innerWidth>=1280)setOpen(false);};window.addEventListener("keydown",key);window.addEventListener("resize",resize);return()=>{document.body.style.overflow=old;window.removeEventListener("keydown",key);window.removeEventListener("resize",resize);};},[open]);
- const dark=!scrolled&&!open;
- return <header className={`fixed inset-x-0 top-0 z-[100] border-b ${dark?"border-transparent":"bg-white border-line"}`}><div className="max-w-wrap mx-auto px-6 md:px-10 h-[82px] flex items-center justify-between gap-6">
- <Link href="/" className="shrink-0" aria-label="Structora India home"><Image src={dark?"/logo/logo-dark.png":"/logo/logo-light.png"} width={168} height={36} alt="Structora India" priority className="w-[150px] sm:w-[168px] h-auto" /></Link>
- <nav ref={nav} id="main-navigation" aria-label="Main" className={`${open?"flex absolute top-[82px] inset-x-0 flex-col bg-white px-6 py-4 max-h-[calc(100dvh-82px)] overflow-y-auto":"hidden"} xl:flex xl:static xl:flex-row xl:gap-6 xl:p-0 xl:bg-transparent`}>{site.nav.map(n=><Link key={n.href} href={n.href} onClick={()=>setOpen(false)} aria-current={path===n.href?"page":undefined} className={`py-3 xl:py-2 text-sm ${dark?"text-white":"text-slate-900"}`}>{n.label}</Link>)}</nav>
- <div className="flex gap-4 items-center"><Link href="/contact" className={`btn hidden sm:inline-flex whitespace-nowrap ${dark?"bg-white text-slate-900":"btn-cta"}`}>Discuss your project</Link><button ref={button} type="button" className={`xl:hidden w-11 h-11 text-2xl ${dark?"text-white":"text-slate-900"}`} aria-expanded={open} aria-controls="main-navigation" aria-label={open?"Close menu":"Open menu"} onClick={()=>setOpen(!open)}>{open?"×":"☰"}</button></div>
- </div></header>;
-}
+import { usePathname } from "next/navigation";
+import { site } from "@/config/site";
 
+export default function Header() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const on = () => {
+      const y = window.scrollY;
+      setScrolled(y > 30);
+      if (y > lastY && y > 100 && !open) setHidden(true);
+      else if (y < lastY) setHidden(false);
+      lastY = y;
+    };
+    on(); window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, [open]);
+
+  const isDarkBg = !scrolled && !open;
+
+  return (
+    <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-300 border-b ${scrolled ? "bg-white/95 backdrop-blur-md border-line shadow-sm" : "border-transparent bg-transparent"} ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
+      <div className="mx-auto max-w-wrap px-10 max-[600px]:px-6 flex items-center justify-between h-[82px]">
+        <Link href="/" className="flex items-center py-2 transition-opacity hover:opacity-90">
+          <Image
+            src={isDarkBg ? "/logo/logo-dark.png" : "/logo/logo-light.png"}
+            alt="Structora India Constructions"
+            width={168}
+            height={36}
+            priority
+            className="h-[34px] sm:h-[38px] w-auto object-contain transition-all duration-300"
+          />
+        </Link>
+        <nav className={`${open ? "flex absolute top-[82px] inset-x-0 flex-col bg-white px-10 pb-6 border-b border-line shadow-md" : "hidden"} md:flex md:static md:flex-row md:gap-9 md:bg-transparent md:p-0 md:border-0`}>
+          {site.nav.map((n) => (
+            <Link key={n.href} href={n.href} onClick={() => setOpen(false)}
+              className={`relative text-sm py-3.5 md:py-1 border-b border-line md:border-0 transition-colors ${isDarkBg ? "text-white/80 hover:text-white" : "text-slate-500 hover:text-slate-900"} after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-current after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left`}>{n.label}</Link>
+          ))}
+        </nav>
+        <div className="flex items-center gap-5">
+          <Link href="/contact" className={`btn max-[600px]:hidden transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] hover:shadow-lg ${isDarkBg ? "bg-white text-slate-900 hover:bg-white/90 hover:shadow-white/20" : "btn-cta hover:shadow-brand/20"}`}>Request a consultation</Link>
+          <button className={`md:hidden text-2xl transition-colors ${isDarkBg ? "text-white" : "text-slate-900"}`} onClick={() => setOpen(!open)} aria-label="Menu">☰</button>
+        </div>
+      </div>
+    </header>
+  );
+}

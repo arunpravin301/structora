@@ -1,3 +1,49 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Container from "@/components/ui/Container";
-export default function Stats(){return <section className="bg-slate-800 text-white"><Container><div className="grid sm:grid-cols-3 gap-8 py-12">{[["Since 2021","Company incorporated"],["Two offices","Kumbakonam & Kovilpatti"],["One team","Design through construction"]].map(([n,label])=><div key={n}><p className="font-outfit text-3xl">{n}</p><p className="text-slatel mt-3">{label}</p></div>)}</div></Container></section>;}
 
+// Figures from the client's form submission (Jul 2026).
+// NOTE: client claims 17 years experience but company CIN shows 2021 incorporation.
+// Using verifiable framing until resolved: sqft, projects, offices, since-2021.
+const DATA = [
+  { n: 22, s: "k+", l: "Sq ft built and building" },
+  { n: 6, s: "", l: "Projects across Tamil Nadu" },
+  { n: 300, s: "+", l: "Quality checklist per project" },
+  { n: 15, s: "+", l: "Years of Experience" }
+];
+
+export default function Stats() {
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ctx = gsap.context(() => {
+      root.current?.querySelectorAll<HTMLElement>("[data-n]").forEach((el) => {
+        const target = Number(el.dataset.n);
+        if (reduce) { el.textContent = String(target); return; }
+        const o = { v: 0 };
+        ScrollTrigger.create({ trigger: el, start: "top 86%", once: true, onEnter: () =>
+          gsap.to(o, { v: target, duration: 1.6, ease: "power2.out", onUpdate: () => (el.textContent = String(Math.round(o.v))) }) });
+      });
+    }, root);
+    return () => ctx.revert();
+  }, []);
+  return (
+    <section ref={root} className="bg-slate-800 text-white">
+      <Container>
+        <div className="grid grid-cols-4 max-[980px]:grid-cols-2">
+          {DATA.map((d, i) => (
+            <div key={i} className="pr-7 py-[50px]">
+              <div className="font-outfit font-semibold text-[clamp(38px,4.6vw,58px)] leading-none tracking-tight">
+                <span data-n={d.n}>0</span><span className="text-brand">{d.s}</span>
+              </div>
+              <div className="text-[13px] text-slatel mt-3">{d.l}</div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
