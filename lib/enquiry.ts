@@ -1,6 +1,6 @@
 // Browser validation improves feedback; Web3Forms enforces server-side delivery and spam protection.
 export const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-export const DEFAULT_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+export const DEFAULT_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "9d0c769c-b8f6-4963-b15d-addae83dd3e8";
 
 export async function submitEnquiry(data: Record<string, unknown>, source: string): Promise<void> {
   const text = (key: string) => typeof data[key] === "string" ? (data[key] as string).trim() : "";
