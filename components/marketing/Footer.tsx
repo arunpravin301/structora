@@ -24,7 +24,11 @@ export default function Footer() {
             {site.nav.map((n) => <Link key={n.href} className="block py-1.5 hover:text-white" href={n.href}>{n.label}</Link>)}
           </div>
           <div><h4 className="text-white text-xs font-medium tracking-[.1em] uppercase mb-4 font-inter">Offices</h4>
-            {site.contact.addresses.map((o) => <span key={o.name} className="block py-1.5">{o.name}</span>)}
+            {site.contact.addresses.map((o) => (
+              <Link key={o.name} className="block py-1.5 hover:text-white transition-colors" href={`/contact#${o.name.toLowerCase()}`}>
+                {o.name}
+              </Link>
+            ))}
           </div>
           <div><h4 className="text-white text-xs font-medium tracking-[.1em] uppercase mb-4 font-inter">Connect</h4>
             <a className="block py-1.5 hover:text-white" href={`tel:+91${site.contact.phones[0].replace(/\D/g, "").slice(-10)}`}>{site.contact.phones[0]}</a>
