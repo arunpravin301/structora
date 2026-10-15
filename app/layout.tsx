@@ -1,54 +1,9 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
+import BusinessSchema from "@/components/marketing/BusinessSchema";
+import {canIndex,siteUrl} from "@/lib/seo";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://structoraindia.com"),
-  title: { default: "Structora India Constructions", template: "%s — Structora India" },
-  description:
-    "Structora India Constructions designs and builds residential and commercial projects across Kumbakonam and Kovilpatti, with engineers you can meet in person."
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..600&display=swap"
-          rel="stylesheet"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "GeneralContractor",
-              name: "Structora India Constructions Pvt Ltd.",
-              url: "https://structoraindia.com",
-              email: "info@structoraindia.com",
-              description:
-                "Real estate builders & construction company in Nalattinputtur, Tamil Nadu. Structora India Constructions designs and builds residential and commercial projects.",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "354 M4D/4, Nalattinputtur",
-                addressLocality: "Kovilpatti",
-                addressRegion: "Tamil Nadu",
-                postalCode: "628716",
-                addressCountry: "IN",
-              },
-            }),
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning>
-        <div className="grain" />
-        {children}
-      </body>
-    </html>
-  );
+export const metadata:Metadata={metadataBase:new URL(siteUrl),title:{default:"Structora India Constructions",template:"%s — Structora India"},description:"Residential and commercial construction in Tamil Nadu. Meet Structora India's engineers in Kumbakonam and Kovilpatti.",robots:{index:canIndex,follow:canIndex}};
+export default function RootLayout({children}:{children:React.ReactNode}){
+ return <html lang="en"><head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" /><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..700&family=Manrope:wght@400..600&display=swap" rel="stylesheet" /></head><body><BusinessSchema />{children}</body></html>;
 }
+

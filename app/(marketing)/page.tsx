@@ -7,19 +7,20 @@ import Hero from "@/components/sections/Hero";
 import Stats from "@/components/sections/Stats";
 import ServiceIndex from "@/components/sections/ServiceIndex";
 import TransformReveal from "@/components/tools/TransformReveal";
-import Testimonials from "@/components/sections/Testimonials";
+
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
-import { client } from "@/sanity/lib/client";
-import { projectsQuery } from "@/sanity/lib/queries";
-import { urlForImage } from "@/sanity/lib/image";
+import { getProjects } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata("Builders in Kumbakonam & Kovilpatti", "Structora India designs and builds homes and commercial spaces across Tamil Nadu. Explore projects, construction packages and meet our engineers.", "/");
+
+import { imageUrl } from "@/sanity/lib/image";
 
 export const revalidate = 60; // revalidate every minute
 
 export default async function Home() {
-  const projects = await client.fetch(projectsQuery);
-  const p1 = projects.find((p: any) => p.title?.includes("Priyanka")) || projects[0];
-  const p2 = projects.find((p: any) => p.title?.includes("Balaji")) || projects[1];
+  const projects = await getProjects();
+  const p2 = projects.find((p) => p.title?.includes("Balaji")) || projects[1];
 
   return (
     <>
@@ -67,7 +68,7 @@ export default async function Home() {
               <div className="font-outfit text-sm text-slate-500 font-medium">Interactive Tool</div>
             </div>
             <h3 className="text-slate-900 text-[32px] font-semibold mt-2 mb-3">Construction Cost Calculator</h3>
-            <p className="text-slate text-[16px] mb-8 max-w-[38ch]">Enter your plot size and district, and see an honest ballpark figure in seconds without waiting for a quote.</p>
+            <p className="text-slate text-[16px] mb-8 max-w-[38ch]">Enter your built-up area and district, and see an honest ballpark figure in seconds without waiting for a quote.</p>
             <Link href="/pricing#estimator" className="inline-block btn bg-slate-900 text-white hover:bg-slate-800 px-8 py-3.5 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] shadow-lg hover:shadow-xl">Calculate Build Cost →</Link>
           </div>
           <div className="flex-[1] border border-line p-10 bg-white md:mt-16 md:-ml-12 relative z-10 shadow-xl transition-shadow hover:shadow-2xl">
@@ -84,22 +85,19 @@ export default async function Home() {
         </div></Reveal>
       </Container></section>
 
-      <section className="pt-[160px] pb-[100px] bg-white"><Container>
-        <Reveal><SectionHead center>Client Testimonials.</SectionHead></Reveal>
-        <Testimonials />
-      </Container></section>
+      
 
       <section className="pt-[100px] pb-[200px]"><Container>
         <Reveal><SectionHead>Projects you can drive out and stand in front of.</SectionHead></Reveal>
         <Reveal><div className="relative mb-6">
           <div className="md:w-[70%]">
-            <Plate cap={p2?.title || "Project"} idx="PRJ. 001" src={p2?.coverImage ? urlForImage(p2.coverImage)?.width(1200).quality(85).auto('format').url() : ""} className="aspect-[16/10]" />
+            <Plate cap={p2?.title || "Project"} idx="PRJ. 001" src={imageUrl(p2?.coverImage) || ""} className="aspect-[16/10]" />
           </div>
           <div className="md:absolute right-0 bottom-[-60px] md:w-[45%] bg-white border border-line p-10 z-10 shadow-sm">
             <div className="text-xs tracking-[.14em] uppercase text-slate mb-3.5">{p2?.location || 'Tamil Nadu'} · {p2?.status || 'Completed'}</div>
             <h3 className="text-[34px] font-semibold mb-3.5">{p2?.title || 'Project name'}</h3>
-            <p className="text-slate text-[15px] mb-6 max-w-[36ch]">A short, specific line about this project, its scale, and what made it particular.</p>
-            <Link href="/projects" className="tlink dark">View project →</Link>
+            <p className="text-slate text-[15px] mb-6 max-w-[36ch]">Explore the project photographs and speak with our team about arranging a visit.</p>
+            <Link href={p2?.slug?.current ? "/projects/" + p2.slug.current : "/projects"} className="tlink dark">View project →</Link>
           </div>
         </div></Reveal>
         <Reveal><div className="mt-24 flex justify-center"><Link href="/projects" className="btn btn-fill">View all projects</Link></div></Reveal>
@@ -129,7 +127,7 @@ export default async function Home() {
         <Reveal><SectionHead center>Questions we hear before a project starts.</SectionHead></Reveal>
         <Reveal><div className="max-w-[900px] mx-auto">
           {[
-            ["How do you price a construction project?", "Pricing is based on your built-up area and the package you choose, starting from ₹2,200 per sq ft. We provide a detailed estimate up front, ensuring complete financial transparency with no hidden charges or surprise 'change orders'."],
+            ["How do you price a construction project?", "Pricing is based on your built-up area and the package you choose, with current indicative rates listed on our pricing page. We provide a detailed estimate up front, setting out the agreed inclusions, exclusions and process for changes."],
             ["What brands of materials do you use?", "We strictly use premium, ISI-certified brands for all our structural and finishing work. This includes primary steel from Tata or JSW, Grade 53 cement from UltraTech or Dalmia, and top-tier electrical and plumbing fixtures."],
             ["How long does it take to complete a project?", "A standard residential project typically takes 8 to 10 months from foundation to handover. We provide a strict project timeline before work begins and enforce rigorous site management to ensure we deliver on schedule."],
             ["Do you handle government approvals and building permits?", "Yes. We offer an end-to-end turnkey service. Our team manages all necessary local municipal approvals, building plan sanctions, and compliance with zoning laws, so you don't have to navigate the bureaucracy."],

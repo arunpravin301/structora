@@ -1,52 +1,91 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/ui/PageHero";
-import Plate from "@/components/ui/Plate";
-import Reveal from "@/components/ui/Reveal";
-import { getPosts } from "@/lib/wordpress";
+import { getBlogs } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Journal" };
+export const metadata = pageMetadata(
+  "Construction Journal",
+  "Notes on planning, building and construction from Structora India in Tamil Nadu.",
+  "/blogs"
+);
 
-// placeholders shown until WordPress is connected
-const FALLBACK = [
-  { slug: "#", title: "Understanding what a home actually costs to build", category: "Cost", excerpt: "A short standfirst previewing the article." },
-  { slug: "#", title: "What happens between your enquiry and your keys", category: "Process", excerpt: "A short standfirst previewing the article." },
-  { slug: "#", title: "Choosing between a G+1 and a G+2 for your plot", category: "Tips", excerpt: "A short standfirst previewing the article." }
-];
+export const revalidate = 60;
 
-export default async function JournalPage() {
-  const posts = await getPosts();
-  const items = posts.length ? posts : FALLBACK;
+export default async function Blogs() {
+  const posts = await getBlogs();
+
   return (
     <>
       <PageHero
-        crumb="Engineering Journal"
-        title={
-          <>
-            Notes on building, cost, and{" "}
-            <em className="font-serif italic font-medium text-amber-400">
-              getting it right.
-            </em>
-          </>
-        }
-        intro="Practical civil engineering insights and cost guides for anyone planning to construct a home or building in Tamil Nadu."
+        crumb="Journal"
+        title="Notes on building well."
+        intro="Practical insights on planning, construction costs, materials, and engineering decisions."
       />
-      <section className="py-[118px]"><Container>
-        <div className="grid grid-cols-3 max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-6">
-          {items.map((p:any,i:number)=>(<Reveal key={i}>
-            <Link href={p.slug === "#" ? "#" : `/journal/${p.slug}`} className="block border border-line hover:shadow-[0_12px_30px_rgba(10,22,38,.08)] hover:-translate-y-1 transition">
-              <Plate cap="Article image" idx={`JNL. ${String(i+1).padStart(3,"0")}`} className="aspect-[16/10]" />
-              <div className="p-6">
-                <div className="text-[11px] tracking-[.12em] uppercase text-brand">{p.category ?? "Journal"} · 2026</div>
-                <h3 className="text-[21px] font-semibold my-2.5 leading-tight">{p.title}</h3>
-                <p className="text-sm text-slate leading-relaxed">{p.excerpt}</p>
-              </div>
-            </Link>
-          </Reveal>))}
-        </div>
-        {!posts.length && <p className="text-[12.5px] text-slate italic mt-8">Showing placeholders. Connect WordPress (WORDPRESS_API_URL) to load real posts.</p>}
-      </Container></section>
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="grid md:grid-cols-2 gap-8">
+            {posts
+              .filter((p) => p.slug?.current)
+              .map((p) => (
+                <article
+                  key={p._id}
+                  className="group bg-white border border-slate-200 rounded-xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-slate-500 font-outfit mb-3">
+                      {p.category && (
+                        <span className="bg-brand/10 text-brand px-2 py-0.5 rounded-sm font-semibold">
+                          {p.category}
+                        </span>
+                      )}
+                      {p.readTime && <span>{p.readTime}</span>}
+                    </div>
+                    <h2 className="text-2xl font-bold mb-3 text-slate-900 group-hover:text-brand transition-colors font-outfit">
+                      <Link href={"/blogs/" + p.slug.current}>{p.title}</Link>
+                    </h2>
+                    {p.seoDescription && (
+                      <p className="text-slate-600 line-clamp-3 leading-relaxed text-sm">
+                        {p.seoDescription}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-medium">
+                    <Link
+                      className="text-brand hover:underline flex items-center gap-1"
+                      href={"/blogs/" + p.slug.current}
+                    >
+                      Read full guide <span>→</span>
+                    </Link>
+                    {p.publishedAt && (
+                      <time
+                        dateTime={p.publishedAt}
+                        className="text-xs text-slate-400"
+                      >
+                        {new Date(p.publishedAt).toLocaleDateString("en-IN", {
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </time>
+                    )}
+                  </div>
+                </article>
+              ))}
+          </div>
+
+          {!posts.length && (
+            <div className="text-center py-16 border border-dashed border-slate-300 rounded-xl max-w-xl mx-auto">
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Our journal is coming soon</h3>
+              <p className="text-slate-500 text-sm mb-6">
+                Our civil engineers are writing practical guides on building costs, approvals, and house construction in Tamil Nadu.
+              </p>
+              <Link href="/contact" className="btn btn-cta">
+                Ask our team a question
+              </Link>
+            </div>
+          )}
+        </Container>
+      </section>
     </>
   );
 }

@@ -1,9 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Container from "@/components/ui/Container";
+import EnquiryForm from "@/components/sections/EnquiryForm";
+import CostEstimator from "@/components/tools/CostEstimator";
+import EmiCalculator from "@/components/tools/EmiCalculator";
 import pricingDataRaw from "@/config/pricing.json";
 
-const pricingData = pricingDataRaw as Record<string, any>;
+type Tier = "basic" | "standard" | "premium" | "luxury";
+type Item = {name?:string;label?:string;basic:string;standard:string;premium:string;luxury:string};
+type Category = {name:string;items:Item[]};
+const pricingData = pricingDataRaw as Record<string, {basePrices:Record<Tier,string>;categories:Category[]}>;
 const locations = Object.keys(pricingData);
 locations.push("Other");
 
@@ -40,7 +46,6 @@ const tierHighlights: Record<string, string[]> = {
 
 export default function PricingClient() {
   const [location, setLocation] = useState(locations[0]);
-  const [isUnlocked, setIsUnlocked] = useState(false);
   
   // Track expanded state by category name. Default 'Structure ' (or first category) to true.
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -59,6 +64,7 @@ export default function PricingClient() {
           {locations.map((loc) => (
             <button 
               key={loc}
+              aria-pressed={location===loc}
               onClick={() => setLocation(loc)}
               className={`px-8 py-4 font-outfit text-sm tracking-[0.1em] uppercase transition-colors ${location === loc ? 'bg-slate-900 text-white' : 'bg-mist text-slate-600 hover:bg-slate-200'}`}
             >
@@ -71,22 +77,13 @@ export default function PricingClient() {
           <div className="max-w-2xl mx-auto bg-mist p-12 border border-line">
             <h3 className="text-3xl font-semibold mb-3">Request a Custom Quote</h3>
             <p className="text-slate-500 mb-10 leading-relaxed">We construct premium homes and commercial spaces across Tamil Nadu. Fill out the form below with your location and project requirements, and our engineering team will get back to you with a detailed estimate.</p>
-            <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); alert("Enquiry submitted successfully!"); }}>
-              <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-5">
-                <input type="text" placeholder="Your Name" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-                <input type="text" placeholder="Phone Number" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-              </div>
-              <input type="email" placeholder="Email Address" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-              <input type="text" placeholder="Project Location (City / District)" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-              <textarea placeholder="Project Details (e.g., land size, total floors, budget)" rows={5} className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required></textarea>
-              <button type="submit" className="w-full bg-brand text-white font-outfit uppercase tracking-widest text-sm py-5 hover:bg-slate-900 transition-colors mt-4">Send Enquiry</button>
-            </form>
+            <EnquiryForm source="custom-quote" initialMessage="Project location: " />
           </div>
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             {/* Detailed Top Cards */}
             <div className="grid grid-cols-4 max-[1100px]:grid-cols-2 max-[600px]:grid-cols-1 gap-8 mb-8">
-              {['basic', 'standard', 'premium', 'luxury'].map((tier) => {
+              {(['basic', 'standard', 'premium', 'luxury'] as const).map((tier) => {
                 const isPopular = tier === 'premium';
                 
                 // Map the internal keys to the new client-facing names
@@ -101,8 +98,8 @@ export default function PricingClient() {
                                   : 'Exceptional materials, luxury fittings, bespoke detailing, and sophisticated finishes for an exclusive villa experience.';
 
                 return (
-                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-4 ring-[#F26E21] shadow-2xl scale-105 relative z-10' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
-                    <div className={`p-8 text-center text-white relative ${tier === 'luxury' ? 'bg-gradient-to-br from-[#E5B63E] to-[#C99A22]' : tier === 'premium' ? 'bg-gradient-to-br from-[#F26E21] to-[#D95508]' : tier === 'standard' ? 'bg-gradient-to-br from-[#8940FF] to-[#6B22E1]' : 'bg-gradient-to-br from-slate-400 to-slate-500'}`}>
+                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-2 ring-brand shadow-lg relative z-10' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
+                    <div className={`p-8 text-center text-white relative ${tier === 'luxury' ? 'bg-[#684B16]' : tier === 'premium' ? 'bg-[#8C4427]' : tier === 'standard' ? 'bg-[#34474D]' : 'bg-slate-700'}`}>
                       {isPopular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-outfit font-bold uppercase tracking-widest py-1 px-4 rounded-full shadow-md mt-4">
                           ★ Most Popular
@@ -119,7 +116,7 @@ export default function PricingClient() {
                       <div className="text-sm text-slate-500 font-medium">per sq. ft.</div>
                     </div>
                     <div className="p-8 flex-grow flex flex-col bg-white">
-                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-100 pb-4">What's Included</div>
+                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-100 pb-4">What’s Included</div>
                       <ul className="space-y-4 text-[14px] text-slate-700 flex-grow mb-8">
                         {tierHighlights[tier].map((hl, idx) => (
                           <li key={idx} className="flex gap-3 items-start">
@@ -130,7 +127,7 @@ export default function PricingClient() {
                           </li>
                         ))}
                       </ul>
-                      <button onClick={() => { document.getElementById('compare')?.scrollIntoView({behavior: 'smooth'}); }} className={`w-full py-4 rounded-xl font-outfit uppercase tracking-widest text-sm font-semibold transition-colors ${isPopular ? 'bg-[#F26E21] text-white hover:bg-[#D95508]' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'}`}>
+                      <button onClick={() => { document.getElementById('compare')?.scrollIntoView({behavior: 'smooth'}); }} className={`w-full py-4 rounded-xl font-outfit uppercase tracking-widest text-sm font-semibold transition-colors ${isPopular ? 'bg-[#8C4427] text-white hover:bg-[#D95508]' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'}`}>
                         Compare Specs
                       </button>
                     </div>
@@ -166,23 +163,10 @@ export default function PricingClient() {
                 <p className="text-slate-500">Compare every material and detail across all four tiers.</p>
               </div>
 
-              {!isUnlocked && (
-                <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/60 backdrop-blur-sm pt-20">
-                  <div className="bg-white p-10 max-w-lg w-full border border-line shadow-2xl">
-                    <h4 className="text-2xl font-semibold mb-3">Unlock Full Specifications</h4>
-                    <p className="text-slate-500 mb-8 text-[15px]">Enter your details below to instantly view the complete, unblurred pricing and material comparison table.</p>
-                    <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setIsUnlocked(true); }}>
-                      <input type="text" placeholder="Your Name" className="w-full px-5 py-4 bg-mist border border-line focus:outline-none focus:border-brand" required />
-                      <input type="tel" placeholder="Phone Number" className="w-full px-5 py-4 bg-mist border border-line focus:outline-none focus:border-brand" required />
-                      <input type="email" placeholder="Email Address" className="w-full px-5 py-4 bg-mist border border-line focus:outline-none focus:border-brand" required />
-                      <button type="submit" className="w-full bg-brand text-white font-outfit uppercase tracking-widest text-sm py-4 hover:bg-slate-900 transition-colors mt-2">View Specifications</button>
-                    </form>
-                  </div>
-                </div>
-              )}
+              
 
-              <div id="compare" className={`overflow-x-auto border border-line scroll-mt-24 bg-white transition-all duration-500 ${!isUnlocked ? 'h-[400px] overflow-hidden' : ''}`}>
-                <table className={`w-full text-left border-collapse min-w-[900px] transition-all duration-700 ${!isUnlocked ? 'blur-[4px] opacity-50 select-none pointer-events-none' : ''}`}>
+              <div id="compare" role="region" aria-label="Package comparison" tabIndex={0} className="overflow-x-auto border border-line scroll-mt-24 bg-white">
+                <table className="w-full text-left border-collapse min-w-[900px]">
                   <thead>
                     <tr>
                       <th className="p-6 bg-slate-900 text-white w-1/3 text-lg font-normal">Specification Overview</th>
@@ -193,13 +177,14 @@ export default function PricingClient() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pricingData[location].categories.map((cat: any) => {
+                    {pricingData[location].categories.map((cat: Category) => {
                       const isExpanded = !!expandedSections[cat.name];
                       return (
                         <React.Fragment key={cat.name}>
                           <tr>
                             <td colSpan={5} className="bg-mist p-0 border-b border-line">
                               <button 
+                                aria-expanded={isExpanded}
                                 onClick={() => toggleSection(cat.name)} 
                                 className="w-full text-left p-4 px-6 font-semibold text-brand tracking-wide uppercase text-sm flex justify-between items-center focus:outline-none hover:bg-slate-100 transition-colors"
                               >
@@ -208,7 +193,7 @@ export default function PricingClient() {
                               </button>
                             </td>
                           </tr>
-                          {isExpanded && cat.items.map((item: any, i: number) => (
+                          {isExpanded && cat.items.map((item: Item, i: number) => (
                             <tr key={i} className="border-b border-line hover:bg-slate-50 transition-colors">
                               <td className="p-4 px-6 font-medium text-slate-900 whitespace-pre-wrap">{item.name}</td>
                               <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.basic}</td>
@@ -226,6 +211,8 @@ export default function PricingClient() {
             </div>
           </div>
         )}
+      {location !== "Other" && <section id="estimator" className="pt-20 scroll-mt-28"><h2 className="mb-8">Estimate your construction cost.</h2><CostEstimator location={location as keyof typeof pricingDataRaw} onLocationChange={setLocation} /></section>}
+      <section id="emi" className="pt-20 scroll-mt-28"><h2 className="mb-8">Plan your home loan EMI.</h2><EmiCalculator /></section>
       </Container>
     </section>
   );

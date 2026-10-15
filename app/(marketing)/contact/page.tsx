@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import SectionHead from "@/components/ui/SectionHead";
 import PageHero from "@/components/ui/PageHero";
@@ -6,7 +6,7 @@ import Reveal from "@/components/ui/Reveal";
 import EnquiryForm from "@/components/sections/EnquiryForm";
 import { site } from "@/config/site";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata = pageMetadata("Contact our construction team", "Discuss your construction project with Structora India. Find our Kumbakonam and Kovilpatti offices, phone numbers and enquiry form.", "/contact");
 
 export default function ContactPage() {
   const c = site.contact;
@@ -37,7 +37,7 @@ export default function ContactPage() {
                 </li>
                 <li className="flex justify-between gap-5 border-t border-lined text-[15px]" style={{ padding: "18px 0" }}>
                   <span className="text-slatel">Phone</span>
-                  <span className="text-white text-right">{c.phones.join(" · ")}</span>
+                  <span className="text-white text-right">{c.phones.map(p=><a key={p} className="block underline" href={"tel:+91"+p.replace(/\D/g,"")}>{p}</a>)}</span>
                 </li>
                 <li className="flex justify-between gap-5 border-t border-lined text-[15px]" style={{ padding: "18px 0" }}>
                   <span className="text-slatel">Email</span>
@@ -51,7 +51,7 @@ export default function ContactPage() {
             </div>
             <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-6 mt-6">
               {c.addresses.map((o) => (
-                <div key={o.name} className="border-t-2 border-slate-900" style={{ paddingTop: 18 }}>
+                <div key={o.name} id={o.name.toLowerCase()} className="border-t-2 border-slate-900" style={{ paddingTop: 18 }}>
                   <h3 className="text-[19px] font-semibold mb-2">{o.name}</h3>
                   <p className="text-sm text-slate leading-relaxed">{o.lines}</p>
                   <a href={o.mapUrl} target="_blank" rel="noopener" className="inline-block mt-3 text-sm text-brand underline underline-offset-4 hover:text-slate-900 transition-colors">Get directions →</a>

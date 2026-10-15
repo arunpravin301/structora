@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-      // WordPress media (update to the real CMS domain)
-      { protocol: "https", hostname: "cms.structoraindia.com" },
-      { protocol: "https", hostname: "**.wp.com" }
-    ]
-  }
+      { protocol: "https", hostname: "images.unsplash.com" }
+    ],
+  },
 };
+
 export default nextConfig;

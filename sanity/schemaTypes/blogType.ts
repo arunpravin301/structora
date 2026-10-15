@@ -60,6 +60,37 @@ export const blogType = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'category',
+      title: 'Category / Topic Tag',
+      type: 'string',
+      group: 'content',
+      options: {
+        list: [
+          { title: 'Cost & Budgeting', value: 'Cost & Budgeting' },
+          { title: 'Planning & Approvals', value: 'Planning & Approvals' },
+          { title: 'Material Quality', value: 'Material Quality' },
+          { title: 'Construction & Engineering Tips', value: 'Construction & Engineering Tips' },
+          { title: 'Architecture & Design', value: 'Architecture & Design' },
+        ],
+      },
+      initialValue: 'Cost & Budgeting',
+    }),
+    defineField({
+      name: 'readTime',
+      title: 'Estimated Read Time (e.g. 5 min read)',
+      type: 'string',
+      group: 'content',
+      description: 'Leave blank to auto-calculate from word count.',
+    }),
+    defineField({
+      name: 'showToc',
+      title: 'Display Table of Contents',
+      type: 'boolean',
+      group: 'content',
+      initialValue: true,
+      description: 'Auto-generates an interactive jump-link menu from H2/H3 headings in the article.',
+    }),
     // SEO Fields
     defineField({
       name: 'seoTitle',
@@ -74,6 +105,33 @@ export const blogType = defineType({
       type: 'text',
       group: 'seo',
       validation: (Rule) => Rule.max(160).warning('Optimal descriptions are under 160 characters.'),
+    }),
+    defineField({
+      name: 'faqs',
+      title: 'Frequently Asked Questions (FAQ Section)',
+      type: 'array',
+      group: 'seo',
+      description: 'Add 2–5 FAQs related to this topic. Google uses these for People Also Ask rich snippets.',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'question',
+              title: 'Question',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'answer',
+              title: 'Answer',
+              type: 'text',
+              rows: 3,
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+      ],
     }),
   ],
 })

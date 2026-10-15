@@ -1,7 +1,12 @@
 "use client";
-import { useState, useMemo } from "react";
+import Link from "next/link";
+import { projectDetailPath } from "@/lib/static-content";
+import Image from "next/image";
+import type { Project } from "@/lib/content";
+import type { Image as SanityImage } from "sanity";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import ProjectGallery from "@/components/ui/ProjectGallery";
-import { urlForImage } from "@/sanity/lib/image";
+import { imageUrl } from "@/sanity/lib/image";
 
 function formatSqft(val?: number | string) {
   if (!val) return "—";
@@ -37,24 +42,39 @@ function formatValue(val?: number | string) {
   return `₹${num.toLocaleString("en-IN")}`;
 }
 
-export default function ProjectFilters({ projects = [] }: { projects?: any[] }) {
+export default function ProjectFilters({ projects = [] }: { projects?: Project[] }) {
+  const [projectList, setProjectList] = useState<Project[]>(projects);
   const [filter, setFilter] = useState<"all" | "completed" | "ongoing">("all");
-  const [openGallery, setOpenGallery] = useState<any[] | null>(null);
+  const [openGallery, setOpenGallery] = useState<SanityImage[] | null>(null);
 
-  const completed = useMemo(() => projects.filter((p) => p.status === "completed"), [projects]);
-  const ongoing = useMemo(() => projects.filter((p) => p.status === "ongoing"), [projects]);
+  useEffect(() => {
+    // Client-side fetch from Sanity CDN to reflect newly published projects immediately
+    import("@/sanity/lib/client").then(({ client }) => {
+      import("@/sanity/lib/queries").then(({ projectsQuery }) => {
+        client.fetch(projectsQuery).then((fresh) => {
+          if (fresh && Array.isArray(fresh) && true) {
+            setProjectList(fresh);
+          }
+        }).catch(() => {});
+      });
+    });
+  }, []);
+
+  const closeGallery = useCallback(() => setOpenGallery(null), []);
+  const completed = useMemo(() => projectList.filter((p) => p.status === "completed"), [projectList]);
+  const ongoing = useMemo(() => projectList.filter((p) => p.status === "ongoing"), [projectList]);
 
   const displayedProjects = useMemo(() => {
     if (filter === "completed") return completed;
     if (filter === "ongoing") return ongoing;
-    return projects;
-  }, [filter, projects, completed, ongoing]);
+    return projectList;
+  }, [filter, projectList, completed, ongoing]);
 
-  const getFullProjectGallery = (p: any) => {
-    const list: any[] = [];
+  const getFullProjectGallery = (p: Project) => {
+    const list: SanityImage[] = [];
     if (p.coverImage) list.push(p.coverImage);
     if (p.gallery && Array.isArray(p.gallery)) {
-      p.gallery.forEach((g: any) => {
+      p.gallery.forEach((g: SanityImage) => {
         if (g.asset?._ref !== p.coverImage?.asset?._ref) {
           list.push(g);
         }
@@ -63,11 +83,11 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
     return list;
   };
 
-  const preloadGallery = (p: any) => {
+  const preloadGallery = (p: Project) => {
     const gallery = getFullProjectGallery(p);
     if (!gallery || !gallery.length) return;
     gallery.slice(0, 4).forEach((img) => {
-      const url = urlForImage(img)?.width(1600).quality(80).auto("format").url();
+      const url = imageUrl(img,1600);
       if (url) {
         const i = new window.Image();
         i.src = url;
@@ -80,6 +100,7 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
       {/* Category Filter Pills */}
       <div className="flex flex-wrap items-center gap-3 mb-10">
         <button
+          aria-pressed={filter === "all"}
           onClick={() => setFilter("all")}
           className={`px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all select-none ${
             filter === "all"
@@ -87,9 +108,10 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
               : "bg-white text-slate-600 border border-slate-200 hover:border-slate-400 hover:text-slate-900"
           }`}
         >
-          All Projects ({projects.length})
+          All Projects ({projectList.length})
         </button>
         <button
+          aria-pressed={filter === "completed"}
           onClick={() => setFilter("completed")}
           className={`px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all select-none ${
             filter === "completed"
@@ -100,6 +122,7 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
           Completed ({completed.length})
         </button>
         <button
+          aria-pressed={filter === "ongoing"}
           onClick={() => setFilter("ongoing")}
           className={`px-5 py-2.5 rounded-full text-[13px] font-semibold transition-all select-none ${
             filter === "ongoing"
@@ -113,11 +136,12 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
 
       {/* Projects Grid in Brick&Bolt Card Style */}
       <div className="grid grid-cols-3 max-[1100px]:grid-cols-2 max-[640px]:grid-cols-1 gap-7 mb-14">
-        {displayedProjects.map((p, i) => {
+        {displayedProjects.map((p) => {
           const coverUrl = p.coverImage
-            ? urlForImage(p.coverImage)?.width(800).quality(85).auto("format").url()
+            ? imageUrl(p.coverImage,800)
             : "";
 
+          const detailPath = projectDetailPath(p.slug?.current, projects);
           const isCompleted = p.status === "completed";
 
           return (
@@ -125,13 +149,15 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
               key={p._id}
               onMouseEnter={() => preloadGallery(p)}
               onTouchStart={() => preloadGallery(p)}
-              onClick={() => setOpenGallery(getFullProjectGallery(p))}
               className="group cursor-pointer bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col"
             >
               {/* Normal Full-Width Thumbnail */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <button type="button" aria-label={"View photographs of "+p.title} onClick={() => setOpenGallery(getFullProjectGallery(p))} className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100">
                 {coverUrl ? (
-                  <img
+                  <Image
+                    width={800}
+                    height={500}
+                    sizes="(max-width:640px) 100vw, (max-width:1100px) 50vw, 33vw"
                     src={coverUrl}
                     alt={p.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -142,7 +168,7 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
                     No image
                   </div>
                 )}
-              </div>
+              </button>
 
               {/* Card Body */}
               <div className="p-5 flex flex-col flex-1 justify-between bg-white">
@@ -162,7 +188,7 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
 
                   {/* Client / Project Title */}
                   <h3 className="text-[18px] font-bold text-slate-900 mt-2.5 line-clamp-1 group-hover:text-brand transition-colors font-outfit">
-                    {p.title}
+                    {detailPath ? <Link href={detailPath} onClick={e => e.stopPropagation()} className="underline underline-offset-4">{p.title}</Link> : p.title}
                   </h3>
 
                   {/* Location with Pin */}
@@ -224,17 +250,17 @@ export default function ProjectFilters({ projects = [] }: { projects?: any[] }) 
       </div>
 
       {/* Full-screen Photo Gallery Modal on Click */}
-      <ProjectGallery
+      {openGallery && <ProjectGallery
         isOpen={!!openGallery}
-        onClose={() => setOpenGallery(null)}
+        onClose={closeGallery}
         images={
           openGallery
             ? (openGallery
-                .map((img) => urlForImage(img)?.width(1600).quality(80).auto("format").url())
+                .map((img) => imageUrl(img,1600))
                 .filter(Boolean) as string[])
             : []
         }
-      />
+      />}
     </>
   );
 }

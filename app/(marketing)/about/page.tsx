@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHead from "@/components/ui/SectionHead";
@@ -8,7 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import { site } from "@/config/site";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata = pageMetadata("About Structora India", "Meet Structora India Constructions, incorporated in 2021, with offices in Kumbakonam and Kovilpatti.", "/about");
 
 export default function AboutPage() {
   return (
@@ -49,9 +49,9 @@ export default function AboutPage() {
             <h3 className="text-3xl font-semibold mb-2">Vetri</h3>
             <p className="text-brand font-outfit text-sm uppercase tracking-[0.15em] mb-8">Founder & Managing Director</p>
             <div className="space-y-5 text-slate-500 leading-relaxed text-[17px]">
-              <p>With a Bachelor's degree in Civil Engineering and a lifelong fascination with large-scale infrastructure, Vetri built his foundation working for corporate construction giants like L&T ECC. There, he mastered advanced construction technologies, rigorous project management, and strict quality standards.</p>
-              <p>He founded Structora India Constructions with a clear vision: to bring that same level of large-scale corporate engineering excellence, transparency, and reliability into the residential and commercial market. His philosophy is that a home shouldn't just be built—it should be engineered to last, balancing cost with uncompromised durability.</p>
-              <p>For Vetri, the most rewarding part of the job isn't just solving complex engineering challenges—it's the moment of handover. It's hearing a client say they are proud of the home built together, delivered with exact precision and strictly within the planned budget.</p>
+              <p>With a Bachelor’s degree in Civil Engineering and a lifelong fascination with large-scale infrastructure, Vetri built his foundation working for corporate construction giants like L&T ECC. There, he mastered advanced construction technologies, rigorous project management, and strict quality standards.</p>
+              <p>He founded Structora India Constructions with a clear vision: to bring that same level of large-scale corporate engineering excellence, transparency, and reliability into the residential and commercial market. His philosophy is that a home shouldn’t just be built—it should be engineered to last, balancing cost with uncompromised durability.</p>
+              <p>For Vetri, the most rewarding part of the job isn’t just solving complex engineering challenges—it’s the moment of handover. It’s hearing a client say they are proud of the home built together.</p>
               <p>Outside of the construction site, Vetri is an avid cricket fan and dedicates his time to giving back to the community by supporting children who have lost parental support.</p>
             </div>
           </Reveal>

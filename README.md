@@ -1,47 +1,30 @@
-# Structora India Constructions — Website
+# Structora India website
 
-Next.js (App Router) + Tailwind + GSAP. Headless WordPress for content.
-Supabase reserved for the Phase 2 client portal. Deploy on Vercel.
+Next.js static export for Hostinger; Sanity manages projects and articles. The production domain is https://structoraindia.com.
 
-## Run locally
-```bash
-npm install
-cp .env.local.example .env.local   # fill in values (WordPress optional to start)
-npm run dev                         # http://localhost:3000
-```
-The site runs with no configuration. The Journal shows placeholder posts until
-you set WORDPRESS_API_URL; then it loads real posts automatically.
+## Local development and verification
 
-## Structure
-- `app/(marketing)/` — public site (Phase 1): home, services, projects, about, journal, contact
-- `app/(app)/` — protected client portal (Phase 2, scaffolded empty)
-- `components/` — ui, sections, marketing, tools (estimator, EMI, before/after, filters)
-- `lib/wordpress.ts` — content from headless WordPress
-- `lib/supabase/` — Phase 2 auth/data (stub)
-- `config/site.ts` — nav, services, sample estimator rates
-- `middleware.ts` — protects portal routes (inert until Phase 2)
+- Install locked dependencies with `npm ci`.
+- Use `npm run dev` for development.
+- Run `npm test`, `npm run lint`, and `npm run build`.
+- Run `node tests/static-export.smoke.mjs` after building.
+- Upload only the contents of `out/`, including hidden `.htaccess`. Never upload source, .env files, node_modules, or api-backup.
+- `next start` is not a static-export preview server. Preview `out/` using a static file server; Apache-specific behavior requires Hostinger testing.
 
-## Content (headless WordPress)
-The marketing team edits in WordPress. Point `WORDPRESS_API_URL` at
-`https://<cms-domain>/wp-json/wp/v2`. Add a webhook to POST
-`/api/revalidate?secret=...` on publish so pages refresh without a redeploy.
-Use an SEO plugin (Yoast or RankMath) so the team controls meta titles/descriptions.
+## Publishing content
 
-## What is real vs placeholder
-- Real & working: full design system, all pages, cost estimator, EMI calculator,
-  project filters, before/after slider, GSAP motion, SEO metadata, sitemap/robots,
-  contact form posting to `/api/enquiry`.
-- Placeholder (awaiting client): photography (art-directed plates), real numbers,
-  package prices, district rates (in `config/site.ts`), testimonials, addresses,
-  blog content.
+The project listing refreshes from Sanity in the browser. Newly published projects can appear with photographs, but their titles do not link until a detail page exists in the build. Deleted projects disappear from the refreshed list, but previously uploaded detail files remain until removed during a controlled deployment.
 
-## Deploy
-- Front end: Vercel. Point `structoraindia.com` at it.
-- WordPress: client's Hostinger, backend only, e.g. `cms.structoraindia.com`.
-- Phase 2: add Supabase, activate `middleware.ts`, build out `app/(app)/`.
+**Rebuild and upload after publishing, changing slugs, editing detail pages, or publishing articles.** Homepage content, article pages, project detail pages, metadata, and sitemap are build-time snapshots. A static export does not support ISR or the old revalidation API. Automated build/upload on publish is not configured.
 
-## To finish before launch
-1. Drop real district rates into `config/site.ts`.
-2. Wire `/api/enquiry` to email or WhatsApp.
-3. Connect WordPress and add project + service content types.
-4. Replace plates with real photography.
+## Forms
+
+Forms submit directly to the approved Formspree endpoint. No private API key is needed in the browser. Browser validation is not a security boundary; maintain spam filtering and restrictions in the client-owned Formspree account.
+
+The owner confirmed a previous QA enquiry reached both Formspree and email. Repeat one clearly labelled test from the deployed Hostinger domain to verify the migrated browser submission path.
+
+## Search indexing
+
+`PUBLIC_INDEXING_ENABLED=true` must be set **when building** a production upload. Otherwise pages are intentionally noindex. Environment changes in hPanel do not alter already generated HTML. Build preview copies with indexing disabled. Do not publish an indexable production artifact on a publicly accessible preview domain without host-level noindex controls.
+
+See [Hostinger QA handover](docs/hostinger-qa-2026-10-15.md) for known limits and launch checks.

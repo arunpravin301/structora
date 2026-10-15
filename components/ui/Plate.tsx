@@ -1,41 +1,5 @@
-"use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-export default function Plate({ cap, idx = "", className = "", src = "" }: { cap: string; idx?: string; className?: string; src?: string }) {
-  const el = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!el.current) return;
-    gsap.registerPlugin(ScrollTrigger);
-    
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(el.current, 
-        { clipPath: "inset(100% 0 0 0)" },
-        { 
-          clipPath: "inset(0% 0 0 0)", 
-          duration: 1.2, 
-          ease: "power3.inOut",
-          scrollTrigger: { trigger: el.current, start: "top 90%", once: true }
-        }
-      );
-    }, el);
-    
-    return () => ctx.revert();
-  }, []);
-
-  const imgUrl = src || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80";
-
-  return (
-    <div ref={el} className={`plate ${className} group`}>
-      <Image src={imgUrl} alt={cap} fill className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]" />
-      <div className="cap pointer-events-none z-10 relative">{cap}</div>
-      {idx && <div className="idx pointer-events-none z-10 relative">{idx}</div>}
-    </div>
-  );
+export default function Plate({cap,idx="",className="",src=""}:{cap:string;idx?:string;className?:string;src?:string}){
+ return <div className={`plate ${className}`}>{src?<Image src={src} alt={cap} fill sizes="(max-width:768px) 100vw, (max-width:1240px) 50vw, 620px" className="object-cover" />:<div className="absolute inset-0 flex items-center justify-center text-white">Photograph coming soon</div>}<div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent" /><div className="cap">{cap}</div>{idx&&<div className="idx">{idx}</div>}</div>;
 }
+

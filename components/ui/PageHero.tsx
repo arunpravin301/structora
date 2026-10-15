@@ -21,7 +21,7 @@ export default function PageHero({ title, intro }: PageHeroProps) {
           {/* Direct, confident editorial heading - no pill or eyebrow */}
           <h1 
             className="font-outfit font-bold text-white text-[clamp(36px,5vw,64px)] leading-[1.12] tracking-tight"
-            style={{ textWrap: "balance" as any }}
+            style={{ textWrap: "balance" }}
           >
             {title}
           </h1>

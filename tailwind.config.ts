@@ -11,7 +11,7 @@ const config: Config = {
         line: "#E6E4DD",
         lined: "#2B2D31",
         slate: {
-          DEFAULT: "#73757A",
+          DEFAULT: "#595C62",
           900: "#151618",
           800: "#222428"
         },

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { pageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import SectionHead from "@/components/ui/SectionHead";
 import PageHero from "@/components/ui/PageHero";
@@ -12,12 +14,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const s = site.services.find((x) => x.slug === resolvedParams.slug);
-  return { title: s ? s.name : "Service" };
+  return pageMetadata(s?.name || "Service", s?.desc || "Structora India construction services.", "/services/" + resolvedParams.slug);
 }
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const s = site.services.find((x) => x.slug === resolvedParams.slug) ?? site.services[0];
+  const s = site.services.find((x) => x.slug === resolvedParams.slug);
+  if (!s) notFound();
   return (
     <>
       <PageHero

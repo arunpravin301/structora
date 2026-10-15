@@ -27,13 +27,13 @@ export default function Footer() {
             {site.contact.addresses.map((o) => <span key={o.name} className="block py-1.5">{o.name}</span>)}
           </div>
           <div><h4 className="text-white text-xs font-medium tracking-[.1em] uppercase mb-4 font-inter">Connect</h4>
-            <a className="block py-1.5 hover:text-white" href={`tel:${site.contact.phones[0].replace(/\s/g, "")}`}>{site.contact.phones[0]}</a>
+            <a className="block py-1.5 hover:text-white" href={`tel:+91${site.contact.phones[0].replace(/\D/g, "").slice(-10)}`}>{site.contact.phones[0]}</a>
             <a className="block py-1.5 hover:text-white" href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a>
             <a className="block py-1.5 hover:text-white" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
           </div>
         </div>
-        <div className="flex justify-between flex-wrap gap-2.5 pt-6 text-xs text-[#3F4F66]">
-          <span>© 2026 Structora India Constructions Pvt Ltd · CIN {site.cin}</span><span>Website by Zentu Media</span>
+        <div className="flex justify-between flex-wrap gap-2.5 pt-6 text-xs text-slatel">
+          <span>© 2026 Structora India Constructions Pvt Ltd · CIN {site.cin}</span><Link href="/privacy" className="underline">Privacy notice</Link><span>Website by Zentu Media</span>
         </div>
       </Container>
     </footer>

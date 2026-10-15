@@ -1,8 +1,11 @@
-'use client'
+export function generateStaticParams() {
+  return [{ index: [] }]
+}
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../sanity.config'
+export const dynamic = 'force-static'
+
+import { Studio } from './Studio'
 
 export default function AdminPage() {
-  return <NextStudio config={config} />
+  return <Studio />
 }

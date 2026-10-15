@@ -1,0 +1,61 @@
+# Structora India - Hostinger Apache / LiteSpeed Configuration
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Canonical HTTPS & non-www enforcement
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.structoraindia\.com$ [NC]
+  RewriteRule ^(.*)$ https://structoraindia.com/$1 [L,R=301]
+
+  # 2. Redirect legacy /journal routes to /blogs
+  RewriteRule ^journal/?$ /blogs/ [R=301,L]
+  RewriteRule ^journal/(.*)$ /blogs/$1/ [R=301,L]
+
+  # 3. Sanity Studio SPA Routing Fallback
+  # Direct deep links inside /studio/* fallback to /studio/index.html
+  RewriteCond %{REQUEST_URI} ^/studio/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^studio/.*$ /studio/index.html [L]
+
+  # 4. Explicit 404 for disabled internal portal routes
+  RewriteRule ^(admin|dashboard|login)(/.*)?$ /404.html [L]
+
+  # 5. Clean URLs & trailing slash handling
+  # If requested directory exists with index.html, serve it
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*)$ $1/index.html [L]
+
+  # If not a file and not a directory, try matching as folder with index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)$ /$1/index.html [L]
+
+  # Custom 404 page
+  ErrorDocument 404 /404.html
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Caching for static assets (CSS, JS, Fonts, Images)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 1 hour"
+</IfModule>

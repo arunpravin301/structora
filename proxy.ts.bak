@@ -1,0 +1,9 @@
+import {NextResponse} from "next/server";
+import type {NextRequest} from "next/server";
+export function proxy(req:NextRequest){
+ const response=NextResponse.next();
+ if(req.nextUrl.hostname!=="structoraindia.com" || process.env.PUBLIC_INDEXING_ENABLED!=="true")response.headers.set("X-Robots-Tag","noindex, nofollow");
+ return response;
+}
+export const config={matcher:["/((?!_next/static|_next/image|favicon.ico).*)"]};
+

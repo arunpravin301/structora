@@ -41,10 +41,5 @@ export const site = {
     { slug: "renovation", num: "03", name: "Renovation", desc: "Considered restoration and reworking of existing structures.", image: "/projects/priyanka_thumbnail2.png" },
     { slug: "multi-floor", num: "04", name: "Multi-storey Building", desc: "Vertical builds engineered for strength and future growth.", image: "/projects/2_balaji_residence_completed_cover.webp" }
   ],
-  // Real rates from client form (Jul 2026). Kumbakonam 2400, Kovilpatti 2200 per sqft.
-  estimatorRates: { Kumbakonam: 2400, Kovilpatti: 2200 } as Record<string, number>,
-  // Real package prices: Basic 2400, Standard 2700, Premium 3000 -> multipliers on base
-  packageMultiplier: { Basic: 1.0, Standard: 1.125, Premium: 1.25 } as Record<string, number>,
-  packagePrices: { Basic: 2400, Standard: 2700, Premium: 3000 } as Record<string, number>,
   materials: ["JSW Steel", "TATA Steel", "UltraTech 53", "Dalmia Cement", "Kajaria Tiles", "Finolex", "First-class teak"]
 };

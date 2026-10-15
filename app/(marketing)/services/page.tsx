@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHead from "@/components/ui/SectionHead";
@@ -7,7 +7,7 @@ import Reveal from "@/components/ui/Reveal";
 import ServiceIndex from "@/components/sections/ServiceIndex";
 import Testimonials from "@/components/sections/Testimonials";
 
-export const metadata: Metadata = { title: "Services" };
+export const metadata = pageMetadata("Construction services in Tamil Nadu", "Residential, commercial, renovation and multi-storey construction services from Structora India.", "/services");
 
 export default function ServicesPage() {
   return (

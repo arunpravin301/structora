@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import PageHero from "@/components/ui/PageHero";
 import ProjectFilters from "@/components/tools/ProjectFilters";
-import { client } from "@/sanity/lib/client";
-import { projectsQuery } from "@/sanity/lib/queries";
+import {getProjects} from "@/lib/content";
 
-export const metadata: Metadata = { title: "Selected Work" };
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
+export const metadata = pageMetadata("Construction projects in Tamil Nadu", "Explore Structora India's completed and ongoing construction projects across Tamil Nadu.", "/projects");
+
 
 export default async function ProjectsPage() {
-  const projects = await client.fetch(projectsQuery, {}, { cache: "no-store" });
+  const projects = await getProjects();
   return (
     <>
       <PageHero
@@ -23,7 +22,7 @@ export default async function ProjectsPage() {
             </em>
           </>
         }
-        intro="A curated showcase of completed residential and commercial builds across Tamil Nadu. Filter by district or project category."
+        intro="A curated showcase of completed residential and commercial builds across Tamil Nadu. Filter by construction status."
       />
       <section className="py-[118px]"><Container><ProjectFilters projects={projects} /></Container></section>
     </>
