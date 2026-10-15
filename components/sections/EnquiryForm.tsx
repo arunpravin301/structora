@@ -16,7 +16,7 @@ export default function EnquiryForm({source="contact",initialMessage=""}:{source
  {([["name","Your name","text"],["phone","Phone number","tel"],["email","Email (optional)","email"]] as const).map(([name,label,type])=><div key={name}><label htmlFor={id+name} className="block text-sm mb-2">{label}</label><input id={id+name} name={name} type={type} required={name!=="email"} minLength={name==="name"?2:undefined} maxLength={name==="name"?100:name==="phone"?22:254} autoComplete={name==="phone"?"tel":name} className="field" /></div>)}
  <div><label htmlFor={id+"type"} className="block text-sm mb-2">What are you building?</label><select id={id+"type"} name="type" className="field">{["Residential","Commercial","Multi-storey Building","Renovation"].map(t=><option key={t}>{t}</option>)}</select></div>
  <div><label htmlFor={id+"message"} className="block text-sm mb-2">Location and project details</label><textarea id={id+"message"} name="message" defaultValue={initialMessage} maxLength={2000} rows={5} className="field" /></div>
- <div hidden><label>Leave blank<input name="_gotcha" tabIndex={-1} autoComplete="off" /></label></div>
+ <div hidden><label>Leave blank<input name="botcheck" tabIndex={-1} autoComplete="off" /></label></div>
  <label className="flex items-start gap-3 text-sm"><input type="checkbox" name="consent" required className="mt-1" /><span>I agree to be contacted about this enquiry. See our <Link href="/privacy" className="underline">privacy notice</Link>.</span></label>
  {error&&<p role="alert" className="text-red-800">{error}</p>}
  <button disabled={busy} className="btn btn-cta w-full">{busy?"Sending…":"Send enquiry"}</button>
