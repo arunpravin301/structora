@@ -19,8 +19,8 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^studio/.*$ /studio/index.html [L]
 
-  # 4. Explicit 404 for disabled internal portal routes
-  RewriteRule ^(admin|dashboard|login)(/.*)?$ /404.html [L]
+  # 4. Explicit HTTP 404 status for disabled internal portal routes
+  RewriteRule ^(admin|dashboard|login)(/.*)?$ - [R=404,L]
 
   # 5. Clean URLs & trailing slash handling
   # If requested directory exists with index.html, serve it

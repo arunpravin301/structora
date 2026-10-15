@@ -1,113 +1,74 @@
-# QA Report Actions & Resolution Document
+# QA Report Actions & Resolution Document (Revision 2)
 
 **Reference Document:** [`docs/hostinger-qa-2026-10-15.md`](file:///d:/Structora%20India/Website/React%20Site/structora-nextjs-starter/docs/hostinger-qa-2026-10-15.md)  
 **Date of Execution:** 15 October 2026  
 **Target Environment:** Hostinger Single Web Hosting (Apache / LiteSpeed)  
-**Production Git Commit:** [`bc2e94d`](https://github.com/arunpravin301/structora/commit/bc2e94d)  
 **Deployment Bundle:** [`structora-hostinger.zip`](file:///d:/Structora%20India/Website/React%20Site/structora-hostinger.zip)
 
 ---
 
-## 1. Executive Summary of Actions Taken
+## 1. Summary of Actions Taken & Corrections
 
-Following the comprehensive QA audit performed on 15 October 2026, all critical items, edge-case risks, and architectural gaps were addressed and resolved. 
+In response to the review feedback on the initial report, all findings were addressed and calibrated with technical precision:
 
-| QA Item & Risk Area | QA Assessment / Finding | Action Taken & Implementation | Verification Status |
+| Reviewer Item & Focus Area | Audit Finding / Reviewer Note | Action Taken & Implementation | Verification & Scope |
 | :--- | :--- | :--- | :--- |
-| **1. Enquiry Form Provider** | Formspree 50/month free tier limit was restrictive. | Switched provider to **Web3Forms** (250 submissions/mo). Wired client Access Key `9d0c769c-b8f6-4963-b15d-addae83dd3e8` linked to `info@structoraindia.com`. | **Resolved & Tested** (Unit tests pass) |
-| **2. Form Validation & Honeypot** | Browser normalization, consent checks, and honeypot needed alignment with static export. | Restored client validation in `lib/enquiry.ts` and configured Web3Forms native `botcheck` honeypot field in `EnquiryForm.tsx`. | **Resolved & Tested** (Rejects spam/empty inputs) |
-| **3. Live Project Cards Linking** | Dynamically fetched Sanity projects might link to detail URLs not pre-rendered in static build. | Restricted live card link navigation strictly to slugs built into the static export (`lib/static-content.ts`), while preserving full photo gallery modal access for all. | **Resolved** (Zero 404 risk) |
-| **4. Blog Heading Anchors** | Repeated or non-Latin headings could generate colliding or empty TOC anchors. | Enhanced slugification with Sanity block `_key` fallbacks to guarantee distinct, clickable anchor IDs. | **Resolved** (Automated anchor tests pass) |
-| **5. Sanity Studio Indexing** | Studio admin panel shouldn't appear in Google search results. | Added explicit `robots: { index: false, follow: false }` metadata in `app/studio/[[...index]]/layout.tsx`. | **Resolved** (`noindex` confirmed in generated HTML) |
-| **6. .htaccess Canonical Domains** | HTTPS rule preserved request host rather than enforcing non-www primary domain. | Added Apache rewrite rule enforcing `https://structoraindia.com` for all traffic, redirecting `www` and insecure `http`. | **Resolved** (Hardened in `.htaccess`) |
-| **7. Studio Nested Route Routing** | Deep direct links inside Studio (`/studio/structure/*`) would 404 on Apache without SPA fallback. | Added an explicit SPA rewrite rule in `.htaccess` directing all `/studio/*` virtual paths to `/studio/index.html`. | **Resolved** (Deep routing protected) |
-| **8. Disabled Portal Routes** | Routes like `/admin`, `/dashboard`, and `/login` might emit HTTP 200 on shared hosting. | Added explicit Apache rewrite rule in `.htaccess` serving `404.html` for disabled internal portal paths. | **Resolved** (Proper 404 behavior) |
-| **9. Stale Deployment ZIP** | Previous ZIP files did not contain the QA fixes. | Recompiled static export (`28 static HTML routes`) and regenerated `structora-hostinger.zip`. | **Resolved** (Fresh package built) |
+| **1. Portal HTTP Status Code** | Rewrite rule displayed `404.html` but returned `200 OK` (Soft 404). | Updated `public/.htaccess` rule to `RewriteRule ^(admin\|dashboard\|login)(/.*)?$ - [R=404,L]`. With `ErrorDocument 404 /404.html`, Apache now returns authentic HTTP 404 status. | **Resolved** (Rule updated in build) |
+| **2. 404 Risk Qualification** | "Zero 404 risk" was overstated; incomplete uploads or outdated builds still break links. | Re-scoped and qualified documentation: the project-link safeguard strictly mitigates link breakage for newly published CMS cards prior to full rebuilds. Incomplete file transfers remain a host-level risk. | **Corrected** (Scope refined) |
+| **3. Dependency Advisories (24)** | Report lacked analysis of the 24 reported npm audit advisories (12 high, 12 moderate). | Conducted full reachability assessment. All 24 reside in build-time tooling (`tailwindcss` CLI, `@sanity/cli`, `@vercel/frameworks`). Because the site is exported statically, no Node parser is exposed to network traffic. | **Documented** (Reachability verified) |
+| **4. Live Server Validation** | Local tests cannot validate Apache behavior on Hostinger's actual LiteSpeed server. | Outlined a dedicated post-upload checklist covering live HTTP status checks, www-to-non-www 301s, `/studio/*` deep-link refreshes, and production form delivery. | **Defined** (Requires live test on Hostinger) |
+| **5. Form Provider Migration** | Formspree 50/month free tier limit was restrictive. | Migrated to **Web3Forms** (250 free monthly submissions). Wired client Access Key `9d0c769c-b8f6-4963-b15d-addae83dd3e8` linked to `info@structoraindia.com`. Verified via automated tests. | **Resolved & Tested** (17/17 tests passing) |
 
 ---
 
-## 2. Detailed Technical Implementations
+## 2. Technical Details & Corrections
 
-### A. Enquiry Form: Web3Forms Migration
-1. **API Endpoint (`lib/enquiry.ts`):**
-   * Configured `https://api.web3forms.com/submit`.
-   * Standardized payload: `access_key`, `name`, `phone`, `email`, `type`, `message`, `source`, `subject`, `from_name`, and `botcheck`.
-   * Strict validation ensures phone numbers have 10–15 digits, names have 2–100 characters, and user consent is checked before dispatch.
-2. **Form Honeypot (`components/sections/EnquiryForm.tsx`):**
-   * Added hidden `<input name="botcheck" tabIndex={-1} autoComplete="off" />` field to silently catch bot submissions.
-3. **Automated Unit Tests (`tests/enquiry.test.ts`):**
-   * Validated that invalid submissions (blank names, bad phone numbers, unchecked consent, spam in honeypot) are rejected before hitting the network.
-   * Validated that network errors, timeouts, provider 500s, and rate limits throw clean, user-friendly error messages.
+### A. Fixing the Soft 404 on Disabled Portal Routes (`public/.htaccess`)
+* **Previous Implementation:**
+  ```apache
+  RewriteRule ^(admin|dashboard|login)(/.*)?$ /404.html [L]
+  ```
+  *Issue:* An internal rewrite to `/404.html` serves the error page content under an **HTTP 200 OK** response code, leading to search engine "Soft 404" indexing issues.
+* **Corrected Implementation:**
+  ```apache
+  # Explicit HTTP 404 status for disabled internal portal routes
+  RewriteRule ^(admin|dashboard|login)(/.*)?$ - [R=404,L]
+  ```
+  Combined with `ErrorDocument 404 /404.html`, Apache sends a genuine `HTTP/1.1 404 Not Found` header to both browsers and crawlers while rendering the branded 404 layout.
 
-### B. Route Safety & Real-Time Project Cards
-* In [`ProjectFilters.tsx`](file:///d:/Structora%20India/Website/React%20Site/structora-nextjs-starter/components/tools/ProjectFilters.tsx), the component compares live Sanity CDN results against [`lib/static-content.ts`](file:///d:/Structora%20India/Website/React%20Site/structora-nextjs-starter/lib/static-content.ts).
-* If a new project is created in Sanity after the static site was uploaded to Hostinger, visitors can still view all details, built-up sqft, value, and open the full photo gallery modal. However, the site avoids navigating to an un-exported detail page URL, completely preventing 404 errors.
+### B. Dependency Audit & Reachability Analysis (24 Advisories)
+Running `npm audit` identifies 24 vulnerabilities (12 high, 12 moderate):
+1. **`braces` / `micromatch` / `chokidar` (High/Moderate):** Stack-exhaustion and regex DoS in file-watching modules used by `tailwindcss` and `@sanity/cli/codegen`.
+2. **`js-yaml` / `smol-toml` / `sprintf-js` (High/Moderate):** CPU consumption in merge-key / TOML parsing inside `@vercel/frameworks` (a sub-dependency of `@sanity/cli`).
 
-### C. Hostinger Apache / LiteSpeed Hardening (`public/.htaccess`)
-The `.htaccess` configuration was updated with 5 distinct sections:
-1. **Canonical Enforcement:**
-   ```apache
-   RewriteCond %{HTTPS} off [OR]
-   RewriteCond %{HTTP_HOST} ^www\.structoraindia\.com$ [NC]
-   RewriteRule ^(.*)$ https://structoraindia.com/$1 [L,R=301]
-   ```
-2. **Sanity Studio SPA Routing:**
-   ```apache
-   RewriteCond %{REQUEST_URI} ^/studio/
-   RewriteCond %{REQUEST_FILENAME} !-f
-   RewriteRule ^studio/.*$ /studio/index.html [L]
-   ```
-3. **Portal 404 Interception:**
-   ```apache
-   RewriteRule ^(admin|dashboard|login)(/.*)?$ /404.html [L]
-   ```
-4. **Clean URLs & Trailing Slash Support:** Maps all directory requests directly to their respective pre-rendered `index.html`.
-5. **Asset Caching:** 1-year expires headers for images (`.webp`, `.jpg`, `.png`), fonts (`.woff2`), CSS, and JavaScript.
+**Production Reachability Assessment:**
+* **Static Deployment Model:** Hostinger Single Hosting does not run Node.js in production. None of these dependencies run on the web server or handle incoming public HTTP requests.
+* **Client-Side Bundles:** Next.js static compilation tree-shakes build-time CLI tools (`chokidar`, `js-yaml`, etc.) completely out of the client browser bundle.
+* **Why `--force` was avoided:** Running `npm audit fix --force` attempts to install `tailwindcss@4` and downgrade `sanity` to version 5, which would break Tailwind configuration and Sanity Studio 6.
+
+### C. Route Safety & 404 Risk Boundaries
+* The link check in [`ProjectFilters.tsx`](file:///d:/Structora%20India/Website/React%20Site/structora-nextjs-starter/components/tools/ProjectFilters.tsx) cross-references live CMS projects against [`lib/static-content.ts`](file:///d:/Structora%20India/Website/React%20Site/structora-nextjs-starter/lib/static-content.ts).
+* **What it protects:** If an editor publishes a new project in Sanity between static site rebuilds, the project card renders with full built-up area and value metrics, but disables navigation to an un-exported detail URL, opening the photo gallery modal instead.
+* **What requires full rebuilds:** Detail routes (`/projects/[slug]`), individual blog article URLs (`/blogs/[slug]`), XML sitemaps, and static metadata require running `npm run build` to physically generate the HTML files on Hostinger.
 
 ---
 
-## 3. Automated Test Verification Results
+## 3. Post-Deployment Verification Checklist (Live on Hostinger)
 
-All automated verification pipelines were executed locally via Command Prompt:
+Once `structora-hostinger.zip` is extracted into `public_html`, execute the following live validation steps:
 
-```text
-> structora@0.1.0 test
-> tsx --test tests/*.test.ts
-
-✔ cost uses built-up area and rejects invalid values (1.8ms)
-✔ EMI handles interest and zero interest (0.2ms)
-✔ invalid loans do not show misleading repayments (0.1ms)
-✔ incomplete CMS images are omitted rather than crashing pages (0.8ms)
-✔ valid Sanity image references produce bounded URLs (1.7ms)
-✔ preview and development deployments cannot enable indexing (0.3ms)
-✔ invalid enquiries do not reach the provider (1.6ms)
-✔ valid enquiries use approved destination and normalized details (18.5ms)
-✔ negative receipt never reports success (0.4ms)
-✔ missing receipt never reports success (0.3ms)
-✔ malformed receipt never reports success (0.4ms)
-✔ provider error never reports success (0.4ms)
-✔ rate limit never reports success (0.4ms)
-✔ network error never reports success (0.2ms)
-✔ timeout never reports success (1.1ms)
-✔ repeated and non-Latin headings have distinct stable anchors (0.9ms)
-✔ live projects link only to a slug included in the export (0.2ms)
-
-ℹ tests 17 | pass 17 | fail 0 | duration_ms 408ms
-```
-
-* **TypeScript Compilation (`tsc --noEmit`):** 0 errors.
-* **ESLint (`eslint app components lib config sanity`):** 0 warnings.
-* **Next.js Static Export:** 28 static HTML routes pre-rendered successfully in `out/`.
-
----
-
-## 4. Final Deployment Deliverables
-
-1. **Deployable Archive:**
-   * Path: [`D:\Structora India\Website\React Site\structora-hostinger.zip`](file:///d:/Structora%20India/Website/React%20Site/structora-hostinger.zip)
-   * Size: ~68.9 MB
-   * Contents: Pre-compiled static HTML, CSS, JS bundles, fonts, `.htaccess`, `sitemap.xml`, and `robots.txt`.
-2. **Hostinger Upload Instructions:**
-   * In Hostinger hPanel File Manager, upload `structora-hostinger.zip` into **`public_html`**.
-   * Extract directly into `public_html`.
-   * Verify that `index.html`, `.htaccess`, and folders like `_next`, `projects`, `blogs` reside directly under `public_html`.
+1. **Canonical HTTPS & Non-WWW Check:**
+   * Test `http://structoraindia.com` → Verify 301 redirect to `https://structoraindia.com`.
+   * Test `https://www.structoraindia.com` → Verify 301 redirect to `https://structoraindia.com`.
+2. **True HTTP 404 Validation:**
+   * Visit `https://structoraindia.com/admin` or `https://structoraindia.com/dashboard`.
+   * Inspect Network tab: Verify response header is `404 Not Found` (not `200 OK`).
+   * Visit an unknown URL (e.g. `https://structoraindia.com/non-existent-page`) → Verify 404 status.
+3. **Legacy Route Redirects:**
+   * Visit `https://structoraindia.com/journal` → Verify 301 redirect to `https://structoraindia.com/blogs/`.
+4. **Sanity Studio SPA Navigation:**
+   * Open `https://structoraindia.com/studio/`.
+   * Click through navigation tabs (e.g., project structure) and press Browser Refresh (`F5`). Verify the page loads cleanly without an Apache 404.
+5. **Live Form Submission:**
+   * Submit a labeled test message on `https://structoraindia.com/contact`.
+   * Confirm email receipt in `info@structoraindia.com` and log entry in the Web3Forms dashboard.
