@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 border-t-2 border-brand text-slatel pt-20 pb-7 text-sm">
       <Container>
-        <div className="grid grid-cols-[1.5fr_1.2fr_1.1fr] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-10 pb-11 border-b border-lined">
+        <div className="grid grid-cols-[1.5fr_1fr_1.2fr] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-10 pb-11 border-b border-lined">
           {/* Brand Column */}
           <div>
             <div className="mb-6">
@@ -25,12 +25,12 @@ export default function Footer() {
           </div>
 
           {/* Navigate Column (2 Columns) */}
-          <div>
-            <h4 className="text-white text-xs font-semibold tracking-[.12em] uppercase mb-5 font-inter flex items-center gap-2">
+          <div className="max-w-[250px]">
+            <h4 className="text-white text-xs font-semibold tracking-[.12em] uppercase pb-2.5 mb-4 border-b border-white/10 font-inter flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand" />
               Navigate
             </h4>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-2.5">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
               {site.nav.map((n) => (
                 <Link
                   key={n.href}
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Connect Column (with Office Locations & Icons) */}
           <div>
-            <h4 className="text-white text-xs font-semibold tracking-[.12em] uppercase mb-5 font-inter flex items-center gap-2">
+            <h4 className="text-white text-xs font-semibold tracking-[.12em] uppercase pb-2.5 mb-4 border-b border-white/10 font-inter flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-brand" />
               Connect
             </h4>
