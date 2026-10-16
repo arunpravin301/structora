@@ -17,16 +17,17 @@ export const getBlogs=cache(async ():Promise<Blog[]>=>{
   }catch{
     remote=[];
   }
-  const seen=new Set(local.map(b=>b.slug?.current));
-  return [...local,...(remote||[]).filter(b=>b.slug?.current && !seen.has(b.slug.current))];
+  const validRemote=(remote||[]).filter(b=>b.slug?.current);
+  const seen=new Set(validRemote.map(b=>b.slug.current));
+  return [...validRemote,...local.filter(b=>b.slug?.current && !seen.has(b.slug.current))];
 });
 export const getBlog=cache(async (slug:string):Promise<Blog|null>=>{
-  const local=getLocalBlogs().find(b=>b.slug?.current===slug);
-  if(local)return local;
   try{
-    return await client.fetch<Blog|null>(blogBySlugQuery,{slug},{next:{revalidate:60},signal:AbortSignal.timeout(8000)});
+    const remote=await client.fetch<Blog|null>(blogBySlugQuery,{slug},{next:{revalidate:60},signal:AbortSignal.timeout(8000)});
+    if(remote)return remote;
   }catch{
-    return null;
+    // fallback to local
   }
+  return getLocalBlogs().find(b=>b.slug?.current===slug)||null;
 });
 
