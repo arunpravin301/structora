@@ -4,8 +4,8 @@ slug: "how-to-compare-construction-quotes"
 category: "Cost & Budgeting"
 readTime: "8 min read"
 publishedAt: "2026-10-16"
-seoTitle: "How to Compare House Construction Quotes in Tamil Nadu (10 Engineer Questions)"
-seoDescription: "Comparing two house construction quotes? Learn how civil engineers spot hidden area inflation, low material allowances, steel/cement grade swaps, and missing exclusions."
+seoTitle: "How to Compare Construction Quotes in Tamil Nadu"
+seoDescription: "Comparing two construction quotes? Learn how civil engineers spot hidden area inflation, low tile allowances, steel grade swaps, and exclusions."
 showToc: true
 ---
 

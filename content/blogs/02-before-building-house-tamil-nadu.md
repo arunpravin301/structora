@@ -4,8 +4,8 @@ slug: "before-building-house-tamil-nadu-checklist"
 category: "Planning & Approvals"
 readTime: "8 min read"
 publishedAt: "2026-10-16"
-seoTitle: "Checklist Before Building a House in Tamil Nadu (Approvals, Soil & Budget)"
-seoDescription: "Building a house in Tamil Nadu? Follow our engineer's pre-construction checklist covering Patta/FMB verification, DTCP self-certification approvals, soil testing, and turnkey contracts."
+seoTitle: "Checklist Before Building a House in Tamil Nadu (2026)"
+seoDescription: "Building a home in Tamil Nadu? Follow our engineer's checklist for Patta/FMB records, DTCP self-certification, soil testing, and turnkey contracts."
 showToc: true
 ---
 

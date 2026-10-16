@@ -4,8 +4,8 @@ slug: "house-construction-cost-kumbakonam"
 category: "Cost & Budgeting"
 readTime: "7 min read"
 publishedAt: "2026-10-16"
-seoTitle: "House Construction Cost in Kumbakonam (2026 Per Sq Ft Rates & Budget Guide)"
-seoDescription: "Planning to build a home in Kumbakonam? See 2026 per sq ft construction rates (₹2,349–₹3,199/sq ft), a real 1,200 sq ft budget breakdown, and site costs outside the base package."
+seoTitle: "House Construction Cost in Kumbakonam (2026 Rate Guide)"
+seoDescription: "Planning to build in Kumbakonam? See 2026 per sq ft rates (₹2,349–₹3,199), a 1,200 sq ft budget breakdown, material allowances, and exclusions."
 showToc: true
 ---
 
