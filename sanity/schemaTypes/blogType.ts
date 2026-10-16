@@ -1,4 +1,5 @@
 import { defineField, defineType, defineArrayMember } from 'sanity'
+import { SeoTitleInput, SeoDescriptionInput } from '../components/SeoCounterInput'
 
 export const blogType = defineType({
   name: 'blog',
@@ -97,6 +98,9 @@ export const blogType = defineType({
       title: 'SEO Title (Meta Title)',
       type: 'string',
       group: 'seo',
+      components: {
+        input: SeoTitleInput,
+      },
       validation: (Rule) => Rule.max(60).warning('Optimal SEO titles are under 60 characters.'),
     }),
     defineField({
@@ -104,6 +108,9 @@ export const blogType = defineType({
       title: 'SEO Description (Meta Description)',
       type: 'text',
       group: 'seo',
+      components: {
+        input: SeoDescriptionInput,
+      },
       validation: (Rule) => Rule.max(160).warning('Optimal descriptions are under 160 characters.'),
     }),
     defineField({
