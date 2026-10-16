@@ -231,6 +231,7 @@ function parseMarkdownBlog(raw: string, filename: string): Blog | null {
     title,
     slug: { current: slug },
     publishedAt,
+    coverImage: meta.coverImage || `/blogs/${slug}.jpg`,
     category: meta.category || "Construction Guide",
     readTime: meta.readTime || "7 min read",
     showToc: meta.showToc !== "false",

@@ -73,7 +73,12 @@ export default async function Article({ params }: Props) {
     (b) => b.slug?.current && b.slug.current !== slug
   );
 
-  const cover = imageUrl(p.mainImage) || siteUrl + "/projects/2_balaji_residence_completed_final.webp";
+  const heroThumb = p.coverImage || imageUrl(p.mainImage);
+  const cover = heroThumb
+    ? heroThumb.startsWith("http")
+      ? heroThumb
+      : siteUrl + heroThumb
+    : siteUrl + "/projects/2_balaji_residence_completed_final.webp";
   const headings = extractHeadings(p.body || []);
   const readTime = calculateReadTime(p.body || [], p.readTime);
   const showToc = p.showToc !== false && headings.length >= 2;
@@ -150,6 +155,20 @@ export default async function Article({ params }: Props) {
             <span>·</span>
             <span>{readTime}</span>
           </div>
+
+          {/* Featured Cover Thumbnail */}
+          {heroThumb && (
+            <figure className="my-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-900 shadow-md">
+              <Image
+                src={heroThumb}
+                alt={p.title}
+                width={1200}
+                height={675}
+                priority
+                className="w-full h-auto object-cover aspect-[16/9]"
+              />
+            </figure>
+          )}
 
           {/* Table of Contents */}
           {showToc && (
