@@ -66,10 +66,14 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function Article({ params }: Props) {
   const { slug } = await params;
-  const p = await getBlog(slug);
+  const [p, allBlogs] = await Promise.all([getBlog(slug), getBlogs()]);
   if (!p) notFound();
 
-  const cover = imageUrl(p.mainImage);
+  const relatedBlogs = allBlogs.filter(
+    (b) => b.slug?.current && b.slug.current !== slug
+  );
+
+  const cover = imageUrl(p.mainImage) || siteUrl + "/projects/2_balaji_residence_completed_final.webp";
   const headings = extractHeadings(p.body || []);
   const readTime = calculateReadTime(p.body || [], p.readTime);
   const showToc = p.showToc !== false && headings.length >= 2;
@@ -81,10 +85,11 @@ export default async function Article({ params }: Props) {
       headline: p.title,
       description: p.seoDescription,
       datePublished: p.publishedAt,
-      dateModified: p._updatedAt,
+      dateModified: p._updatedAt || p.publishedAt,
       mainEntityOfPage: siteUrl + "/blogs/" + slug,
+      author: { "@id": siteUrl + "/#organization" },
       publisher: { "@id": siteUrl + "/#organization" },
-      ...(cover ? { image: cover } : {}),
+      image: cover,
     },
   ];
 
@@ -279,13 +284,13 @@ export default async function Article({ params }: Props) {
           {/* Internal CTA Card */}
           <div className="mt-14 p-8 bg-slate-900 text-white rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h3 className="text-xl font-bold font-outfit mb-2">Planning to build in Tamil Nadu?</h3>
+              <h3 className="text-xl font-bold font-outfit mb-2 text-white">Planning to build in Tamil Nadu?</h3>
               <p className="text-slate-300 text-sm max-w-md">
                 Meet our engineers in Kumbakonam or Kovilpatti, or estimate your build budget in seconds.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/pricing#estimator" className="btn bg-white text-slate-900 text-xs px-5 py-2.5">
+              <Link href="/pricing#estimator" className="btn bg-brand text-white text-xs px-5 py-2.5">
                 Calculate Cost →
               </Link>
               <Link href="/contact" className="btn border-white/60 text-white text-xs px-5 py-2.5">
@@ -293,6 +298,38 @@ export default async function Article({ params }: Props) {
               </Link>
             </div>
           </div>
+
+          {/* Related Guides for SEO Internal Linking */}
+          {relatedBlogs.length > 0 && (
+            <section className="mt-14 pt-10 border-t border-line">
+              <h2 className="text-xl font-bold text-slate-900 mb-6 font-outfit">
+                More Construction Guides from Our Engineers
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {relatedBlogs.slice(0, 2).map((rb) => (
+                  <Link
+                    key={rb._id}
+                    href={"/blogs/" + rb.slug.current}
+                    className="group block border border-slate-200 rounded-xl p-6 bg-white hover:border-brand transition-colors no-underline"
+                  >
+                    {rb.category && (
+                      <div className="text-[11px] uppercase tracking-wider text-brand font-semibold mb-2">
+                        {rb.category}
+                      </div>
+                    )}
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand transition-colors mb-2">
+                      {rb.title}
+                    </h3>
+                    {rb.seoDescription && (
+                      <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                        {rb.seoDescription}
+                      </p>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </article>
       </Container>
 
