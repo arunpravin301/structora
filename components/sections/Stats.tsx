@@ -8,9 +8,9 @@ import Container from "@/components/ui/Container";
 // NOTE: client claims 17 years experience but company CIN shows 2021 incorporation.
 // Using verifiable framing until resolved: sqft, projects, offices, since-2021.
 const DATA = [
-  { n: 22, s: "k+", l: "Sq ft built and building" },
-  { n: 6, s: "", l: "Projects across Tamil Nadu" },
-  { n: 300, s: "+", l: "Quality checklist per project" },
+  { n: 100, s: "K+", l: "Sq ft designed & built" },
+  { n: 30, s: "+", l: "Construction specialists & engineers" },
+  { n: 200, s: "+", l: "Quality checklist per project" },
   { n: 15, s: "+", l: "Years of Experience" }
 ];
 
