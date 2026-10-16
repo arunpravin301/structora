@@ -38,9 +38,53 @@ const tierHighlights: Record<string, string[]> = {
   ]
 };
 
+// All 38 districts of Tamil Nadu excluding Kovilpatti, Thiruvannamalai, and Kumbakonam (which already have full pricing tabs)
+const TAMIL_NADU_DISTRICTS = [
+  "Ariyalur",
+  "Chengalpattu",
+  "Chennai",
+  "Coimbatore",
+  "Cuddalore",
+  "Dharmapuri",
+  "Dindigul",
+  "Erode",
+  "Kallakurichi",
+  "Kanchipuram",
+  "Kanyakumari",
+  "Karur",
+  "Krishnagiri",
+  "Madurai",
+  "Mayiladuthurai",
+  "Nagapattinam",
+  "Namakkal",
+  "Nilgiris",
+  "Perambalur",
+  "Pudukkottai",
+  "Ramanathapuram",
+  "Ranipet",
+  "Salem",
+  "Sivaganga",
+  "Tenkasi",
+  "Thanjavur",
+  "Theni",
+  "Thoothukudi (Tuticorin)",
+  "Tiruchirappalli (Trichy)",
+  "Tirunelveli",
+  "Tirupathur",
+  "Tiruppur",
+  "Tiruvallur",
+  "Tiruvarur",
+  "Vellore",
+  "Viluppuram",
+  "Virudhunagar"
+];
+
 export default function PricingClient() {
   const [location, setLocation] = useState(locations[0]);
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [quoteSubmitting, setQuoteSubmitting] = useState(false);
+  const [quoteSent, setQuoteSent] = useState(false);
+  const [quoteError, setQuoteError] = useState("");
   
   // Track expanded state by category name. Default 'Structure ' (or first category) to true.
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -50,6 +94,33 @@ export default function PricingClient() {
   const toggleSection = (name: string) => {
     setExpandedSections(prev => ({ ...prev, [name]: !prev[name] }));
   };
+
+  async function handleQuoteSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setQuoteSubmitting(true);
+    setQuoteError("");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    try {
+      const { submitEnquiry } = await import("@/lib/enquiry");
+      const formattedMessage = `Custom Quote Request for ${data.district || "Tamil Nadu"}:\n\n` +
+        `Project Details: ${data.details || "Not specified"}\n` +
+        `Selected District: ${data.district}`;
+      await submitEnquiry({
+        name: String(data.name || ""),
+        phone: String(data.phone || ""),
+        email: String(data.email || ""),
+        message: formattedMessage,
+        type: "Custom Quote"
+      }, "pricing-custom-quote");
+      setQuoteSent(true);
+    } catch (err) {
+      setQuoteError(err instanceof Error && err.name !== "TimeoutError" ? err.message : "Delivery could not be confirmed. Please try again or call us directly.");
+    } finally {
+      setQuoteSubmitting(false);
+    }
+  }
 
   return (
     <section className="py-20 bg-white">
@@ -68,19 +139,68 @@ export default function PricingClient() {
         </div>
 
         {location === "Other" ? (
-          <div className="max-w-2xl mx-auto bg-mist p-12 border border-line">
+          <div className="max-w-2xl mx-auto bg-mist p-8 sm:p-12 border border-line">
             <h3 className="text-3xl font-semibold mb-3">Request a Custom Quote</h3>
-            <p className="text-slate-500 mb-10 leading-relaxed">We construct premium homes and commercial spaces across Tamil Nadu. Fill out the form below with your location and project requirements, and our engineering team will get back to you with a detailed estimate.</p>
-            <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); alert("Enquiry submitted successfully!"); }}>
-              <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-5">
-                <input type="text" placeholder="Your Name" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-                <input type="text" placeholder="Phone Number" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
+            <p className="text-slate-500 mb-10 leading-relaxed">We construct premium homes and commercial spaces across Tamil Nadu. Select your district and enter your project requirements, and our engineering team will get back to you with a detailed estimate.</p>
+            
+            {quoteSent ? (
+              <div className="bg-white p-8 border border-line text-center">
+                <div className="w-12 h-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <h4 className="font-outfit font-bold text-2xl text-slate-900 mb-2">Quote Request Received</h4>
+                <p className="text-slate-600 leading-relaxed max-w-md mx-auto mb-6">
+                  Thank you for sharing your project details. Our engineering team will review your district and requirements and contact you with a customized estimate shortly.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setQuoteSent(false)}
+                  className="btn btn-cta text-xs uppercase tracking-widest px-6 py-2.5"
+                >
+                  Submit Another Request
+                </button>
               </div>
-              <input type="email" placeholder="Email Address" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-              <input type="text" placeholder="Project Location (City / District)" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
-              <textarea placeholder="Project Details (e.g., land size, total floors, budget)" rows={5} className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required></textarea>
-              <button type="submit" className="w-full bg-brand text-white font-outfit uppercase tracking-widest text-sm py-5 hover:bg-slate-900 transition-colors mt-4">Send Enquiry</button>
-            </form>
+            ) : (
+              <form className="space-y-5" onSubmit={handleQuoteSubmit}>
+                <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-5">
+                  <input name="name" type="text" placeholder="Your Name" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
+                  <input name="phone" type="tel" placeholder="Phone Number" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required />
+                </div>
+                <input name="email" type="email" placeholder="Email Address (optional)" className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" />
+                
+                {/* District Dropdown for Tamil Nadu */}
+                <div className="relative">
+                  <select
+                    name="district"
+                    required
+                    defaultValue=""
+                    className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand appearance-none cursor-pointer text-slate-900 invalid:text-slate-400"
+                  >
+                    <option value="" disabled>Select District in Tamil Nadu</option>
+                    {TAMIL_NADU_DISTRICTS.map((dist) => (
+                      <option key={dist} value={dist} className="text-slate-900">
+                        {dist}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate-500">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                <textarea name="details" placeholder="Project Details (e.g., land size, total floors, budget)" rows={5} className="w-full px-5 py-4 bg-white border border-line focus:outline-none focus:border-brand" required></textarea>
+                
+                {quoteError && <p role="alert" className="text-red-600 text-sm">{quoteError}</p>}
+
+                <button type="submit" disabled={quoteSubmitting} className="w-full bg-brand text-white font-outfit uppercase tracking-widest text-sm py-5 hover:bg-slate-900 transition-colors mt-4">
+                  {quoteSubmitting ? "Sending..." : "Send Enquiry"}
+                </button>
+              </form>
+            )}
           </div>
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
