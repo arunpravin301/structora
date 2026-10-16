@@ -18,7 +18,7 @@ export default function AboutPage() {
         title={
           <>
             Engineering integrity you can{" "}
-            <em className="font-serif italic font-medium text-amber-400">
+            <em className="font-serif italic font-medium text-brand">
               stand in front of.
             </em>
           </>

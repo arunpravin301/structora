@@ -17,7 +17,7 @@ export default function ServicesPage() {
         title={
           <>
             Uncompromising engineering, from a single home to a{" "}
-            <em className="font-serif italic font-medium text-amber-400">
+            <em className="font-serif italic font-medium text-brand">
               multi-storey complex.
             </em>
           </>

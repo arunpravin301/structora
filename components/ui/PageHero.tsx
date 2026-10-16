@@ -9,10 +9,10 @@ interface PageHeroProps {
 
 export default function PageHero({ title, intro }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pt-[180px] pb-[90px] max-[600px]:pt-[140px] max-[600px]:pb-[60px] bg-[#0c0e12] text-white border-b border-white/[0.08]">
+    <section className="relative overflow-hidden pt-[180px] pb-[90px] max-[600px]:pt-[140px] max-[600px]:pb-[60px] bg-slate-900 text-white border-b border-white/[0.08]">
       {/* Subtle organic warmth - no artificial tech grids or pulsing dots */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-[30%] left-0 w-[600px] h-[500px] bg-amber-500/[0.07] rounded-full blur-[150px]" />
+        <div className="absolute -top-[30%] left-0 w-[600px] h-[500px] bg-brand/[0.08] rounded-full blur-[150px]" />
         <div className="absolute -bottom-[20%] right-0 w-[500px] h-[400px] bg-brand/[0.05] rounded-full blur-[140px]" />
       </div>
 

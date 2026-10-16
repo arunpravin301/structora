@@ -28,7 +28,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         title={
           <>
             {s.name}{" "}
-            <em className="font-serif italic font-medium text-amber-400">
+            <em className="font-serif italic font-medium text-brand">
               Engineering.
             </em>
           </>

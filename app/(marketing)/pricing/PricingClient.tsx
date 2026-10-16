@@ -221,17 +221,17 @@ export default function PricingClient() {
                                   : 'Exceptional materials, luxury fittings, bespoke detailing, and sophisticated finishes for an exclusive villa experience.';
 
                 return (
-                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-4 ring-[#F26E21] shadow-2xl scale-105 relative z-10' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
-                    <div className={`p-8 text-center text-white relative ${tier === 'luxury' ? 'bg-gradient-to-br from-[#E5B63E] to-[#C99A22]' : tier === 'premium' ? 'bg-gradient-to-br from-[#F26E21] to-[#D95508]' : tier === 'standard' ? 'bg-gradient-to-br from-[#8940FF] to-[#6B22E1]' : 'bg-gradient-to-br from-slate-400 to-slate-500'}`}>
+                  <div key={tier} className={`flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${isPopular ? 'ring-4 ring-brand shadow-2xl scale-105 relative z-10' : 'border border-slate-200 shadow-lg hover:shadow-xl'}`}>
+                    <div className={`p-8 text-center text-white relative ${tier === 'luxury' ? 'bg-gradient-to-br from-slate-900 to-black border-b-2 border-brand' : tier === 'premium' ? 'bg-gradient-to-br from-brand to-[#990000]' : tier === 'standard' ? 'bg-gradient-to-br from-slate-800 to-slate-900' : 'bg-gradient-to-br from-neutral-600 to-neutral-700'}`}>
                       {isPopular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-outfit font-bold uppercase tracking-widest py-1 px-4 rounded-full shadow-md mt-4">
                           ★ Most Popular
                         </div>
                       )}
-                      <h3 className="text-3xl font-bold mb-3 mt-2">{displayName}</h3>
+                      <h3 className="text-3xl font-bold mb-3 mt-2 text-white">{displayName}</h3>
                       <p className="text-xs text-white/90 leading-snug min-h-[48px]">{displayDesc}</p>
                     </div>
-                    <div className="p-8 text-center bg-slate-50 border-b border-slate-100">
+                    <div className="p-8 text-center bg-mist border-b border-line">
                       <div className="flex items-start justify-center text-slate-900 mb-1">
                         <span className="text-xl font-medium mt-1 mr-1">₹</span>
                         <span className="text-5xl font-bold tracking-tight">{pricingData[location].basePrices[tier]}</span>
@@ -239,18 +239,18 @@ export default function PricingClient() {
                       <div className="text-sm text-slate-500 font-medium">per sq. ft.</div>
                     </div>
                     <div className="p-8 flex-grow flex flex-col bg-white">
-                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-100 pb-4">What's Included</div>
+                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-line pb-4">What's Included</div>
                       <ul className="space-y-4 text-[14px] text-slate-700 flex-grow mb-8">
                         {tierHighlights[tier].map((hl, idx) => (
                           <li key={idx} className="flex gap-3 items-start">
-                            <svg className="w-5 h-5 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="w-5 h-5 text-brand shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                             </svg>
                             <span className="leading-relaxed font-medium">{hl}</span>
                           </li>
                         ))}
                       </ul>
-                      <button onClick={() => { document.getElementById('compare')?.scrollIntoView({behavior: 'smooth'}); }} className={`w-full py-4 rounded-xl font-outfit uppercase tracking-widest text-sm font-semibold transition-colors ${isPopular ? 'bg-[#F26E21] text-white hover:bg-[#D95508]' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'}`}>
+                      <button onClick={() => { document.getElementById('compare')?.scrollIntoView({behavior: 'smooth'}); }} className={`w-full py-4 rounded-xl font-outfit uppercase tracking-widest text-sm font-semibold transition-colors ${isPopular ? 'bg-brand text-white hover:bg-slate-900' : 'bg-mist text-slate-900 hover:bg-slate-900 hover:text-white'}`}>
                         Compare Specs
                       </button>
                     </div>
@@ -262,10 +262,10 @@ export default function PricingClient() {
             {/* Super Luxury Custom Card */}
             <div className="bg-slate-900 text-white rounded-3xl p-10 md:p-14 mb-24 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
               {/* Subtle background decoration */}
-              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-brand/15 rounded-full blur-3xl pointer-events-none"></div>
               
               <div className="max-w-2xl relative z-10">
-                <div className="font-outfit uppercase tracking-[0.2em] text-xs text-[#E5B63E] mb-2">Bespoke Architectural Build</div>
+                <div className="font-outfit uppercase tracking-[0.2em] text-xs text-brand font-bold mb-2">Bespoke Architectural Build</div>
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">Luxury</h3>
                 <p className="text-slate-300 leading-relaxed text-base md:text-lg">
                   For highly premium projects, oversized villas, and bespoke architectural requirements. Featuring imported materials, custom home automation, and exclusive imported fittings.
@@ -273,7 +273,7 @@ export default function PricingClient() {
               </div>
               
               <div className="flex-shrink-0 w-full md:w-auto relative z-10">
-                <a href="/contact" className="block w-full text-center px-10 py-5 bg-[#E5B63E] hover:bg-[#C99A22] text-slate-900 font-outfit font-bold uppercase tracking-widest rounded-xl transition-colors">
+                <a href="/contact" className="block w-full text-center px-10 py-5 bg-brand hover:bg-white text-white hover:text-slate-900 font-outfit font-bold uppercase tracking-widest rounded-xl transition-colors">
                   Contact Sales
                 </a>
               </div>

@@ -17,7 +17,7 @@ export default function PricingPage() {
         title={
           <>
             Transparent pricing,{" "}
-            <em className="font-serif italic font-medium text-amber-400">
+            <em className="font-serif italic font-medium text-brand">
               uncompromised engineering.
             </em>
           </>

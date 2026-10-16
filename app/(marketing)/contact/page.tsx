@@ -17,7 +17,7 @@ export default function ContactPage() {
         title={
           <>
             Let’s build something{" "}
-            <em className="font-serif italic font-medium text-amber-400">
+            <em className="font-serif italic font-medium text-brand">
               engineered to last.
             </em>
           </>

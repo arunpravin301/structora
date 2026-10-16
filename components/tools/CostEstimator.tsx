@@ -167,21 +167,21 @@ export default function CostEstimator() {
         {state === "idle" && (
           <div className="absolute inset-0 z-20 bg-slate-900 flex flex-col justify-center p-8 text-center">
             <svg className="w-8 h-8 mx-auto mb-4 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-            <div className="text-[11px] text-amber-400 uppercase tracking-widest mb-2 font-semibold font-outfit">Estimate Ready</div>
+            <div className="text-[11px] text-brand uppercase tracking-widest mb-2 font-semibold font-outfit">Estimate Ready</div>
             <div className="text-[13px] text-white/60 leading-relaxed">Select your district, built-up area, and package tier on the left, then click Generate.</div>
           </div>
         )}
 
         {state === "locked" && (
           <div className="absolute inset-0 z-10 bg-slate-900/90 backdrop-blur-md flex flex-col justify-center p-8 text-center transition-all duration-500">
-            <svg className="w-6 h-6 mx-auto mb-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7z" /></svg>
+            <svg className="w-6 h-6 mx-auto mb-3 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7z" /></svg>
             <h3 className="font-outfit text-lg font-semibold mb-1 text-white">Unlock Full Estimate</h3>
             <p className="text-[12px] text-white/60 mb-5 leading-relaxed">Enter your details to instantly view your itemised cost breakdown.</p>
             <form onSubmit={unlock} className="space-y-3 text-left">
-              <input required name="name" type="text" placeholder="Your name" className="w-full bg-white/10 border-b border-white/20 text-white placeholder-white/40 text-[13px] px-3 py-2.5 focus:outline-none focus:border-amber-400 transition-colors" />
-              <input required name="phone" type="tel" placeholder="Phone number" className="w-full bg-white/10 border-b border-white/20 text-white placeholder-white/40 text-[13px] px-3 py-2.5 focus:outline-none focus:border-amber-400 transition-colors" />
-              <input name="email" type="email" placeholder="Email (optional)" className="w-full bg-white/10 border-b border-white/20 text-white placeholder-white/40 text-[13px] px-3 py-2.5 focus:outline-none focus:border-amber-400 transition-colors" />
-              <button disabled={busy} className="w-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold text-[13px] py-3 mt-3 transition-transform active:scale-[0.98]">
+              <input required name="name" type="text" placeholder="Your name" className="w-full bg-white/10 border-b border-white/20 text-white placeholder-white/40 text-[13px] px-3 py-2.5 focus:outline-none focus:border-brand transition-colors" />
+              <input required name="phone" type="tel" placeholder="Phone number" className="w-full bg-white/10 border-b border-white/20 text-white placeholder-white/40 text-[13px] px-3 py-2.5 focus:outline-none focus:border-brand transition-colors" />
+              <input name="email" type="email" placeholder="Email (optional)" className="w-full bg-white/10 border-b border-white/20 text-white placeholder-white/40 text-[13px] px-3 py-2.5 focus:outline-none focus:border-brand transition-colors" />
+              <button disabled={busy} className="w-full bg-brand hover:bg-white text-white hover:text-slate-900 font-semibold text-[13px] py-3 mt-3 transition-colors active:scale-[0.98]">
                 {busy ? "Unlocking..." : "Reveal Price"}
               </button>
             </form>
@@ -189,7 +189,7 @@ export default function CostEstimator() {
         )}
 
         <div className={`transition-all duration-700 ${state !== "unlocked" ? 'opacity-20 blur-md scale-95' : 'opacity-100 blur-0 scale-100'}`}>
-          <div className="text-[11px] uppercase tracking-wider text-amber-400 font-semibold mb-1 font-outfit">Estimated Construction Cost</div>
+          <div className="text-[11px] uppercase tracking-wider text-brand font-semibold mb-1 font-outfit">Estimated Construction Cost</div>
           <div className="font-outfit font-bold text-[34px] leading-tight text-white mb-1">{calculation.exact}</div>
           <div className="text-xs text-white/60 font-outfit mb-4">Ballpark range: {calculation.range}</div>
           <div className="text-[12px] text-white/70 border-t border-white/10 pt-4 leading-relaxed">

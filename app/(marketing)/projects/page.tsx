@@ -17,7 +17,7 @@ export default async function ProjectsPage() {
         title={
           <>
             Projects you can drive out and{" "}
-            <em className="font-serif italic font-medium text-amber-400">
+            <em className="font-serif italic font-medium text-brand">
               stand in front of.
             </em>
           </>

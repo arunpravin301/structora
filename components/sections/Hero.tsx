@@ -51,7 +51,7 @@ export default function Hero() {
             className="h-title font-outfit text-white font-bold text-[clamp(42px,5.5vw,76px)] leading-[1.1] tracking-tight max-w-[18ch]"
             style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(0,0,0,0.9))" }}
           >
-            Precision engineering for <em className="font-serif italic font-medium text-amber-400 tracking-normal pr-1">residential & commercial</em> spaces.
+            Precision engineering for <em className="font-serif italic font-medium text-brand tracking-normal pr-1">residential & commercial</em> spaces.
           </h1>
         </div>
         

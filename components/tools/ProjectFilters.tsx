@@ -179,7 +179,7 @@ export default function ProjectFilters({ projects = [] }: { projects?: Project[]
                       className={`text-[10.5px] font-semibold tracking-[0.14em] uppercase px-2 py-0.5 rounded-sm border ${
                         isCompleted
                           ? "bg-slate-50 text-slate-700 border-slate-200"
-                          : "bg-amber-50 text-amber-800 border-amber-200/80"
+                          : "bg-brand/10 text-brand border-brand/25"
                       }`}
                     >
                       {isCompleted ? "Completed" : "Ongoing"}

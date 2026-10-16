@@ -5,17 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: "#A95C37",
-        paper: "#F8F7F5",
-        mist: "#F1EFEC",
-        line: "#E6E4DD",
-        lined: "#2B2D31",
+        brand: "#D60000",
+        paper: "#FFFFFF",
+        mist: "#F5F5F6",
+        line: "#E4E4E7",
+        lined: "#27272A",
         slate: {
-          DEFAULT: "#595C62",
-          900: "#151618",
-          800: "#222428"
+          DEFAULT: "#52525B",
+          900: "#0F0F10",
+          800: "#18181B"
         },
-        slatel: "#A8A9AB",
+        slatel: "#A1A1AA",
         wa: "#25D366"
       },
       fontFamily: {
