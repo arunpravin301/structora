@@ -109,28 +109,12 @@ export default async function Home() {
         <Container>
           <Reveal>
             <SectionHead center>From concept to reality.</SectionHead>
-            <p className="text-center text-slate max-w-[54ch] mx-auto -mt-6 mb-14 text-[16px] leading-relaxed">
-              Drag the slider on each frame to compare our initial 3D architectural renders with the actual structures built by our engineers.
+            <p className="text-center text-slate max-w-[54ch] mx-auto -mt-6 mb-12 text-[16px] leading-relaxed">
+              Watch our 3D architectural renders come to life as completed structures—or drag the slider to inspect every detail yourself.
             </p>
           </Reveal>
           <Reveal>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-              {/* First Slider: Balaji Residence */}
-              <TransformReveal 
-                beforeSrc="/projects/2_balaji_residence_completed_cover.webp"
-                afterSrc="/projects/2_balaji_residence_completed_final.webp"
-                label="Balaji Abode · Kumbakonam"
-                subtitle="3D Architectural Render vs. Completed Handover"
-              />
-
-              {/* Second Slider: Zaheer Residence */}
-              <TransformReveal 
-                beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
-                afterSrc="/projects/zaheer_execution.jpeg"
-                label="Zaheer Residence · Tiruvannamalai"
-                subtitle="3D Architectural Render vs. Site Execution"
-              />
-            </div>
+            <TransformReveal />
           </Reveal>
         </Container>
       </section>
