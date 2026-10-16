@@ -105,24 +105,34 @@ export default async function Home() {
         <Reveal><div className="mt-24 flex justify-center"><Link href="/projects" className="btn btn-fill">View all projects</Link></div></Reveal>
       </Container></section>
 
-      <section className="bg-mist pt-[160px]">
+      <section className="bg-mist py-[140px] border-t border-line">
         <Container>
-          <Reveal><SectionHead center>From concept to reality.</SectionHead></Reveal>
-        </Container>
-        
-        {/* First Slider: Balaji Residence */}
-        <TransformReveal 
-          beforeSrc="/projects/2_balaji_residence_completed_cover.webp"
-          afterSrc="/projects/2_balaji_residence_completed_final.webp"
-          label="Balaji Abode · Kumbakonam"
-        />
+          <Reveal>
+            <SectionHead center>From concept to reality.</SectionHead>
+            <p className="text-center text-slate max-w-[54ch] mx-auto -mt-6 mb-14 text-[16px] leading-relaxed">
+              Drag the slider on each frame to compare our initial 3D architectural renders with the actual structures built by our engineers.
+            </p>
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+              {/* First Slider: Balaji Residence */}
+              <TransformReveal 
+                beforeSrc="/projects/2_balaji_residence_completed_cover.webp"
+                afterSrc="/projects/2_balaji_residence_completed_final.webp"
+                label="Balaji Abode · Kumbakonam"
+                subtitle="3D Architectural Render vs. Completed Handover"
+              />
 
-        {/* Second Slider: Zaheer Residence */}
-        <TransformReveal 
-          beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
-          afterSrc="/projects/zaheer_execution.jpeg"
-          label="Zaheer Residence · Tiruvannamalai"
-        />
+              {/* Second Slider: Zaheer Residence */}
+              <TransformReveal 
+                beforeSrc="/projects/1_zaheer_residence_ongoing_cover.webp"
+                afterSrc="/projects/zaheer_execution.jpeg"
+                label="Zaheer Residence · Tiruvannamalai"
+                subtitle="3D Architectural Render vs. Site Execution"
+              />
+            </div>
+          </Reveal>
+        </Container>
       </section>
 
       <section className="pt-[160px] pb-[120px]"><Container>
