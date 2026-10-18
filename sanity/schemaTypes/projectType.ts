@@ -1,4 +1,5 @@
 import { defineField, defineType, defineArrayMember } from 'sanity'
+import { ProjectValueInput } from '../components/ProjectValueInput'
 
 export const projectType = defineType({
   name: 'project',
@@ -67,6 +68,10 @@ export const projectType = defineType({
       name: 'projectValue',
       title: 'Project Value (INR)',
       type: 'number',
+      description: 'Use the Quick Entry bar to enter in Lakhs, Crores, or Thousands, or type the full INR figure directly.',
+      components: {
+        input: ProjectValueInput,
+      },
     }),
     defineField({
       name: 'gallery',
