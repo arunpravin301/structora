@@ -7,34 +7,50 @@ const pricingData = pricingDataRaw as Record<string, any>;
 const locations = Object.keys(pricingData);
 locations.push("Other");
 
-const tierHighlights: Record<string, string[]> = {
+const tierHighlights: Record<string, Array<{ label: string; value: string; excluded?: boolean }>> = {
   basic: [
-    "ISI Brand Steel & Cement",
-    "Country Red Brick",
-    "10'0\" Floor Height",
-    "Teak Wood Main Door (5x3)",
-    "2 Coats of Emulsion Paint"
+    { label: "Steel", value: "ISI Brand" },
+    { label: "Cement", value: "Ramco / Ultratech / Dalmia" },
+    { label: "Bricks", value: "Country bricks" },
+    { label: "Basement Height", value: "Up to 2'0\" From Natural Ground level" },
+    { label: "Floor Height", value: "10'0\" From Floor PCC to Top Of Concrete" },
+    { label: "Joinerys", value: "UPVC 2 Track sliding" },
+    { label: "Flooring", value: "2'-00\"X2'-00\" Tiles (Rs - 45/SFT)" },
+    { label: "Painting", value: "2 Coats of exterior emulsion paints (Asian paints - Ace Or equivalent)" },
+    { label: "Overhead tank PVC", value: "-", excluded: true }
   ],
   standard: [
-    "Pulkit / Suryadev Steel",
-    "Country Red Brick",
-    "10'0\" Floor Height",
-    "UPVC / Mahogany Windows",
-    "Economy Emulsion Paint"
+    { label: "Steel", value: "Pulkit/Suryadev Or equivalent" },
+    { label: "Cement", value: "Ramco / Ultratech / Dalmia" },
+    { label: "Bricks", value: "Country bricks" },
+    { label: "Basement Height", value: "Up to 3'0\" From Natural Ground level" },
+    { label: "Floor Height", value: "10'0\" From Floor PCC to Top Of Concrete" },
+    { label: "Joinerys", value: "Mahogany Or Equivalent 2Nos Frame Thick 3X4" },
+    { label: "Flooring", value: "4'-00\"X2'-00\" Tiles (Rs - 55/SFT)" },
+    { label: "Painting", value: "2 Coats of exterior emulsion paints (Asian paints - Ace Or equivalent)" },
+    { label: "Overhead tank PVC", value: "750 Ltr" }
   ],
   premium: [
-    "Agni / Aishwaryam Steel",
-    "1st class Wirecut Red Bricks",
-    "10'6\" Floor Height",
-    "Teak wood frame with shutters",
-    "Dr.Fixit / Fosroc Waterproofing"
+    { label: "Steel", value: "Agni/Aishwaryam Or equivalent" },
+    { label: "Cement", value: "Ramco / Ultratech / Dalmia" },
+    { label: "Bricks", value: "Country bricks" },
+    { label: "Basement Height", value: "Up to 3'6\" From Natural Ground level" },
+    { label: "Floor Height", value: "10'-6\" From Floor PCC to Top Of Concrete" },
+    { label: "Joinerys", value: "Teak wood frame with shutters 2Nos Frame Thick 3X4" },
+    { label: "Flooring", value: "5'-3\"x2'-9\" Tiles (Rs - 80/SFT)" },
+    { label: "Painting", value: "2 Coats of exterior emulsion paints (Asian paints - Apex Or equivalent)" },
+    { label: "Overhead tank PVC", value: "2000 Ltr" }
   ],
   luxury: [
-    "JSW / TATA Steel",
-    "1st class Wirecut Red Bricks",
-    "11'0\" Floor Height",
-    "Luxury Emulsion Paints",
-    "SS Staircase & Balcony Railing"
+    { label: "Steel", value: "JSW / TATA" },
+    { label: "Cement", value: "Ramco / Ultratech / Dalmia" },
+    { label: "Bricks", value: "1st class Red bricks Or Fly ash bricks" },
+    { label: "Basement Height", value: "Up to 4'0\" From Natural Ground level" },
+    { label: "Floor Height", value: "11'-0\" From Floor PCC to Top Of Concrete" },
+    { label: "Joinerys", value: "Teak wood frame with shutters 2 Nos Frame Thick 3X4" },
+    { label: "Flooring", value: "6'-00\"X4'-00\" Tiles (Rs - 110/SFT)" },
+    { label: "Painting", value: "2 Coats of exterior emulsion paints (Asian paints - Ultima Or equivalent)" },
+    { label: "Overhead tank PVC", value: "2000 Ltr" }
   ]
 };
 
@@ -209,9 +225,9 @@ export default function PricingClient() {
               {['basic', 'standard', 'premium', 'luxury'].map((tier) => {
                 const isPopular = tier === 'premium';
                 
-                // Map the internal keys to the new client-facing names
-                const displayName = tier === 'basic' ? 'Essential' 
-                                  : tier === 'standard' ? 'Classic' 
+                // Map the internal keys to the client-facing names from the specification sheet
+                const displayName = tier === 'basic' ? 'Basic' 
+                                  : tier === 'standard' ? 'Standard' 
                                   : tier === 'premium' ? 'Premium' 
                                   : 'Prestige';
                                   
@@ -238,15 +254,26 @@ export default function PricingClient() {
                       </div>
                       <div className="text-sm text-slate-500 font-medium">per sq. ft.</div>
                     </div>
-                    <div className="p-8 flex-grow flex flex-col bg-white">
-                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-line pb-4">What's Included</div>
-                      <ul className="space-y-4 text-[14px] text-slate-700 flex-grow mb-8">
+                    <div className="p-7 flex-grow flex flex-col bg-white">
+                      <div className="font-outfit text-xs font-bold uppercase tracking-widest text-slate-400 mb-5 border-b border-line pb-3">Key Specifications</div>
+                      <ul className="space-y-3.5 text-[13.5px] text-slate-700 flex-grow mb-8">
                         {tierHighlights[tier].map((hl, idx) => (
-                          <li key={idx} className="flex gap-3 items-start">
-                            <svg className="w-5 h-5 text-brand shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="leading-relaxed font-medium">{hl}</span>
+                          <li key={idx} className="flex gap-2.5 items-start border-b border-slate-100 pb-2.5 last:border-b-0 last:pb-0">
+                            {hl.excluded ? (
+                              <span className="w-4 h-4 text-slate-300 shrink-0 mt-[2px] inline-flex items-center justify-center font-bold">—</span>
+                            ) : (
+                              <svg className="w-4 h-4 text-brand shrink-0 mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                              </svg>
+                            )}
+                            <div className="leading-snug">
+                              <span className="block text-[11px] font-outfit uppercase tracking-wider text-slate-400 font-semibold mb-0.5">
+                                {hl.label}
+                              </span>
+                              <span className={`font-medium ${hl.excluded ? 'text-slate-400' : 'text-slate-800'}`}>
+                                {hl.value}
+                              </span>
+                            </div>
                           </li>
                         ))}
                       </ul>
@@ -316,8 +343,8 @@ export default function PricingClient() {
                   <thead>
                     <tr>
                       <th className="p-6 bg-slate-900 text-white w-1/3 text-lg font-normal">Specification Overview</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Essential</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Classic</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Basic</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Standard</th>
                       <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Premium</th>
                       <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Prestige</th>
                     </tr>

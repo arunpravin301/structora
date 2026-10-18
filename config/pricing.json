@@ -26,10 +26,10 @@
           },
           {
             "name": "Bricks",
-            "basic": "Country Red Brick",
-            "standard": "Country Red Brick",
-            "premium": "1st class Wirecut Red Bricks",
-            "luxury": "1st class Wirecut Red Bricks"
+            "basic": "Country bricks",
+            "standard": "Country bricks",
+            "premium": "Country bricks",
+            "luxury": "1st class Red bricks Or Fly ash bricks"
           },
           {
             "name": "Basement Height",
@@ -68,10 +68,10 @@
           },
           {
             "name": "Joinerys",
-            "basic": "UPVC",
-            "standard": "Mahogany Or Equivalent",
-            "premium": "Teak woods",
-            "luxury": "Teak woods"
+            "basic": "UPVC 2 Track sliding",
+            "standard": "Mahogany Or Equivalent 2Nos Frame Thick 3X4",
+            "premium": "Teak wood frame with shutters 2Nos Frame Thick 3X4",
+            "luxury": "Teak wood frame with shutters 2 Nos Frame Thick 3X4"
           }
         ]
       },
@@ -263,10 +263,10 @@
         "name": "Miscellaneous",
         "items": [
           {
-            "name": "Overhead tank",
-            "basic": "500 Ltr",
+            "name": "Overhead tank PVC",
+            "basic": "-",
             "standard": "750 Ltr",
-            "premium": "1000 Ltr",
+            "premium": "2000 Ltr",
             "luxury": "2000 Ltr"
           },
           {
@@ -474,10 +474,10 @@
           },
           {
             "name": "Bricks",
-            "basic": "Country Red Brick",
-            "standard": "Country Red Brick",
-            "premium": "1st class Wirecut Red Bricks",
-            "luxury": "1st class Wirecut Red Bricks"
+            "basic": "Country bricks",
+            "standard": "Country bricks",
+            "premium": "Country bricks",
+            "luxury": "1st class Red bricks Or Fly ash bricks"
           },
           {
             "name": "Basement Height",
@@ -516,10 +516,10 @@
           },
           {
             "name": "Joinerys",
-            "basic": "UPVC",
-            "standard": "Mahogany Or Equivalent",
-            "premium": "Teak woods",
-            "luxury": "Teak woods"
+            "basic": "UPVC 2 Track sliding",
+            "standard": "Mahogany Or Equivalent 2Nos Frame Thick 3X4",
+            "premium": "Teak wood frame with shutters 2Nos Frame Thick 3X4",
+            "luxury": "Teak wood frame with shutters 2 Nos Frame Thick 3X4"
           }
         ]
       },
@@ -711,10 +711,10 @@
         "name": "Miscellaneous",
         "items": [
           {
-            "name": "Overhead tank",
-            "basic": "500 Ltr",
+            "name": "Overhead tank PVC",
+            "basic": "-",
             "standard": "750 Ltr",
-            "premium": "1000 Ltr",
+            "premium": "2000 Ltr",
             "luxury": "2000 Ltr"
           },
           {
@@ -922,10 +922,10 @@
           },
           {
             "name": "Bricks",
-            "basic": "Fly ash bricks",
-            "standard": "Fly ash bricks",
-            "premium": "1st class Red bricks \r\nOr Fly ash bricks",
-            "luxury": "1st class Red bricks \r\nOr Fly ash bricks"
+            "basic": "Country bricks",
+            "standard": "Country bricks",
+            "premium": "Country bricks",
+            "luxury": "1st class Red bricks Or Fly ash bricks"
           },
           {
             "name": "Basement Height",
@@ -964,10 +964,10 @@
           },
           {
             "name": "Joinerys",
-            "basic": "UPVC",
-            "standard": "Mahogany Or Equivalent",
-            "premium": "Teak woods",
-            "luxury": "Teak woods"
+            "basic": "UPVC 2 Track sliding",
+            "standard": "Mahogany Or Equivalent 2Nos Frame Thick 3X4",
+            "premium": "Teak wood frame with shutters 2Nos Frame Thick 3X4",
+            "luxury": "Teak wood frame with shutters 2 Nos Frame Thick 3X4"
           }
         ]
       },
@@ -1159,10 +1159,10 @@
         "name": "Miscellaneous",
         "items": [
           {
-            "name": "Overhead tank",
-            "basic": "500 Ltr",
+            "name": "Overhead tank PVC",
+            "basic": "-",
             "standard": "750 Ltr",
-            "premium": "1000 Ltr",
+            "premium": "2000 Ltr",
             "luxury": "2000 Ltr"
           },
           {
