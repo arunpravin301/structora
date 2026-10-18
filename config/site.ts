@@ -15,7 +15,7 @@ export const site = {
   offices: ["Kumbakonam", "Kovilpatti"],
   contact: {
     whatsapp: "919677770797", // confirmed via client form
-    phones: ["82483 62020", "99529 13079"],
+    phones: ["82483 62020", "96777 70797"],
     email: "info@structoraindia.com",
     hours: "8.30am to 7.00pm", // days not specified by client, confirm
     addresses: [
