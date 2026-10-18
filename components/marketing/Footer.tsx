@@ -152,7 +152,17 @@ export default function Footer() {
           <Link href="/privacy" className="underline hover:text-brand transition-colors">
             Privacy notice
           </Link>
-          <span>Website by Zentu Media</span>
+          <span>
+            Website by{" "}
+            <a
+              href="https://zentumedia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-brand transition-colors"
+            >
+              Zentu Media
+            </a>
+          </span>
         </div>
       </Container>
     </footer>
