@@ -7,7 +7,15 @@ export const metadata: Metadata = {
   title: { default: "Structora India Constructions", template: "%s — Structora India" },
   description:
     "Residential and commercial construction in Tamil Nadu. Meet Structora India's engineers in Kumbakonam and Kovilpatti.",
-  robots: { index: canIndex, follow: canIndex }
+  robots: { index: canIndex, follow: canIndex },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" }
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
