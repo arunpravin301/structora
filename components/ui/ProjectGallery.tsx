@@ -1,14 +1,11 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+/* eslint-disable @next/next/no-img-element */
+import { useState, useEffect } from "react";
 
 export default function ProjectGallery({ isOpen, onClose, images, startIndex = 0 }: { isOpen: boolean; onClose: () => void; images: string[]; startIndex?: number }) {
   const [current, setCurrent] = useState(startIndex);
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const [touchStart, setTouchStart] = useState<number | null>(null);
-
-  useEffect(() => {
-    setCurrent(startIndex);
-  }, [startIndex, isOpen]);
 
   // Eager preloading for instantaneous navigation
   useEffect(() => {

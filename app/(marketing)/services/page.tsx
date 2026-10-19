@@ -38,7 +38,7 @@ export default function ServicesPage() {
                   Explore our detailed pricing packages & specifications.
                 </h2>
                 <p className="text-slate text-base md:text-lg leading-relaxed mb-6">
-                  Compare our <strong>Essential</strong>, <strong>Classic</strong>, <strong>Premium</strong>, and <strong>Prestige</strong> tiers across Kumbakonam, Thiruvannamalai, and Kovilpatti — or request a custom Luxury build estimate.
+                  Compare our <strong>Basic</strong>, <strong>Standard</strong>, <strong>Premium</strong>, and <strong>Prestige</strong> tiers across Kumbakonam, Thiruvannamalai, and Kovilpatti — or request a custom Luxury build estimate.
                 </p>
                 <div className="flex flex-wrap gap-4 text-xs font-outfit uppercase tracking-wider text-slate-500">
                   <span className="flex items-center gap-1.5"><span className="text-brand">✓</span> Live Cost Estimator</span>

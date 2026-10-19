@@ -13,13 +13,20 @@ import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import { client } from "@/sanity/lib/client";
 import { projectsQuery } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
+import type { Project } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata(
+  "Structora India Constructions — Civil Engineers & Builders in Tamil Nadu",
+  "Residential, commercial, and multi-storey construction across Tamil Nadu. Meet Structora India's engineers in Kumbakonam and Kovilpatti.",
+  "/"
+);
 
 export const revalidate = 60; // revalidate every minute
 
 export default async function Home() {
-  const projects = await client.fetch(projectsQuery);
-  const p1 = projects.find((p: any) => p.title?.includes("Priyanka")) || projects[0];
-  const p2 = projects.find((p: any) => p.title?.includes("Balaji")) || projects[1];
+  const projects = await client.fetch<Project[]>(projectsQuery);
+  const p2 = projects.find((p) => p.title?.includes("Balaji")) || projects[1] || projects[0];
 
   return (
     <>
@@ -98,7 +105,11 @@ export default async function Home() {
           <div className="md:absolute right-0 bottom-[-60px] md:w-[45%] bg-white border border-line p-10 z-10 shadow-sm">
             <div className="text-xs tracking-[.14em] uppercase text-slate mb-3.5">{p2?.location || 'Tamil Nadu'} · {p2?.status || 'Completed'}</div>
             <h3 className="text-[34px] font-semibold mb-3.5">{p2?.title || 'Project name'}</h3>
-            <p className="text-slate text-[15px] mb-6 max-w-[36ch]">A short, specific line about this project, its scale, and what made it particular.</p>
+            <p className="text-slate text-[15px] mb-6 max-w-[36ch]">
+              {p2?.builtUp
+                ? `A ${p2.builtUp.toLocaleString("en-IN")} sq.ft custom residential build in ${p2.location || "Tamil Nadu"}, engineered and supervised from foundation to key handover.`
+                : "A custom residential build in Kumbakonam, engineered and supervised by our in-house civil team from foundation to key handover."}
+            </p>
             <Link href="/projects" className="tlink dark">View project →</Link>
           </div>
         </div></Reveal>

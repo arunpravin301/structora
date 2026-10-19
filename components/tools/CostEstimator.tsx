@@ -2,7 +2,11 @@
 import React, { useState, useMemo } from "react";
 import pricingDataRaw from "@/config/pricing.json";
 
-const pricingData = pricingDataRaw as Record<string, any>;
+type LocationPricingData = {
+  basePrices?: Record<string, string>;
+};
+
+const pricingData = pricingDataRaw as Record<string, LocationPricingData>;
 
 const districtOptions = [
   { key: "Kumbakonam", label: "Kumbakonam" },
@@ -11,19 +15,19 @@ const districtOptions = [
 ];
 
 const packageConfig: Record<string, { key: string; label: string }> = {
-  Essential: { key: "basic", label: "Essential" },
-  Classic: { key: "standard", label: "Classic" },
+  Basic: { key: "basic", label: "Basic" },
+  Standard: { key: "standard", label: "Standard" },
   Premium: { key: "premium", label: "Premium" },
   Prestige: { key: "luxury", label: "Prestige" }
 };
 
-const packageKeys = ["Essential", "Classic", "Premium", "Prestige"] as const;
+const packageKeys = ["Basic", "Standard", "Premium", "Prestige"] as const;
 type PackageName = typeof packageKeys[number];
 
 export default function CostEstimator() {
   const [dist, setDist] = useState("Kumbakonam");
   const [area, setArea] = useState<number | "">(1200);
-  const [pkg, setPkg] = useState<PackageName>("Essential");
+  const [pkg, setPkg] = useState<PackageName>("Basic");
   const [state, setState] = useState<"idle" | "locked" | "unlocked">("idle");
   const [busy, setBusy] = useState(false);
 
@@ -50,7 +54,7 @@ export default function CostEstimator() {
     const message = `Unlocked Cost Estimator: ${area} sqft, ${pkg} tier (₹${currentRate}/sqft) in ${dist}`;
     try {
       const { submitEnquiry } = await import("@/lib/enquiry");
-      await submitEnquiry({ ...data, message }, "cost-estimator");
+      await submitEnquiry({ ...data, message, type: "Cost Estimate", consent: "on" }, "cost-estimator");
     } catch {
       // reveal on failure as fallback
     } finally {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import SectionHead from "@/components/ui/SectionHead";
 import PageHero from "@/components/ui/PageHero";
@@ -7,7 +7,11 @@ import PricingClient from "./PricingClient";
 import CostEstimator from "@/components/tools/CostEstimator";
 import EmiCalculator from "@/components/tools/EmiCalculator";
 
-export const metadata: Metadata = { title: "Pricing & Packages" };
+export const metadata = pageMetadata(
+  "Pricing & Packages",
+  "Transparent construction pricing packages, live build cost estimator, and home loan EMI calculator for Tamil Nadu.",
+  "/pricing"
+);
 
 export default function PricingPage() {
   return (

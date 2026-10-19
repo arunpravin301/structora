@@ -3,7 +3,25 @@ import React, { useState } from "react";
 import Container from "@/components/ui/Container";
 import pricingDataRaw from "@/config/pricing.json";
 
-const pricingData = pricingDataRaw as Record<string, any>;
+type SpecItem = {
+  name: string;
+  basic: string;
+  standard: string;
+  premium: string;
+  luxury: string;
+};
+
+type SpecCategory = {
+  name: string;
+  items: SpecItem[];
+};
+
+type LocationPricing = {
+  basePrices: Record<string, string>;
+  categories: SpecCategory[];
+};
+
+const pricingData = pricingDataRaw as Record<string, LocationPricing>;
 const locations = Object.keys(pricingData);
 locations.push("Other");
 
@@ -128,7 +146,8 @@ export default function PricingClient() {
         phone: String(data.phone || ""),
         email: String(data.email || ""),
         message: formattedMessage,
-        type: "Custom Quote"
+        type: "Custom Quote",
+        consent: "on"
       }, "pricing-custom-quote");
       setQuoteSent(true);
     } catch (err) {
@@ -325,7 +344,7 @@ export default function PricingClient() {
                       const data = Object.fromEntries(formData.entries());
                       try {
                         const { submitEnquiry } = await import("@/lib/enquiry");
-                        await submitEnquiry({ ...data, message: `Unlocked Full Specifications for ${location}` }, "pricing-matrix");
+                        await submitEnquiry({ ...data, message: `Unlocked Full Specifications for ${location}`, type: "Specification Unlock", consent: "on" }, "pricing-matrix");
                       } catch {}
                       setIsUnlocked(true);
                     }}>
@@ -350,7 +369,7 @@ export default function PricingClient() {
                     </tr>
                   </thead>
                   <tbody>
-                    {pricingData[location].categories.map((cat: any) => {
+                    {pricingData[location].categories.map((cat) => {
                       const isExpanded = !!expandedSections[cat.name];
                       return (
                         <React.Fragment key={cat.name}>
@@ -365,7 +384,7 @@ export default function PricingClient() {
                               </button>
                             </td>
                           </tr>
-                          {isExpanded && cat.items.map((item: any, i: number) => (
+                          {isExpanded && cat.items.map((item, i: number) => (
                             <tr key={i} className="border-b border-line hover:bg-slate-50 transition-colors">
                               <td className="p-4 px-6 font-medium text-slate-900 whitespace-pre-wrap">{item.name}</td>
                               <td className="p-4 px-6 text-[15px] text-slate-600 whitespace-pre-wrap leading-relaxed">{item.basic}</td>

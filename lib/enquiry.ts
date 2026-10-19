@@ -10,7 +10,7 @@ export async function submitEnquiry(data: Record<string, unknown>, source: strin
   if (name.length < 2 || name.length > 100) throw new Error("Please enter your name.");
   if (!/^[+\d\s().-]+$/.test(phone) || phone.replace(/\D/g, "").length < 10 || phone.replace(/\D/g, "").length > 15) throw new Error("Please enter a valid phone number.");
   if (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)) throw new Error("Please enter a valid email address.");
-  if (data.consent !== "on" || text("_gotcha") || text("botcheck") || message.length > 2000 || !["Residential", "Commercial", "Multi-storey Building", "Renovation"].includes(type)) {
+  if (data.consent !== "on" || text("_gotcha") || text("botcheck") || message.length > 2000 || !["Residential", "Commercial", "Multi-storey Building", "Renovation", "Custom Quote", "Cost Estimate", "Specification Unlock"].includes(type)) {
     throw new Error("Please check your enquiry and consent.");
   }
 

@@ -3,13 +3,6 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import Container from "@/components/ui/Container";
-import Plate from "@/components/ui/Plate";
-import HeroBackground from "@/components/sections/HeroBackground";
-
-let GALLERY_DATA: any = {};
-try {
-  GALLERY_DATA = require('../../project-data.json');
-} catch (e) {}
 
 export default function Hero() {
   const root = useRef<HTMLDivElement>(null);
