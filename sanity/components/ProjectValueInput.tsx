@@ -62,12 +62,12 @@ export function ProjectValueInput(props: NumberInputProps) {
           gap: '8px',
           alignItems: 'center',
           padding: '10px 12px',
-          backgroundColor: '#F8FAFC',
-          border: '1px solid #E2E8F0',
+          backgroundColor: '#FAFAFA',
+          border: '1px solid #E4E4E7',
           borderRadius: '6px',
         }}
       >
-        <span style={{ fontSize: '12px', fontWeight: 600, color: '#475569', whiteSpace: 'nowrap' }}>
+        <span style={{ fontSize: '12px', fontWeight: 600, color: '#52525B', whiteSpace: 'nowrap' }}>
           Quick Entry: ₹
         </span>
         <input
@@ -79,11 +79,11 @@ export function ProjectValueInput(props: NumberInputProps) {
           style={{
             flex: 1,
             padding: '6px 10px',
-            border: '1px solid #CBD5E1',
+            border: '1px solid #D4D4D8',
             borderRadius: '4px',
             fontSize: '13px',
             backgroundColor: '#FFFFFF',
-            color: '#0F172A',
+            color: '#0F0F10',
           }}
         />
         <select
@@ -97,12 +97,12 @@ export function ProjectValueInput(props: NumberInputProps) {
           }}
           style={{
             padding: '6px 10px',
-            border: '1px solid #CBD5E1',
+            border: '1px solid #D4D4D8',
             borderRadius: '4px',
             fontSize: '13px',
             fontWeight: 600,
-            backgroundColor: '#FFFFFF',
-            color: '#0F172A',
+            backgroundColor: '#0F0F10',
+            color: '#FFFFFF',
             cursor: 'pointer',
           }}
         >
@@ -124,7 +124,7 @@ export function ProjectValueInput(props: NumberInputProps) {
           fontSize: '12px',
         }}
       >
-        <span style={{ color: '#64748B' }}>
+        <span style={{ color: '#52525B' }}>
           Full INR stored: {typeof value === 'number' ? `₹${value.toLocaleString('en-IN')}` : '—'}
         </span>
         <span

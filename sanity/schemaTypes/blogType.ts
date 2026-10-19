@@ -6,7 +6,7 @@ export const blogType = defineType({
   title: 'Blog Post',
   type: 'document',
   groups: [
-    { name: 'content', title: 'Content' },
+    { name: 'content', title: 'Content', default: true },
     { name: 'seo', title: 'SEO Settings' },
   ],
   fields: [
@@ -141,4 +141,20 @@ export const blogType = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      category: 'category',
+      readTime: 'readTime',
+      media: 'mainImage',
+    },
+    prepare({ title, category, readTime, media }) {
+      const subtitle = [category, readTime].filter(Boolean).join(' · ')
+      return {
+        title: title || 'Untitled Blog Post',
+        subtitle: subtitle || 'Construction Guide',
+        media,
+      }
+    },
+  },
 })

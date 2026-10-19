@@ -1,21 +1,21 @@
 import { buildLegacyTheme } from 'sanity'
 
 const props = {
-  '--my-white': '#fff',
-  '--my-black': '#0F172A',
-  '--brand-color': '#EA580C',
-  '--my-red': '#db4437',
-  '--my-yellow': '#f4b400',
-  '--my-green': '#0f9d58',
+  '--my-white': '#FFFFFF',
+  '--my-black': '#0F0F10',
+  '--brand-color': '#D60000',
+  '--my-red': '#DC2626',
+  '--my-yellow': '#EAB308',
+  '--my-green': '#16A34A',
 }
 
 export const myTheme = buildLegacyTheme({
-  /* Base theme colors */
+  /* Base theme colors — Structora White, Black & Crimson Red */
   '--black': props['--my-black'],
   '--white': props['--my-white'],
 
-  '--gray': '#666',
-  '--gray-base': '#666',
+  '--gray': '#52525B',
+  '--gray-base': '#52525B',
 
   '--component-bg': props['--my-white'],
   '--component-text-color': props['--my-black'],
@@ -24,7 +24,7 @@ export const myTheme = buildLegacyTheme({
   '--brand-primary': props['--brand-color'],
 
   // Default button
-  '--default-button-color': '#666',
+  '--default-button-color': '#52525B',
   '--default-button-primary-color': props['--brand-color'],
   '--default-button-success-color': props['--my-green'],
   '--default-button-warning-color': props['--my-yellow'],
