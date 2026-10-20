@@ -245,8 +245,8 @@ export default function PricingClient() {
                 const isPopular = tier === 'premium';
                 
                 // Map the internal keys to the client-facing names from the specification sheet
-                const displayName = tier === 'basic' ? 'Basic' 
-                                  : tier === 'standard' ? 'Standard' 
+                const displayName = tier === 'basic' ? 'Essential' 
+                                  : tier === 'standard' ? 'Classic' 
                                   : tier === 'premium' ? 'Premium' 
                                   : 'Prestige';
                                   
@@ -362,8 +362,8 @@ export default function PricingClient() {
                   <thead>
                     <tr>
                       <th className="p-6 bg-slate-900 text-white w-1/3 text-lg font-normal">Specification Overview</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Basic</th>
-                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Standard</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Essential</th>
+                      <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Classic</th>
                       <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Premium</th>
                       <th className="p-6 bg-slate-900 text-white font-outfit uppercase tracking-widest text-xs">Prestige</th>
                     </tr>

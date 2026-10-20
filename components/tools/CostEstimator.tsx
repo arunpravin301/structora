@@ -15,19 +15,19 @@ const districtOptions = [
 ];
 
 const packageConfig: Record<string, { key: string; label: string }> = {
-  Basic: { key: "basic", label: "Basic" },
-  Standard: { key: "standard", label: "Standard" },
+  Essential: { key: "basic", label: "Essential" },
+  Classic: { key: "standard", label: "Classic" },
   Premium: { key: "premium", label: "Premium" },
   Prestige: { key: "luxury", label: "Prestige" }
 };
 
-const packageKeys = ["Basic", "Standard", "Premium", "Prestige"] as const;
+const packageKeys = ["Essential", "Classic", "Premium", "Prestige"] as const;
 type PackageName = typeof packageKeys[number];
 
 export default function CostEstimator() {
   const [dist, setDist] = useState("Kumbakonam");
   const [area, setArea] = useState<number | "">(1200);
-  const [pkg, setPkg] = useState<PackageName>("Basic");
+  const [pkg, setPkg] = useState<PackageName>("Essential");
   const [state, setState] = useState<"idle" | "locked" | "unlocked">("idle");
   const [busy, setBusy] = useState(false);
 
