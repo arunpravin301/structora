@@ -5,9 +5,18 @@ import { site } from "@/config/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 border-t-2 border-brand text-slatel pt-20 pb-7 text-sm">
-      <Container>
-        <div className="grid grid-cols-[1.5fr_1fr_1.2fr] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-10 pb-11 border-b border-lined">
+    <footer className="relative overflow-hidden bg-slate-900 border-t-2 border-brand text-slatel pt-20 pb-10 text-sm">
+      {/* Giant Background Watermark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-x-0 bottom-[-0.08em] z-0 flex justify-center overflow-hidden"
+      >
+        <span className="font-outfit font-extrabold uppercase tracking-[-0.02em] leading-[0.82] text-white/[0.04] text-[clamp(3.75rem,13.5vw,11.75rem)] whitespace-nowrap">
+          STRUCTORA
+        </span>
+      </div>
+      <Container className="relative z-10">
+        <div className="grid grid-cols-[1.5fr_1fr_1.2fr] max-[980px]:grid-cols-2 max-[600px]:grid-cols-1 gap-10 pb-20 max-[600px]:pb-14 border-b border-lined">
           {/* Brand Column */}
           <div>
             <div className="mb-6">
